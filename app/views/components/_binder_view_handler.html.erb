@@ -1,120 +1,133 @@
-
 <%
-#This subpage takes in a variable for box_items called:
-#--box_items = list of components to create
-#--current_component = the current component that is being viewed
-#--current_product_instance = the product instance that this component is in.
+   #This subpage takes in a variable for box_items called:
+   #--box_items = list of components to create
+   #--current_component = the current component that is being viewed
+   #--current_product_instance = the product instance that this component is in.
 %>
 
-<!-- this code applies if we're looking at a binder -->							
+<!-- this code applies if we're looking at a binder -->
 <div id="binder" style="width: 99%;">
-        <ul>
-              
-          <!-- create the tab or panels inside the binder by getting its sub components -->
-          <li><a href="#index"><%= t(:index) %></a></li>
-          <%
-              my_counter = 1
-              box_items.each do |c|
-                      %><li><a href="#binder-<%=my_counter%>"><%= c.get_title(current_language_id)%></a></li><%
-                      my_counter += 1 
-              end
-          %>
-        </ul>	
-        <div id="index">
-              <h2><%= t(:index) %></h2>
-              <p>
-                      <ul>
-                      <% #generate index by going through all the components and listing their subcomponents and formplates 
-                      sub_components = current_component.get_components()
-                      sub_counter = 0
-                      sub_components.each do |sub_c|
-                              sub_counter +=1
-                              %>
-                              
-                                      <li><B><%= sub_c.get_title(current_language_id) %></b>
-                                                                                      
-                                                <%
-                                                        #get the formplates that go here
-                                                        my_formplates = sub_c.get_formplates
-                                                        
-                                                        if my_formplates.size == 0
-                                                                                                                                
-                                                        else
-                                                                %><ul><%
-                                                                my_formplates.each do |fp|
-                                                                        my_form = Form.find_or_create_by_formplate fp, @product_instance.id, current_user.id, current_language_id
-                                                                        %>
-                                                                                <li><%= link_to my_form.get_title(current_language_id), (form_path my_form.id, :component_id => @component.id)  %></li>
-                                                                        <%
-                                                                end
-                                                                %></ul><br><%
-                                                        end
-                                                %>
-                                      </li>
-                                      <% %>
-                                      
-                              
-                              <%
-                      end
-                      %>
-                      </ul>
-              </p>
+  <ul>
+
+    <!-- create the tab or panels inside the binder by getting its sub components -->
+    <li><a href="#index"><%= t(:index) %></a></li>
+    <%
+       my_counter = 1
+       box_items.each do |c|
+    %>
+        <li><a href="#binder-<%= my_counter %>"><%= c.get_title(current_language_id) %></a></li>
+    <%
+       my_counter += 1
+       end
+    %>
+  </ul>
+  <div id="index">
+    <h2><%= t(:index) %></h2>
+
+    <p>
+    <ul>
+      <% #generate index by going through all the components and listing their subcomponents and formplates
+         sub_components = current_component.get_components()
+         sub_counter = 0
+         sub_components.each do |sub_c|
+           sub_counter +=1
+      %>
+
+          <li><B><%= sub_c.get_title(current_language_id) %></b>
+
+            <%
+               #get the formplates that go here
+               my_formplates = sub_c.get_formplates
+
+               if my_formplates.size == 0
+
+               else
+            %>
+                <ul>
+                <%
+                   my_formplates.each do |fp|
+                     my_form = Form.find_or_create_by_formplate fp, @product_instance.id, current_user.id, current_language_id
+                %>
+                    <li><%= link_to my_form.get_title(current_language_id), (form_path my_form.id, :component_id => @component.id) %></li>
+                <%
+                   end
+                %></ul><br>
+            <%
+               end
+            %>
+          </li>
+          <% %>
+
+
+      <%
+         end
+      %>
+    </ul>
+    </p>
+  </div>
+
+  <%
+     my_counter = 0
+
+     box_items.each do |c|
+       my_counter += 1
+
+  %>
+
+      <div id="binder-<%= my_counter.to_s %>" style="height: 100%">
+        <h2 style="text-align: left"><%= c.get_title(current_language_id) %></h2>
+
+        <div>
+          <h3 style="padding-top: 10px; padding-bottom: 10px"><%= t(:recommended_documents) %></h3>
+
+          <div style="height: 90%">
+            <%
+               #get the formplates that go here
+               my_formplates = c.get_formplates
+
+               if my_formplates.size == 0
+            %><%= t(:no_formplates_found) %>
+            <%
+               else
+            %>
+                <ul>
+                <%
+                   my_formplates.each do |fp|
+                     my_form = Form.find_or_create_by_formplate fp, @product_instance.id, current_user.id, current_language_id
+                %>
+                    <li><%= link_to my_form.get_title(current_language_id), my_form %></li>
+                <%
+                   end
+                %></ul>
+            <%
+               end
+            %>
+          </div>
         </div>
+        <div>
+          <h3 style="padding-top: 10px; padding-bottom: 10px"><%= t(:attachments) %></h3>
 
-        <%
-            my_counter = 0
-            
-            box_items.each do |c| 
-                my_counter += 1
-        
-         %>
-         
-                <div id="binder-<%= my_counter.to_s %>" style="height: 100%">
-                  <h2 style="text-align: left"><%= c.get_title(current_language_id) %></h2>
+          <div style="height: 90%">
+            <% my_attachments = (current_component.get_attachments current_product_instance) %>
 
-                        <div>
-                                <h3 style="padding-top: 10px; padding-bottom: 10px"><%= t(:recommended_documents) %></h3>
-                        
-                                <div style="height: 90%">
-                                <%
-                                        #get the formplates that go here
-                                        my_formplates = c.get_formplates
-                                        
-                                        if my_formplates.size == 0
-                                                %><%= t(:no_formplates_found) %><%								
-                                        else
-                                                %><ul><%
-                                                my_formplates.each do |fp|
-                                                        my_form = Form.find_or_create_by_formplate fp, @product_instance.id, current_user.id, current_language_id
-                                                        %>
-                                                                <li><%= link_to my_form.get_title(current_language_id), my_form %></li>
-                                                        <%
-                                                end
-                                                %></ul><%
-                                        end
-                                %>
-                                </div>
-                        </div>
-                        <div>
-                                <h3 style="padding-top: 10px; padding-bottom: 10px"><%= t(:attachments) %></h3>
-                       
-                                <div style="height: 90%">
-                                        <% my_attachments = (current_component.get_attachments current_product_instance) %>
-                                        
-                                        <% if my_attachments.size == 0 %>
-                                                <%= t(:no_attachments_found) %><%
-                                        else %>
-                                                <ul><%
-                                                my_attachments.each do |my_file|
-                                                        %>
-                                                                <li><%= link_to my_file.get_filename, my_file %></li>
-                                                        <%
-                                                end
-                                                %></ul>
-                                        <% end %>
-                                </div>        
-                                <div><%= button_to_function t(:add_your_document_here), "upload_dialog_open();"  %></div>
-                        </div>
-                    </table>                  
-                </div>
+            <% if my_attachments.size == 0 %>
+                <%= t(:no_attachments_found) %>
+            <%
+               else %>
+                <ul>
+                  <%
+                     my_attachments.each do |my_file|
+                  %>
+                      <li><%= link_to my_file.get_filename, my_file %></li>
+                  <%
+                     end
+                  %></ul>
             <% end %>
+          </div>
+          <div><%= button_to_function t(:add_your_document_here), "upload_dialog_open();" %></div>
+        </div>
+        </table>
+      </div>
+  <% end %>
+</div>
+
