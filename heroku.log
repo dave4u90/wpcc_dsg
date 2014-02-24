@@ -504,3 +504,105 @@ web.1 connect=2ms service=6ms status=200 bytes=4627
 2014-02-24T16:43:18.025874+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/server.rb:200:in `app'
 2014-02-24T16:43:18.026049+00:00 app[web.1]: 	from script/rails:6:in `<main>'
 2014-02-24T16:43:19.331359+00:00 heroku[web.1]: Process exited with status 1
+2014-02-24T16:44:08.246276+00:00 app[web.1]: Started GET "/assets/fancybox.ui-0423e188c560eb2bc503a134a85ad6fc.js" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.246276+00:00 app[web.1]: 
+2014-02-24T16:44:08.250399+00:00 app[web.1]: 
+2014-02-24T16:44:08.239987+00:00 app[web.1]: cache: [GET /assets/fancybox-fb64a9b35009f6c73e8528abba1e2321.css] miss
+2014-02-24T16:44:08.250399+00:00 app[web.1]: Started GET "/assets/jquery.fancybox-ad3f96a229e10d73b9763495ef9a9e61.css" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.240197+00:00 app[web.1]: Served asset /fancybox-fb64a9b35009f6c73e8528abba1e2321.css - 304 Not Modified (0ms)
+2014-02-24T16:44:08.243487+00:00 app[web.1]: 
+2014-02-24T16:44:08.237110+00:00 app[web.1]: Started GET "/assets/fancybox-fb64a9b35009f6c73e8528abba1e2321.css" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.237110+00:00 app[web.1]: 
+2014-02-24T16:44:08.248399+00:00 heroku[router]: at=info method=GET path=/assets/custom-style-1f9c6093346e4e0d3664d607efa107a9.css host=ancient-spire-8093.herokuapp.com request_id=339d2e0b-c725-4e92-9d80-25041f4a0b50 fwd="14.99.154.241" dyno=web.1 connect=11ms service=178ms status=304 bytes=295
+2014-02-24T16:44:08.243487+00:00 app[web.1]: Started GET "/assets/custom-style-1f9c6093346e4e0d3664d607efa107a9.css" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.244916+00:00 app[web.1]: cache: [GET /assets/custom-style-1f9c6093346e4e0d3664d607efa107a9.css] miss
+2014-02-24T16:44:08.245153+00:00 app[web.1]: Served asset /custom-style-1f9c6093346e4e0d3664d607efa107a9.css - 304 Not Modified (0ms)
+2014-02-24T16:44:08.251608+00:00 app[web.1]: cache: [GET /assets/jquery.fancybox-ad3f96a229e10d73b9763495ef9a9e61.css] miss
+2014-02-24T16:44:08.259512+00:00 app[web.1]: Served asset /flexslider-ed6333928459501688687df5a4997042.css - 304 Not Modified (0ms)
+2014-02-24T16:44:08.291038+00:00 app[web.1]: Started GET "/assets/jquery-1.11.0.min-364928df2ee8fd8f68c38363f43876c5.js" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.274874+00:00 heroku[router]: at=info method=GET path=/assets/flexslider-ed6333928459501688687df5a4997042.css host=ancient-spire-8093.herokuapp.com request_id=dc4948e6-e199-4399-8565-7472b1599150 fwd="14.99.154.241" dyno=web.1 connect=41ms service=165ms status=304 bytes=295
+2014-02-24T16:44:08.256499+00:00 app[web.1]: 
+2014-02-24T16:44:08.256499+00:00 app[web.1]: Started GET "/assets/flexslider-ed6333928459501688687df5a4997042.css" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.259302+00:00 app[web.1]: cache: [GET /assets/flexslider-ed6333928459501688687df5a4997042.css] miss
+2014-02-24T16:44:08.256499+00:00 app[web.1]: 
+2014-02-24T16:44:08.312261+00:00 heroku[router]: at=info method=GET path=/assets/bootstrap.min-c4eabf1da9651ea9a0c2096b4dd13d1b.js host=ancient-spire-8093.herokuapp.com request_id=fa6a6731-f119-4573-bfbc-f477259f8628 fwd="14.99.154.241" dyno=web.1 connect=1ms service=28ms status=304 bytes=295
+2014-02-24T16:44:08.291038+00:00 app[web.1]: 
+2014-02-24T16:44:08.309621+00:00 app[web.1]: Started GET "/assets/bootstrap.min-c4eabf1da9651ea9a0c2096b4dd13d1b.js" for 14.99.154.241 at 2014-02-24 16:44:08 +0000
+2014-02-24T16:44:08.309621+00:00 app[web.1]: 
+2014-02-24T16:44:08.297216+00:00 app[web.1]: cache: [GET /assets/jquery-1.11.0.min-364928df2ee8fd8f68c38363f43876c5.js] miss
+2014-02-24T16:44:08.309621+00:00 app[web.1]: 
+2014-02-24T16:44:08.297349+00:00 app[web.1]: Served asset /jquery-1.11.0.min-364928df2ee8fd8f68c38363f43876c5.js - 304 Not Modified (0ms)
+2014-02-24T16:44:08.310526+00:00 app[web.1]: cache: [GET /assets/bootstrap.min-c4eabf1da9651ea9a0c2096b4dd13d1b.js] miss
+2014-02-24T16:44:08.310632+00:00 app[web.1]: Served asset /bootstrap.min-c4eabf1da9651ea9a0c2096b4dd13d1b.js - 304 Not Modified (0ms)
+2014-02-24T16:44:08.251813+00:00 app[web.1]: Served asset /jquery.fancybox-ad3f96a229e10d73b9763495ef9a9e61.css - 304 Not Modified (0ms)
+2014-02-24T16:44:08.291038+00:00 app[web.1]: 
+2014-02-24T16:44:08.341382+00:00 app[web.1]: cache: [GET /assets/application.js] miss
+2014-02-24T16:44:19.384920+00:00 app[web.1]: Started GET "/assets/logo-41b28ca79671f259318d986606366376.png" for 14.99.154.241 at 2014-02-24 16:44:19 +0000
+2014-02-24T16:44:19.385916+00:00 app[web.1]: cache: [GET /assets/logo-41b28ca79671f259318d986606366376.png] miss
+2014-02-24T16:44:19.386016+00:00 app[web.1]: Served asset /logo-41b28ca79671f259318d986606366376.png - 304 Not Modified (0ms)
+2014-02-24T16:44:19.384920+00:00 app[web.1]: 
+2014-02-24T16:44:19.384920+00:00 app[web.1]: 
+2014-02-24T16:44:19.500588+00:00 app[web.1]: 
+2014-02-24T16:44:19.500588+00:00 app[web.1]: Started GET "/assets/slider/slide-1.jpg" for 14.99.154.241 at 2014-02-24 16:44:19 +0000
+2014-02-24T16:44:19.500588+00:00 app[web.1]: 
+2014-02-24T16:44:19.507132+00:00 app[web.1]: cache: [GET /assets/slider/slide-1.jpg] miss
+2014-02-24T16:44:19.507523+00:00 app[web.1]: Served asset /slider/slide-1.jpg - 304 Not Modified (4ms)
+2014-02-24T16:44:19.530798+00:00 app[web.1]: 
+2014-02-24T16:44:19.530798+00:00 app[web.1]: Started GET "/assets/social-icons.png" for 14.99.154.241 at 2014-02-24 16:44:19 +0000
+2014-02-24T16:44:19.530798+00:00 app[web.1]: 
+2014-02-24T16:44:19.539178+00:00 app[web.1]: cache: [GET /assets/social-icons.png] miss
+2014-02-24T16:44:19.539178+00:00 app[web.1]: Served asset /social-icons.png - 304 Not Modified (3ms)
+2014-02-24T16:44:19.553809+00:00 app[web.1]: 
+2014-02-24T16:44:19.553809+00:00 app[web.1]: 
+2014-02-24T16:44:19.553809+00:00 app[web.1]: Started GET "/assets/sign-up-cda0d9626b31a6545ea23c5b8c73046f.png" for 14.99.154.241 at 2014-02-24 16:44:19 +0000
+2014-02-24T16:44:19.557837+00:00 app[web.1]: cache: [GET /assets/sign-up-cda0d9626b31a6545ea23c5b8c73046f.png] miss
+2014-02-24T16:44:19.557837+00:00 app[web.1]: Served asset /sign-up-cda0d9626b31a6545ea23c5b8c73046f.png - 304 Not Modified (0ms)
+2014-02-24T16:44:19.565807+00:00 heroku[router]: at=info method=GET path=/assets/sign-up-cda0d9626b31a6545ea23c5b8c73046f.png host=ancient-spire-8093.herokuapp.com request_id=6762d555-f45b-49e7-a8a6-0f902a154573 fwd="14.99.154.241" dyno=web.1 connect=14ms service=21ms status=304 bytes=295
+2014-02-24T16:44:19.531520+00:00 heroku[router]: at=info method=GET path=/assets/social-icons.png host=ancient-spire-8093.herokuapp.com request_id=3bdc3a13-2b20-4339-bd39-977c71afa8b7 fwd="14.99.154.241" dyno=web.1 connect=1ms service=14ms status=304 bytes=295
+2014-02-24T16:44:36.542821+00:00 heroku[router]: at=info method=GET path=/assets/close.png host=ancient-spire-8093.herokuapp.com request_id=0bc55a53-5b9d-49ad-bf21-c6e8c426ba20 fwd="14.99.154.241" dyno=web.1 connect=1ms service=13ms status=304 bytes=295
+2014-02-24T16:44:36.536712+00:00 app[web.1]: Started GET "/assets/close.png" for 14.99.154.241 at 2014-02-24 16:44:36 +0000
+2014-02-24T16:44:36.536712+00:00 app[web.1]: 
+2014-02-24T16:44:36.536712+00:00 app[web.1]: 
+2014-02-24T16:44:36.541983+00:00 app[web.1]: Served asset /close.png - 304 Not Modified (4ms)
+2014-02-24T16:44:36.541983+00:00 app[web.1]: cache: [GET /assets/close.png] miss
+2014-02-24T16:44:08.517451+00:00 heroku[router]: at=info method=GET path=/assets/application.js host=ancient-spire-8093.herokuapp.com request_id=1a5f90a1-7544-44aa-aed3-357556cfc821 fwd="14.99.154.241" dyno=web.1 connect=11ms service=198ms status=200 bytes=776291
+2014-02-24T16:44:40.803545+00:00 app[web.1]: cache: [GET /assets/jquery-ui/ui-bg_flat_75_ffffff_40x100.png] miss
+2014-02-24T16:44:08.244203+00:00 heroku[router]: at=info method=GET path=/assets/fancybox-fb64a9b35009f6c73e8528abba1e2321.css host=ancient-spire-8093.herokuapp.com request_id=1cf6e542-982a-43f7-9644-42661ab09e7b fwd="14.99.154.241" dyno=web.1 connect=1ms service=184ms status=304 bytes=295
+2014-02-24T16:44:19.511696+00:00 heroku[router]: at=info method=GET path=/assets/slider/slide-1.jpg host=ancient-spire-8093.herokuapp.com request_id=446e5741-0f0a-40f1-9925-cdd0629466e2 fwd="14.99.154.241" dyno=web.1 connect=16ms service=37ms status=304 bytes=295
+2014-02-24T16:44:07.165143+00:00 heroku[router]: at=info method=GET path=/ host=ancient-spire-8093.herokuapp.com request_id=5cc8d4f7-484c-441b-b5c5-276ff19ebf56 fwd="14.99.154.241" dyno=web.1 connect=2ms service=13753ms status=200 bytes=18391
+2014-02-24T16:44:08.254230+00:00 heroku[router]: at=info method=GET path=/assets/fancybox.ui-0423e188c560eb2bc503a134a85ad6fc.js host=ancient-spire-8093.herokuapp.com request_id=396dde88-4186-4d94-a0a6-8a6d8e65146b fwd="14.99.154.241" dyno=web.1 connect=15ms service=29ms status=304 bytes=295
+2014-02-24T16:46:52+00:00 heroku[slug-compiler]: Slug compilation started
+2014-02-24T16:47:19.104794+00:00 heroku[api]: Deploy b52e8c9 by dave4u90@gmail.com
+2014-02-24T16:47:19.105395+00:00 heroku[api]: Release v13 created by dave4u90@gmail.com
+2014-02-24T16:47:19.247766+00:00 heroku[web.1]: State changed from up to starting
+2014-02-24T16:47:19+00:00 heroku[slug-compiler]: Slug compilation finished
+2014-02-24T16:47:22.876840+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-02-24T16:47:23.670797+00:00 app[web.1]: [2014-02-24 16:47:23] ERROR SignalException: SIGTERM
+2014-02-24T16:47:23.670797+00:00 app[web.1]: 	/app/vendor/ruby-1.9.3/lib/ruby/1.9.1/webrick/server.rb:98:in `select'
+2014-02-24T16:47:27.360962+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 8288`
+2014-02-24T16:47:31.986803+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/01/04/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2014-02-24T16:47:31.986396+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/01/04/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2014-02-24T16:47:32.847121+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2014-02-24T16:47:32.846926+00:00 heroku[web.1]: Error R12 (Exit 
+timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         cookies. This will not be supported in future versions of Rack, and
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         This poses a security threat. It is strongly recommended that you
+2014-02-24T16:47:33.335414+00:00 app[web.1]: 
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         Called from: /app/vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/session/abstract_store.rb:28:in `initialize'.
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         provide a secret to prevent exploits that may be possible from crafted
+2014-02-24T16:47:33.335414+00:00 app[web.1]:         future versions will even invalidate your existing user cookies.
+2014-02-24T16:47:33.335414+00:00 app[web.1]: 
+2014-02-24T16:47:35.210232+00:00 heroku[web.1]: Process exited with status 137
+2014-02-24T16:47:36.786702+00:00 app[web.1]: [2014-02-24 16:47:36] INFO  WEBrick 1.3.1
+2014-02-24T16:47:36.786753+00:00 app[web.1]: [2014-02-24 16:47:36] INFO  ruby 1.9.3 (2013-11-22) [x86_64-linux]
+2014-02-24T16:47:36.787199+00:00 app[web.1]: [2014-02-24 16:47:36] INFO  WEBrick::HTTPServer#start: pid=2 port=8288
+2014-02-24T16:47:37.294816+00:00 heroku[web.1]: State changed from starting to up
+2014-02-24T16:50:22.077448+00:00 heroku[web.1]: State changed from up to starting
+2014-02-24T16:50:24.832204+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-02-24T16:50:25.395756+00:00 app[web.1]: [2014-02-24 16:50:25] ERROR SignalException: SIGTERM
+2014-02-24T16:50:25.395756+00:00 app[web.1]: 	/app/vendor/ruby-1.9.3/lib/ruby/1.9.1/webrick/server.rb:98:in `select'
+2014-02-24T16:50:34.575709+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2014-02-24T16:50:34.576014+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2014-02-24T16:50:36.499486+00:00 heroku[web.1]: Process exited with status 137
+2014-02-24T16:50:39.210335+00:00 heroku[web.1]: State changed from starting to up
