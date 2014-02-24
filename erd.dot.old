@@ -1,0 +1,63 @@
+digraph Wpcc {
+  rankdir = "LR"; ranksep = "0.5"; nodesep = "0.4"; pad = "0.4,0.4"; margin = "0,0"; concentrate = "true"; labelloc = "t"; fontsize = "13"; fontname = "Arial Bold";
+  node [shape = "Mrecord", fontsize = "10", fontname = "Arial", margin = "0.07,0.05", penwidth = "1.0"];
+  edge [fontname = "Arial", fontsize = "7", dir = "both", arrowsize = "0.9", penwidth = "1.0", labelangle = "32", labeldistance = "1.8"];
+  label = "Wpcc domain model\n\n";
+  m_Address [label = "Address| {  city (string) \n  country (integer) \n  line1 (string) \n  line2 (string) \n  line3 (string) \n  other_address_details (string) \n  state_province_county (string) \n  } "];
+  m_ApplicationDictionary [label = "ApplicationDictionary| {  literal_key (string) \n  } "];
+  m_Board [label = "Board| {  product_type_id (integer) \n  registration_key (string) \n  } "];
+  m_ProductInstance [label = "ProductInstance| {  board_key (string) \n  board_location_address_id (integer) \n  product_title (string) \n  signator_email_address (string) \n  signator_first_name (string) \n  signator_last_name (string) \n  signator_telephone_number (string) \n  } "];
+  m_BoardType [label = "BoardType| {  product_type_description (string) \n  product_type_name (string) \n  num_formplates (integer) \n  release_id (string) \n  upc_code (string) \n  wpcc (string) \n  } "];
+  m_BoardTypeComponent [label = "BoardTypeComponent| {  sequence (integer) \n  } "];
+  m_Cities [label = "Cities| {  cityname (string) \n  country (string) \n  state (string) \n  } "];
+  m_Client [label = "Client| {  client_name (string) \n  sector_id (integer) \n  watermark_image_url (string) \n  } "];
+  m_Component [label = "Component| {  component_code (string) \n  component_description (string) \n  direct_sub_components (integer) \n  icon_url (string) \n  language_id (integer) \n  num_formplates (integer) \n  upc_code (string) \n  } "];
+  m_ComponentFormplate [label = "ComponentFormplate| {  sequence (integer) \n  } "];
+  m_ComponentHierarchy [label = "ComponentHierarchy| {  sequence (integer) \n  } "];
+  m_ComponentType [label = "ComponentType| {  component_type_description (string) \n  is_conceptual (boolean) \n  is_customizable (boolean) \n  sequence (integer) \n  supports_sub_components (boolean) \n  } "];
+  m_Country [label = "Country| {  abbrev (string) \n  name (string) \n  } "];
+  m_ElementType [label = "ElementType| {  csvlist (string) \n  element_name (string) \n  element_value_field (string) \n  has_caption (boolean) \n  has_inner_value_type (boolean) \n  html_class (string) \n  html_close_tag (string) \n  htmltag (string) \n  is_editable (boolean) \n  isglobal (boolean) \n  islist (boolean) \n  max_length (integer) \n  sqllist (string) \n  } "];
+  m_ElementValue [label = "ElementValue| {  product_instance_id (integer) \n  element_value (string) \n  form_instance_id (integer) \n  } "];
+  m_Form [label = "Form| {  product_form_nickname (string) \n  is_applicable (boolean) \n  status_date (datetime) \n  status_id (integer) \n  } "];
+  m_FormElement [label = "FormElement| {  caption (string) \n  csv_list (string) \n  default_value (string) \n  html_residue (string) \n  is_mandatory (boolean) \n  is_printed (boolean) \n  max_length (integer) \n  sequence (integer) \n  sql_list (string) \n  style (string) \n  } "];
+  m_FormInstance [label = "FormInstance| {  product_instance_id (integer) \n  created (string) \n  form_instance_type_id (integer) \n  is_custom (boolean) \n  } "];
+  m_FormInstanceType [label = "FormInstanceType| {  form_instance_desc (string) \n  } "];
+  m_Formplate [label = "Formplate| {  form_code (string) \n  language_id (integer) \n  page_layout_id (integer) \n  title (string) \n  validity (integer) \n  } "];
+  m_Language [label = "Language| {  is_supported (boolean) \n  language_description (string) \n  locale (string) \n  } "];
+  m_Literal [label = "Literal| {  literal (text) \n  literal_identifier_type (string) \n  } "];
+  m_LiteralType [label = "LiteralType| {  class_name (string) \n  table_name (string) \n  } "];
+  m_PageLayout [label = "PageLayout| {  page_layout_description (string) \n  } "];
+  m_Profile [label = "Profile| {  descriptor (string) \n  user_id (integer) \n  value (string) \n  } "];
+  m_State [label = "State| {  abbrev (string) \n  country_id (integer) \n  name (string) \n  } "];
+  m_Status [label = "Status| {  sequence (integer) \n  status_description (string) \n  status_icon_url (string) \n  status_text (string) \n  } "];
+  m_User [label = "User| {  address_id (integer) \n  admin (boolean) \n  email (string) \n  locale (string) \n  name (string) \n  password_digest (string) \n  password_reset_token (string) \n  password_sent_at (datetime) \n  remember_token (string) \n  } "];
+  m_BoardType -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Component -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_ComponentType -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Form -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Formplate -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Language -> m_Literal [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_ProductInstance -> m_Language [arrowhead = "normal", arrowtail = "normal", weight = "2"]
+  m_Address -> m_Client [arrowhead = "none", arrowtail = "none", weight = "2"]
+  m_Client -> m_ProductInstance [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_BoardType -> m_ProductInstance [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_ProductInstance -> m_Form [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_BoardType -> m_BoardTypeComponent [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_BoardType -> m_Component [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"]
+  m_Client -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_ComponentType -> m_Component [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Component -> m_ComponentHierarchy [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Component -> m_BoardTypeComponent [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Component -> m_ComponentFormplate [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Component -> m_Formplate [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"]
+  m_Formplate -> m_ComponentFormplate [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Formplate -> m_FormElement [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Formplate -> m_Form [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Form -> m_FormInstance [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Language -> m_User [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Component -> m_ComponentHierarchy [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_ElementType -> m_FormElement [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_FormElement -> m_ElementValue [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Language -> m_FormInstance [arrowhead = "normal", arrowtail = "none", weight = "1"]
+  m_Formplate -> m_FormInstance [arrowhead = "normal", arrowtail = "none", weight = "1"]
+}

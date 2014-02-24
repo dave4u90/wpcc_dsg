@@ -1,0 +1,28 @@
+
+<%
+#this subpage takes in a variable for box_items called:
+#--box_items = list of components to create
+%>
+
+<!-- the following code applies if this is a "box" -->
+<table cellpadding="2" border="0"><tr>
+<% my_counter = 0 %>
+<%
+box_items.each do |c|
+        if c
+                i = Image.get_image_url(c.get_image)						
+                my_counter += 1 
+%>
+
+                <%
+                if i != nil %>
+                        <%#= i.image_url %>
+                        <td><%=  link_to (image_tag i, :title => c.get_title(current_language_id)), (component_path c, :product_instance_id => @product_instance.id) %></td>
+                                <% if my_counter % 3 == 0 %>
+                                        </tr><tr>	
+                        <% 	   end
+                end
+        end
+end 
+%></tr></table>
+<!-- above code applies if we have a box -->

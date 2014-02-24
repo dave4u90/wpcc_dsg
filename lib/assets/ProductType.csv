@@ -1,0 +1,11 @@
+id (0),product_type_title (1),product_type_description (2),upc (3),talott_product_code (4),release_id (5),num_formplates (6),image_url (7),product_type_title_french (8),product_type_title_spanish (9)
+1,WPCC 1 <i>Commitment</i>,<i>Our</i> Leadership &#183 Commitment &#183 Responsibility,7-72934-12401-4,WPCC-12-0100,1,,wpcc1.png,WPCC 1 <i>Commitment</i> -FR,WPCC 1 <i>Commitment</i> -FR
+2,WPCC 2 <i>Requirements</i>,The Law and <i>Our</i> Policies and Procedures,7-72934-12402-1,WPCC-12-0200,1,,wpcc2.png,WPCC 2 <i>Requirements</i> -FR,WPCC 2 <i>Requirements</i> -ES
+3,WPCC 3 <i>Hazards</i>,Identify &#183 Assess &#183 Control / Report &#183 Investigate,7-72934-12403-8,WPCC-12-0300,1,,wpcc3.png,WPCC 3 <i>Hazards</i> -FR,WPCC 3 <i>Hazards</i> -ES
+4,WPCC 4 <i>Training</i>,<i>Our</i> Training and Orientation,7-72934-12404-5,WPCC-12-0400,1,,wpcc4.png,WPCC 4 <i>Training</i> -FR,WPCC 4 <i>Training</i> -ES
+5,WPCC 5 <i>Inspections</i>,Preventive Maintenance and Workplace Inspections,7-72934-12405-2,WPCC-12-0500,1,,wpcc5.png,WPCC 5 <i>Inspections</i> -FR,WPCC 5 <i>Inspections</i> -ES
+6,WPCC 6 <i>Awareness</i>,Awareness,7-72934-12406-9,WPCC-12-0600,1,,wpcc6.png,WPCC 6 <i>Awareness</i> -FR,WPCC 6 <i>Awareness</i> -ES
+7,WPCC 7 <i>Emergency</i>,<i>Our</i> Emergency Contacts and Floor Plans,7-72934-12407-6,WPCC-12-0700,1,,wpcc7.png,WPCC 7 <i>Emergency</i> -FR,WPCC 7 <i>Emergency</i> -ES
+8,WPCC 8 <i>Visitors</i>,All Contractors and Visitors Responsibilities,,WPCC-12-0800,0,0,wpcc8.png,WPCC 8 <i>Visitors</i> -FR,WPCC 8 <i>Visitors</i> -ES
+9,WPCC <i>Signature</i> Edition,WPCC <i>Signature</i> Edition Occupational Health and Safety Documentation Management System,7-72934-12400-7,WPCC-12-0SEC,1,0,signature.png,WPCC <i>Signature</i> Edition -FR,WPCC <i>Signature</i> Edition -ES
+10,WPCC Cube Edition,WPCC CUBE Occupational Health and Safety Documentation Management System,,WPCC-09-CUBE,,0,cube.png,WPCC Cube Edition -FR,WPCC Cube Edition -ES

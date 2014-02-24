@@ -1,0 +1,7 @@
+access_role_id,access_role_description,access_role_key
+1,Administrator,administrator
+2,Read,read
+3,Edit,edit
+4,New,new
+5,Talott,talott
+6,Regular User,crud

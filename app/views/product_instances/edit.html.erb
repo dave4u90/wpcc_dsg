@@ -1,0 +1,200 @@
+
+
+<div style="color:#fff;font-size: 12px;padding-left: 10px">
+	<%= link_to t(:products), ProductInstance %> - <%= link_to t(:edit_products), edit_product_instance_path(@product.id) %>
+	<hr>
+</div>
+
+
+<%= form_for(@product) do |f| %>
+<div style="padding-left: 10px;padding-right: 20px">
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu" style="padding-right: 10px">
+			<table width="100%"><tr><td align="left">						
+				<%= @product.get_title (current_language_id) %>
+			</td>
+			<td align="right">
+				<%= raw(@product.product_type.get_title(current_language_id))
+				%>					
+			</tD>
+			</tr></table>
+		</div>
+		
+		<div style="padding: 5px"> 
+			<div class="sidetabs tabs-left">
+				<ul class="nav nav-tabs">
+					
+					<!-- @@kk: load supported languages from the Language table -->
+					<% langs = Language.supported_languages
+					   langs.each do |lang|
+					%>
+						<li class="">
+							<a data-toggle="tab" href="#<%= lang.language_description %>"><%= lang.language_description %></a>
+						</li>
+					<% end %>
+					<li class="">
+						<a data-toggle="tab" href="#language"><%= t(:manage_languages) %></a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="tab-content">
+				<!-- @@kk: load supported languages from the Language table -->
+				<% langs = Language.supported_languages
+				   tab_index = 0
+				   my_meta = nil
+				   langs.each do |lang|
+					   tab_index += 1
+					%>
+					<div id="<%= lang.language_description %>" class="tab-pane
+					<% if tab_index == 1 %>
+						<%= "active" %>
+					<% end %>
+					">
+						<div class="product_form" style="padding-left: 10px;padding-right: 10px;color:#000; padding-top: 5px;">
+							
+							<h3><%= lang.language_description %></h3>
+							<hr />
+			
+							<b><%= t(:registration_key) %></b><br />
+							<%= @product.product_key%>
+							<br /><br />	
+							<b><%= t(:product_title) %></b>
+							<%= f.text_field :product_title %>
+							<b><%= t(:first_name_of_person_responsible	) %></b>
+							<%= f.text_field :signator_first_name %>
+							<b><%= t(:last_name_of_person_responsible) %></b>
+							<%= f.text_field :signator_last_name %>
+							<b><%= t(:email_address_of_person_responsible) %></b>
+							<%= f.text_field :signator_email_address %>
+							<b><%= t(:phone_number_of_person_responsible) %></b>
+							<%= f.text_field :signator_telephone_number %>
+							
+							<!-- now pick up the metafields in this language and post it here -->
+							<% my_meta = @product.get_meta_fields(lang.id) %>
+							
+							<!-- for each field list the metafield, and filled with value in current language -->
+							<% my_meta.each do |metafield| %>
+								<%= metafield.class.to_s %>
+							<% end %>
+						
+						</div>
+					</div>
+				<% end %>
+					
+				<div id="language" class="tab-pane">
+					<div style="padding-left: 10px; padding-top: 5px; padding-right: 10px;color:#000;height:405px" >
+					 <h3><%= t(:language_configuration) %></h3><hr />
+  					 <table class="table table-bordered">
+ 					 	<tr>
+					 		<th><%= t(:language)%></th>
+					 		<th><%= t(:installed) %></th>
+ 					 	</tr>
+						<% langs = Language.supported_languages
+						%>
+			
+						<% langs.each do |l| %>
+ 						<tr>
+ 							<td><%= l.language_description %> </td>
+ 							<td>
+								<% if @product.is_language_installed(l) %>
+									<%= t(:installed) %>
+								<% else %>
+									<%= t(:not_installed) %>
+								<% end %>
+							</td>
+ 						</tr>
+						<% end %>
+ 					 </table>
+				</div>
+			</div>
+					
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="pull-right" style="padding-right: 20px;margin-right: 100px;margin-top: 10px">
+	<%= f.submit t(:save_changes), name: "save_product", class: "btn btn-success",:style=>"padding-left:20px;padding-right:20px" %><br /><br />
+</div>
+<div class="clearfix"><br /></div>
+
+<!-- this the users and their access list -->
+<a name="manage_access"></a>
+<div style="padding-left: 10px;padding-right: 20px">
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu" style="padding-right: 10px">
+			<table width="100%"><tr><td align="left">
+				<%= raw(@product.get_title (current_language_id)) %>	
+			</td>
+			<td align="right">
+				<%= raw(@product.product_type.get_title(current_language_id))
+				%>					
+
+			</tD>
+			</tr></table>
+		</div>
+		<div style="padding-left: 10px; padding-top: 10px;" class="tab-content">
+			<h3><%= t(:user_access_management) %></h3><br />
+			<table class="table table-bordered" style="color: black;">
+				<tr>
+					<th><%= t(:name_and_email)%></th>
+					<th style="width: 20%"><%= t(:access_roles) %></th>
+					<th><%= t(:actions) %></th>					
+				</tr>
+				<% users = @product.get_users
+				%>
+	
+				<% users.each do |u| %>
+				<tr>
+					<td><%= raw(u.mail_to_s) %> </td>
+					<td>
+						<!-- add roles for this user here with a delete button -->
+						<!-- @kk: when this button is clicked this particular user role is deleted from the user_access table
+							matching the product_instance_id, user_id, and access_role_id. If this is the only role this user has for this product_instance_id
+							then dont delete the record, just set the role_access_id to 0
+							-->
+						<%
+							users_accesses = u.get_accesses(@product.id)
+							users_accesses.each do |ua|
+								if ua.access_role_id != 0
+									#display a button with the name of the role and an X
+									
+									%><%= button_tag ua.access_role.get_title(current_language_id) + " X", { :name => "ua", :value => ua.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:remove_access_role) + "');"} %><%
+									
+								end
+							end
+						%>
+						<br/><br/>		
+						<% if u.is_administrator (@product)%>	
+							
+							
+							
+							<%= button_tag t(:make_regular), { :name => "make_regular", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:confirm_make_regular) + "');"}
+							%>
+						<% else %>
+							<%= button_tag t(:make_admin), { :name => "make_admin" , :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:confirm_make_administrator) + "');"} %>
+						<% end %>
+						
+					</td>
+					<td>
+						<% if u.is_active %>
+							<%= button_tag t(:suspend), { :name => "suspend_user", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:suspend_user_account) + "');"} %>
+						<% else %>
+
+							<%= button_tag t(:authorize), { :name => "authorize_user", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:authorize_user_account) + "');"} %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+
+		</div>
+	</div>
+</div>
+<br />
+<% end %>

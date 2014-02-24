@@ -1,0 +1,28 @@
+<h1>List of all the different WPCC Products</h1>
+
+<br />
+
+
+<div style="padding-left: 10px;padding-right: 10px">
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu">
+			<%= t(:product_types) %>
+		</div>
+	
+		<table  class="table table-bordered" id="users_table">
+			<tr>
+				<th>Name</th> 
+			</tr>
+			<% @product_types.each do |product_type| %>
+			<tr>
+				<% product_type.literals.each do |l| %>
+					<td><%= link_to (raw(l.literal.to_s)), product_type_path(product_type) %> (<%= l.language.language_description %>) [ <%= link_to "Edit", edit_product_type_path(product_type)%> ]</td>
+				<% end %>
+			</tr>
+			<% end %> 
+		</table> 
+	</div> 
+</div>
+<div class="clearfix"></div>
+<br />
+

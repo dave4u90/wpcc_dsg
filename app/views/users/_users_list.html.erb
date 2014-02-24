@@ -1,0 +1,17 @@
+<table class="table table-bordered" id="users_table">
+	<tr>
+		<th>Name & Email</th>
+		<th>Roles</th>
+		<th>Actions</th>
+	</tr>
+	<% @users.each do |user| %>
+	<tr>
+		<td> <%= user.name%>
+		<br />
+		<%= user.email %> </td>
+		<td> User </td>
+		<td><%= link_to "Revoke", "#", :class=>"btn btn-success"%> &nbsp;&nbsp;<%= link_to "Grant", "#", :class=>"btn btn-success"%>
+		&nbsp;&nbsp;<%= link_to "Approve", "#", :class=>"btn btn-success"%> </td>
+	</tr>
+	<% end %>
+</table>

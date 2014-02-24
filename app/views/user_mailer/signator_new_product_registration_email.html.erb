@@ -1,0 +1,37 @@
+<h1><%= t(:application_title) %></h1>
+
+<h3><%= t(:product_registration) %></h3>
+<hr />
+<div>La version francaise suivra</div>
+
+<p>
+	This is just to inform you that a WPCC product was registered with the <%= t(:application_title) %> listing you as the person responsible.<br>
+        
+        <br/><br/>
+        Some details about what person responsible is suppose to mean etc etc bla bla bla and more bla bla. Some details about what person responsible is suppose to mean etc etc bla bla bla and more bla bla
+        Some details about what person responsible is suppose to mean etc etc bla bla bla and more bla bla
+        Some details about what person responsible is suppose to mean etc etc bla bla bla and more bla bla
+        Some details about what person responsible is suppose to mean etc etc bla bla bla and more bla bla
+        
+        <hr />
+        The following is a complement of all WPCC Products that are registered specifying you as the person responsible:<br/>
+        
+        <ul>
+        <% @products.each do |p| %>
+	    <% if p %>
+		<% if p.product_type %>
+		    <li><%= raw(p.get_title(Language.english)) %> (<%= raw(p.product_type.get_title(Language.english))	 %>)</li>
+		<% end %>
+	    <% end %>
+        <% end %>
+        </ul>
+      
+</p>
+
+<hr />
+
+<div>English Version Preceeds</div>
+
+<p>
+  translated junk from above
+</p>

@@ -1,0 +1,86 @@
+<div class="left_right_padded_div">
+  <label class="white_header_label"><%= (t("user_registration_header")) %></label>
+
+  <div style="color:#fff;font-size: 12px;padding-left: 10px">
+    <%= link_to t(:user_registration), (new_user_path :method => "request_access") %>
+    <hr>
+  </div>
+  <div class="registration_div">
+    <div class="green_menu"><%= t(:register) %></div>
+    <p style="color: black; padding: 4px;">
+      <%= raw(t(:welcome_to_the_application_paragraph)) %>
+    </p>
+    <br/>
+
+    <div class="registration_inner_div">
+      <% @product_instance_id = params[:product_instance_id] %>
+
+
+
+      <%= hidden_field_tag :product_key, @product_key %>
+      <%= form_for(@user, :url => {:action => 'create', :key => @product_key}) do |f| %>
+          <%= render 'shared/error_messages' %>
+
+          <%= f.hidden_field :product_instance_id, value: @product_instance.id %>
+
+          <%= f.label :language, t(:language) %>
+          <%= f.select("locale", options_from_collection_for_select(Language.supported_languages, "locale", "language_description"), {}, :class => "medium_width") %>
+
+          <%= f.label :name, t(:name) %>
+          <%= f.text_field :name, :class => "wider_width" %>
+
+          <%= f.label :email, t(:email) %>
+          <%= f.email_field :email, :class => "wider_width" %>
+
+          <%= f.label :confirm_email, t(:confirm_email) %>
+          <%= f.email_field :email_confirmation, :class => "wider_width" %>
+
+          <%= f.label :password, t(:password) %>
+          <%= f.password_field :password, :class => "medium_width" %>
+
+          <%= f.label :password_confirmation, t(:confirm_password) %>
+          <%= f.password_field :password_confirmation, :class => "medium_width" %>
+
+          <%= f.hidden_field :client_id, :value => @user.client_id %>
+
+          <%= f.fields_for :client do |cf| %>
+
+              <%= cf.label :company_name, t(:company_name) %>
+              <%= text_field_tag :client_name, @user.client.try(:client_name), :class => "wider_width", :readonly => true %>
+
+              <%= cf.label :sector, t(:sector) %>
+              <%= text_field_tag :sector, @user.client.sector.try(:sector), :class => "wider_width", :readonly => true %>
+
+          <% end %>
+
+          <p style="color: #000000"><b><u><%= t(:user_address) %></u></b>
+
+
+            <%= render partial: "address/address_form", locals: {my_form: f, address_object: @user.address, address_for: :address} %>
+
+
+          <div class="pagination-centered">
+            <%= image_tag "product_key_image_card.png" %>
+          </div>
+          <div class="clearfix"></div>
+          <br/>
+
+          <%= f.label :product_registration_key, t(:product_registration_key) %>
+          <%= text_field_tag :product_key, @product_key, :class => "wider_width", :disabled => 'true' %>
+
+
+
+          <br/>
+
+          <div class="row" style="margin-left: 0px;">
+            <%= f.submit "Continue", class: "btn btn-success btn-user-new" %>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <br/>
+
+  <%= render :partial => "shared/already_registered" %>
+</div>

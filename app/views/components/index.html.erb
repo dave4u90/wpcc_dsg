@@ -1,0 +1,8 @@
+<% provide(:title, 'All Components') %>
+<h1>All Components</h1>
+
+<ul class="components">
+  <% @components.each do |component| %>
+	<li> <%= link_to component.component_description, component %></li>
+  <% end %>
+</ul>

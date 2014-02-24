@@ -1,0 +1,19 @@
+
+<% provide(:title, @product_type.product_type_name) %>
+
+<h1><%= raw @product_type.product_type_name %></h1>
+
+</br>
+<div><h3 align="left">The product component structure</h1><br>
+</div>
+
+<ul class="components">
+    <% @product_type.product_type_components.each do |product_type_component| %>
+
+	<%= write_component (product_type_component.component) %>
+
+    <% end %>
+</ul>
+
+
+<%= link_to "<<Back", :back %>

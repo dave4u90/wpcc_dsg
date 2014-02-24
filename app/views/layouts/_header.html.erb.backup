@@ -1,0 +1,73 @@
+<script>
+  $(function() {
+    $( document ).tooltip();
+    $(".button_link").button();
+    $("input[type=button]").button();
+    $("#upload_dialog").dialog({
+	     resizable: false,
+	     height: 500,
+	     width: 500,
+	     modal: true
+    });
+    upload_dialog_close();
+
+  })
+  function upload_dialog_open() {
+    $("#upload_dialog").dialog("open");
+  }
+  function upload_dialog_close(){
+    $("#upload_dialog").dialog("close");
+  }
+
+  function show_login_dialog() {
+	alert('login box');
+  }
+  
+</script>
+
+<div>
+	<div style="padding-top: 10px; padding-bottom: 0px; padding-left:10px; padding-right: 10px; background-color: #FFFFFF; text-align: right">
+		<table border="0" width="100%">
+		<tr>
+		<td align="left" style="min-width: 200px">
+			<%= link_to (image_tag "wpcc_logo2_small.png"), root_path %>
+		</td>
+		<td width="" valign="bottom" align="left">
+			<h1 style="text-align: left; padding-top: 40px;">
+				<%= t(:application_title)%>
+				<%= t(:application_type) %>
+				</h1>
+		</td>
+		<td align="right" style="min-width: 150px" valign="top">
+			<%= link_to t(:how_it_works), signout_path, :class=>"button_link" %>
+			<%= link_to t(:login), signout_path, :class=>"button_link" %>
+
+			<% if current_user %>
+				<%= link_to t(:sign_out), signout_path, :class=>"button_link" %>
+			<% else %>
+				<%= link_to_function t(:login), "show_login_dialog" , :class=>"button_link" %>
+			<% end %>
+		</td><td align="right" style="min-width: 100px" valign="top">
+
+			<% Language.supported_languages.each do |l| %>
+				<% if l.id != current_language_id %>
+					<%= link_to l.to_s, language_path(l, :sender => request.fullpath.to_s), :class=>"button_link" %> 
+				<% end %>
+			<% end %>
+		</td></tr></table>
+	</div>
+</div>
+<div style="padding: 20px; text-align: center; ">
+	<% image_tag "slider_2.png" %>
+</div>
+
+<%
+
+if current_user != nil %>
+<div>
+	<% if show_header  %>
+		<label style="padding-left: 10px;color: #fff;font-size: 18px"><%= t(:welcome, :name=> current_user.name.to_s) %></label>
+	<% end %>
+</div>
+<% end %>
+

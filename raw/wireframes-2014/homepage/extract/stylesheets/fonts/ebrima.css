@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'EbrimaRegular';
+    src: url('ebrima.eot');
+    src: url('ebrima.eot') format('embedded-opentype'),
+         url('ebrima.woff') format('woff'),
+         url('ebrima.ttf') format('truetype'),
+         url('ebrima.svg#EbrimaRegular') format('svg');
+}

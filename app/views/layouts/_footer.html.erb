@@ -1,0 +1,135 @@
+<footer>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="col-md-6 no-padding-margin-left">
+        <%= image_tag('sign-up.png', class: "sign_up_image",
+                      onclick: "$('#mce-FNAME').val('');
+            $('#mce-MMERGE2').val('');
+            $('#mce-EMAIL').val('');$('.fancybox-overlay').show(); $('#suc_msg').html('');",
+                      onblur: " if (this.value==''){this.value='Email Address'}",
+                      onfocus: " if (this.value=='Email Address'){this.value=''}") %>
+        <h2 class="site-map">SITE MAP</h2>
+        <hr class="col-md-8 footer-hr">
+        <div class="col-md-12 no-padding-margin-left">
+          <div class="col-md-6 no-padding-margin-left">
+            <ul class="footer-link">
+              <li>
+                <%= link_to t(:how_it_works), signout_path %>
+              </li>
+              <li>
+                <% if current_user %>
+                    <%= link_to t(:sign_out), signout_path %>
+                <% else %>
+                    <%= link_to_function t(:login), "show_login_dialog" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to t('register'), "/signup" %>
+              </li>
+              <li>
+                <a href="#">Inquire</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 no-padding-margin-left">
+            <ul class="footer-link">
+              <li>
+                <%= link_to t('home'), root_path %>
+              </li>
+              <li>
+                <%= link_to t('about'), "/about" %>
+              </li>
+              <li>
+                <%= link_to t('contact_us'), "/contact" %>
+              </li>
+              <% Language.supported_languages.each do |l| %>
+                  <li>
+                    <% if l.id != current_language_id %>
+                        <%= link_to l.to_s, language_path(l, :sender => request.fullpath.to_s) %>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-12">
+          <h3 class="social-h3">Connect with us
+            :<%= link_to '', "https://www.facebook.com/WorkplaceCareCentre", :class => "social fb" %>&nbsp;
+            <%= link_to '', "http://www.linkedin.com/company/workplace-care-centre---occupational-health-and-safety", :class => "social lin" %>
+          </h3>
+        </div>
+        <!-- <div class="col-md-6 no-padding-margin-left">
+        <h3 style="text-align: center;"><a class="social fb" href="#">facebook</a> &nbsp; <a class="social lin" href="#">facebook</a></h3>
+        </div> -->
+
+      </div>
+      <div class="clearfix">&nbsp;</div>
+      <div class="col-md-12 no-padding-margin-left">
+        <%= t('footer_license_text') %>
+        <br/>
+        <%= t('footer_text') %>
+      </div>
+
+    </div>
+
+  </div>
+  <%= render 'layouts/fancybox' %>
+  <!-- TEST ENVIRONMENT INFORMATION -->
+  <div>
+    <% if Rails.env.development? %>
+        <hr/>
+        <div style="padding: 15px">
+          <h3><u>Test Environment</u></h3>
+
+          <p><b>New Product Instance Key</b><br/>
+            <% k= ProductInstance.get_new_key(ProductType.first) %>
+            <%= k %> - Valid? <%= ProductKey.valid_key(k) %> - In Use? <%= ProductKey.key_in_use (k) %> - Clean
+            Key: <%= ProductKey.clean_key(k) %>
+          </p>
+
+          <p><b>Current Language</b><br/>
+            <% cur_l_id = current_language_id()
+               cur_l = Language.find(cur_l_id)
+            %>
+            <%= cur_l_id %> is <%= cur_l.to_s %> and locale is <%= I18n.locale.to_s %>
+          </p>
+        </div>
+        <hr/>
+        <h3><u>Params</u></h3>
+        <% params.each do |p| %>
+            <%= p[0] %> = <%= p[1] %>
+            <br>
+        <% end %>
+        <hr/>
+        <h3><u>Sessions</u></h3>
+        <% session.each do |s| %>
+            <%= s[0] %> = <%= s[1] %>
+            <br>
+        <% end %>
+        <hr/>
+        <h3><u>Address Cloning</u></h3>
+        <% m = Address.first.my_updatable_attributes %>
+        <% m.each do |p| %>
+            <%= p[0] %> = <%= p[1] %>
+            <br>
+        <% end %>
+        <hr/>
+        <H3>Time</H3>
+        <%= Time.current.to_formatted_s(:long_ordinal) %>
+        <hr/>
+        <h3>Encode/Decode</h3>
+        <%
+           #orig_str = "WbZ8FT~2"
+           orig_str = "fahadjawaid"
+           encd_str = ApplicationHelper.encode(orig_str)
+           decoded_str = ApplicationHelper.decode(encd_str)
+        %>
+        Original: >>'<%= orig_str %>'<<<br/>
+        Encode: >>'<%= encd_str %>'<<<br/>
+        Decode: >>'<%= decoded_str %>'<<<br/>
+    <% end %>
+  </div>
+</footer>

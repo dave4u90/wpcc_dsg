@@ -1,0 +1,8 @@
+<% if @states %>
+  <% @states.each do |s| %>
+     <option value="<%= s.name %>"><%= s.name %></option>
+  <% end %>
+<% else %>
+  <option value="Other">Other</option>  
+<% end %>
+

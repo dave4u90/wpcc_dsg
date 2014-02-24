@@ -1,0 +1,38 @@
+<div>
+	<label style="padding-left: 10px;color: #fff;font-size: 18px"> Welcome <%= current_user.name%></label>
+</div>
+<div style="color:#fff;font-size: 12px;padding-left: 10px">
+	Component Type Details
+</div>
+<br />
+
+<div style="padding-left: 10px;padding-right: 10px">
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu">
+			Component Type Details
+		</div>
+		<div style="padding:10px">
+			<div class="row-fluid" style="color:#000;font-size: 14px;">
+				<strong>Name:</strong> <%= @component_type.component_type_description %>
+			</div>
+		</div>
+
+		<table class="table-condensed" style="color:#000">
+			<% @components.each do |component| %>
+			<tr>
+				<td><%= link_to raw(component.component_description), component %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class="clearfix"></div>
+<div style="width: 100%;height:40px;padding-top: 15px;position: relative" class="row-fluid">
+	<div class="pull-right" style="padding-right: 10px">
+		<%= link_to "Back", :back, :class=>"btn btn-success" %>
+	</div>
+
+</div>
+<br />
+

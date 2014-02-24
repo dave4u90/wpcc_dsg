@@ -1,0 +1,31 @@
+<h1><%= t(:application_title) %></h1>
+
+<div>La version francaise suivra</div>
+
+<p>
+	Thank you for registering as a user. Please click on the link below to continue with your registration process.
+	If you did not initiate this request, then simply ignore this mail.
+</p>
+
+<%= link_to "Click here to activate",  users_email_confirmation_path(:email => @user.email, :locale=> 'en', :only_path => false) %>
+
+<p>
+	Thanks.
+</p> 
+
+<hr />
+
+<div>English Version Preceeds</div>
+
+<p>
+	Merci de vous inscrire en tant qu'utilisateur. S'il vous plait cliquer sur le lien ci-dessous pour continuer votre processus d'inscription.
+	Si vous n'avez pas l'origine de cette demande, alors tout simplement ignorer ce courrier.
+</p>
+
+<%= link_to "Cliquez ici pour activer", users_email_confirmation_path(:email => @user.email, :locale=> 'fr', :only_path => false) %>
+
+<p>
+	Merci.
+</p> 
+	
+

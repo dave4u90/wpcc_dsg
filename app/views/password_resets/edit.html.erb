@@ -1,0 +1,46 @@
+<div class="left_right_padded_div">
+	<label class="white_header_label">Forgot Password</label>
+	<div class="row-fluid white_small_label">
+		Welcome- forgot password-reset password
+	</div>
+	<br />
+
+</div>
+<div style="padding-left: 10px">
+	<div class="forgot_email_div">
+		<div class="green_menu">
+			Reset Password
+		</div>
+		<p class="pagination-centered header">
+			Please enter your new password
+		</p> 
+		<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+		<% if @user.errors.any? %>
+		<div class="error_messages" style="padding-left: 10px;padding-right: 10px;color: #ff0000"> 
+			<ul>
+				<% for message in @user.errors.full_messages %>
+				<li>
+					<%= message %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<div style="padding-left: 10px;padding-right: 10px">
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %> 
+	</div>
+
+</div>
+
+</div>
+<div style="width:350px;position: relative;padding-top: 15px">
+	<div class="pull-right">
+		<%= f.submit "Save", class: "btn btn-success",:style=>"padding-left:20px;padding-right:20px"%>
+	</div>
+
+</div> 
+<% end %>

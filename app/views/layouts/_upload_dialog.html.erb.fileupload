@@ -1,0 +1,100 @@
+<!-- file upload dialogbox -->
+<div id="upload_dialog" title="<%= t(:attach_files) %>">
+        <div id="file_upload_container">                  
+                  
+                  <%= form_for Attachment.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+
+                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                    <div class="row fileupload-buttonbar">
+                      <div class="span7">
+                        <!-- The fileinput-button span is used to style the file input field as button -->
+                        <span class="btn btn-success fileinput-button">
+                          <i class="icon-plus icon-white"></i>
+                          <span><%= t(:attach_files) %></span>
+                          <%= f.file_field :upload %>
+                        </span>
+                        <button type="submit" class="btn btn-primary start">
+                          <i class="icon-upload icon-white"></i>
+                          <span><%= t(:start) %></span>
+                        </button>
+                        <button type="reset" class="btn btn-warning cancel">
+                          <i class="icon-ban-circle icon-white"></i>
+                          <span><%= t(:cancel) %></span>
+                        </button>
+                      </div>
+                      <div class="span5">
+                        <!-- The global progress bar -->
+                        <div class="progress progress-success progress-striped active fade">
+                          <div class="bar" style="width:0%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- The loading indicator is shown during image processing -->
+                    <div class="fileupload-loading"></div>
+                    <br>
+                    <!-- The table listing the files available for upload/download -->
+                    <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+                    </table>
+                  <% end %>
+                
+                <script>
+                  var fileUploadErrors = {
+                  maxFileSize: '<%= t(:file_too_big_error, max_file_size: Attachment.max_file_size)%>',
+                  minFileSize: '<%= t(:file_too_small_error, min_file_size: Attachment.min_file_size)%>',
+                  acceptFileTypes: '<%= t(:file_type_not_allowed, allowed_file_types: Attachment.allowed_file_types_to_csv)%>',
+                  maxNumberOfFiles: '<%= t(:maximum_exceeded, max_files_count: Attachment.max_files_count)%>',
+                  uploadedBytes: '<%= t(:upload_byte_size)%>',
+                  emptyResult: '<%= t(:empty)%>'
+                  };
+                </script>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <tr class="template-upload fade">
+    <td class="preview"><span class="fade"></span></td>
+    <td class="name"><span>{%=file.name%}</span></td>
+    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+    {% if (file.error) { %}
+    <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+    {% } else if (o.files.valid && !i) { %}
+    <td>
+      <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+    </td>
+    <td class="start">{% if (!o.options.autoUpload) { %}
+      <button class="btn btn-primary">
+        <i class="icon-upload icon-white"></i>
+        <span>{%=locale.fileupload.start%}</span>
+      </button>
+      {% } %}</td>
+    {% } else { %}
+    <td colspan="2"></td>
+    {% } %}
+    <td class="cancel">{% if (!i) { %}
+      <button class="btn btn-warning">
+        <i class="icon-ban-circle icon-white"></i>
+        <span>{%=locale.fileupload.cancel%}</span>
+      </button>
+      {% } %}</td>
+  </tr>
+  {% } %}
+</script>
+
+
+        </div>
+        <hr style="padding: 0px; margin:0px; margin-top: 10px;">
+        <div style="text-align: right; padding: 10px;">
+                <%= button_to_function t(:cancel), "upload_dialog_close();" %>
+        </div>
+        
+        
+        
+        
+        <div>
+                <button onclick="testme();" value="TestMe">TestMe</button>
+        </div>
+</div>
+<script>
+        function testme(){ alert(locale.fileupload.start);}
+        
+</script>

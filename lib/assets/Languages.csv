@@ -1,0 +1,6 @@
+language_id,language_description,locale,is_supported
+1,English,en,t
+2,Français,fr,t
+3,Español,es,f
+4,Italiano ,it,f
+5,Deutsche,de,f

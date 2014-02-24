@@ -1,0 +1,44 @@
+<h1><%= t(:application_title) %></h1>
+
+<div>La version francaise suivra</div>
+
+<p>
+	A new user (<%= @user.mail_to_s %>) has submitted a request to be able to access the following product:<br />
+	
+	<b>Product Title</b><br />
+	<%= @product_instance.get_title(Language.english.id) %><br/><br/>
+	
+	<b>Product Type</b><br />
+	<%= @product_instance.product_type.get_title(Language.english.id) %><br/><br/>
+
+	<b><%= t(:signator, :locale => 'en')%></b><br />
+	<%= raw(User.mail_to_s @product_instance.signator_first_name, @product_instance.signator_last_name, @product_instance.signator_email_address) %>
+	<hr/>
+	<b><u>User Details</u></b><br/>
+	<b>User's First and Last Name</b><br/>
+	<%= @user.mail_to_s %><br/>
+	<b>User's Address</b><br/>
+	<%= @user.get_address_html %><br/>
+	
+	<hr />
+	
+	To ignore this request, simply ignore this email.
+	To grant access, <%= link_to "Click here", grant_user_access_path(:user => @user.id.to_s, :product_instance => @product_instance.id.to_s) %>
+
+</p>
+
+<p>
+	Thanks.
+</p>
+
+<hr />
+
+<div>English Version Preceeds</div>
+
+
+
+<p>
+	Merci.
+</p> 
+	
+

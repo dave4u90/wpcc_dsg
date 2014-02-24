@@ -1,0 +1,160 @@
+<!-- @@kk: remove all inline styles, and manage styles from CSS -->
+
+
+<div style="color:#fff;font-size 12px; padding-left: 10px">
+	<!-- @@kk: put link to product_instance.index -->
+	<%= link_to t(:products), ProductInstance %>
+	<hr><br />
+</div> 
+
+<% if @product_instances.size > 0 %>
+<div style="padding-left: 10px;padding-right: 10px"> 
+	<% @product_instances.each do |product| %>
+ 
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu" style="padding-right: 4px;">
+			<table width="100%"><tr><td align="left">						
+				<%= product.get_title (current_language_id) %>
+			</td>
+			<td align="right">
+				<% if product.product_type %>
+					<%= raw(product.product_type.get_title(current_language_id)) %>
+				<% end %>
+			</tD>
+			</tr></table>
+		</div>
+ 		<table class="table table-striped" style="color: #000" border="0">
+ 			<tr>
+				<td width="150">
+					<% if product.product_type %>
+						<!-- this is where we put the image of the WPCC Icon -->
+						<%= image_tag(product.product_type.icon_url, :size => "150x150") %>
+					<% end %>
+				</td>
+ 				<td >
+ 					<div>
+ 						<h5><%= t(:responsibile_person) %></h5> 
+ 						<div class="row-fluid" style="padding-top: 5px;padding-bottom: 5px">
+ 							<%= raw(User.mail_to_s product.signator_first_name, product.signator_last_name, product.signator_email_address) %>
+ 						</div> 
+ 						<h5><%= t(:product_administrators) %></h5> 
+ 						<div class="row-fluid" style="padding-top: 5px;padding-bottom: 5px">
+							<%
+								admins = product.get_administrators()
+								if admins.size >= 1
+									admins.each do |adm| 	
+							%>
+										<% if adm %>
+											<%= raw(adm.mail_to_s) %><br>
+										<% end %>
+							<%
+									end 
+								end
+								
+							%>
+ 						</div>
+ 						<br />
+ 						<h5><%= t(:registration_key) %></h5> 
+ 						<div class="row-fluid" style="padding--top: 5px;padding-bottom: 5px">
+ 							<%= product.formatted_product_key %> 
+ 						</div> 
+ 					</div> 
+ 				</td>
+ 				<td style="width: 200px">
+ 					<div style="padding-top: 10px;">
+ 						<% @bt = product.product_type_id %>
+						
+						<%
+						 pending_user_str = ""
+						 pending_user_arr = product.get_pending_user_approvals
+ 						 pending_user_tip = t(:manage_access)
+
+						 if pending_user_arr.size > 0 
+							pending_user_tip = t(:user_pending_approvals, :users => pending_user_arr.size.to_s)
+							pending_user_str = " (" + pending_user_arr.size.to_s + ")"
+
+						 end
+						 
+						notes_text = t(:review_notes)
+						notes_tip = t(:no_new_notes)
+						if product.notes.size > 0
+							notes_text += " (" + product.notes.size.to_s + ")"
+							notes_tip = product.notes.size.to_s + " " + t(:notes_to_review)
+						end
+						notify_tip = t(:notify_tip)
+						 
+						%>
+						
+						
+						
+						
+						<!-- if user has access crud access -->
+						<% if current_user.has_crud_access(product) %>
+	 						<%= link_to t(:open_load), product_type_product_instance_path(@bt, product), :class=>"btn btn-success", :style=>"width:140px"%> <br /><br />
+						<% else %>						
+	 						<%= link_to t(:request_access), current_user_request_access_path(:user_id=> current_user.id, :product_instance_id=> product.id), :class=>"btn btn-success", :style=>"width:140px"%> <br /><br />						
+						<% end %>
+						
+						<!-- if user has admin access -->
+						<% if current_user.is_administrator(product) %>						
+	 						<%= link_to t(:manage_access) + pending_user_str , edit_product_instance_path(product), :class=>"btn btn-success", :style=>"width:140px", :title => pending_user_tip %> <br /><br />
+	 						<%= link_to t(:edit_details) , edit_product_instance_path(product), :class=>"btn btn-success", :style=>"width:140px"%> <br /><br />
+						<% end %>
+							
+						<!-- if user has crud access -->
+						<% if current_user.has_crud_access(product) %>
+							<%= link_to notes_text, notes_path(:product_instance_id => product.id.to_s), :class=>"btn btn-success", :style=>"width:140px", :title=> notes_tip%> <br /><br />
+							<%= link_to t(:notify_person_responsible), notify_signator_path(:id => product.id), :class=>"btn btn-yellow", :style=>"width:140px", :title=> notify_tip %> <br /><br />
+						<% end %>
+ 					</div>
+ 				</td>
+ 			</tr>
+ 		</table> 
+	</div>  
+	<br />
+	<% end %>  
+</div> 
+<%end%>
+<br />
+
+<div class="clearfix"></div>
+
+<%= render "users/user_options_toolbar", :partial => true %>
+
+<br />
+
+<div id="modalPopup"></div>
+
+<script>
+
+	function openSearchPopUp() {
+		
+	$("#modalPopup").dialog({
+				  autoOpen: true,
+				  height: 265,
+				  width: 400,
+				  modal: true,
+				  title: "Search Product Instances",
+				  open: function() {
+				    $("#modalPopup").html("<%= escape_javascript(render('shared/search')) %>")
+				  },
+				}); 
+				$("#ui-dialog-title-modalPopup").css('width', '100%');
+				$("#ui-dialog-title-modalPopup").css('text-align', 'center');
+				$('.alert').hide();
+				
+				$(".ui-dialog-titlebar-close").hide()
+	}
+
+</script>
+
+ 
+<!--
+<ul class="products">
+	<% @product_instances.each do |product| %>
+	<li>
+		<% @bt = product.product_type_id %>
+		<%= link_to product.product_title, product_type_product_instance_path(@bt, product) %> | <%= link_to "Edit", edit_product_instance_path(product) %>
+	</li>
+	<% end %> 
+</ul>  -->

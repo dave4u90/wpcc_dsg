@@ -1,0 +1,11 @@
+id,product_type_title,product_type_description,upc,talott_product_code,release_id,num_formplates,image_url
+1,WPCC 1 <i>Commitment</i>,<i>Our</i> Leadership &#183 Commitment &#183 Responsibility,7-72934-12401-4,WPCC-12-0100,1,,wpcc1.png
+2,WPCC 2 <i>Requirements</i>,The Law and <i>Our</i> Policies and Procedures,7-72934-12402-1,WPCC-12-0200,1,,wpcc2.png
+3,WPCC 3 <i>Hazards</i>,Identify &#183 Assess &#183 Control / Report &#183 Investigate,7-72934-12403-8,WPCC-12-0300,1,,wpcc3.png
+4,WPCC 4 <i>Training</i>,<i>Our</i> Training and Orientation,7-72934-12404-5,WPCC-12-0400,1,,wpcc4.png
+5,WPCC 5 <i>Inspections</i>,Preventive Maintenance and Workplace Inspections,7-72934-12405-2,WPCC-12-0500,1,,wpcc5.png
+6,WPCC 6 <i>Awareness</i>,Awareness,7-72934-12406-9,WPCC-12-0600,1,,wpcc6.png
+7,WPCC 7 <i>Emergency</i>,<i>Our</i> Emergency Contacts and Floor Plans,7-72934-12407-6,WPCC-12-0700,1,,wpcc7.png
+8,WPCC 8 <i>Visitors</i>,All Contractors and Visitors Responsibilities,,WPCC-12-0800,0,0,wpcc8.png
+9,WPCC <i>Signature</i> Edition,WPCC <i>Signature</i> Edition Occupational Health and Safety Documentation Management System,7-72934-12400-7,WPCC-12-0SEC,1,0,signature.png
+10,WPCC Cube Edition,WPCC CUBE Occupational Health and Safety Documentation Management System,,WPCC-09-CUBE,,0,cube.png

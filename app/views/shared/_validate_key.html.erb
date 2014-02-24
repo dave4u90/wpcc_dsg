@@ -1,0 +1,14 @@
+        <div class="pagination-centered">
+                <%= image_tag "product_key_image_card.png" %> 
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <p style="padding: 4px;">
+                    <%= label_tag :product_registration_key, t(:product_registration_key) %>
+                    <%= text_field_tag "reg_key", @key, :class=>"wider_width"  %><br/>
+
+                    <% #button tag needs to submit the reg_key for server side validation %>
+
+                    <%= button_tag t(:next), {class: "btn btn-success" } %><br /><br />
+                    <%= image_tag 'icons/1of5_process.png' %>
+        </p>

@@ -1,0 +1,13 @@
+Create User - Programmer only view for Edit!
+
+
+Listing all the param's that were submitted!<Br><Br>	
+<%
+params.each do |p|
+%>
+	<%= p.to_s %>=<%= params[p].to_s %>--><%= params.keys.include?(p)%><Br>
+<%
+end
+%>
+
+<%= @msg %><Br><br>

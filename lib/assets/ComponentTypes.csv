@@ -1,0 +1,13 @@
+id (0),component_type_description (1),sequence (2),supports_sub_components (3),is_conceptual (4),view_handler (5),component_type_description_french (6),component_type_description_spanish (7),,,,,,,view_handler_comment
+1,Flip-E-Info,1,TRUE,FALSE,binder,Flip-E-Info -FR,Flip-E-Info -ES,,,,,,,a box displays like a container with other itesm in it
+2,Single Sleeve Side-Entry Box,7,TRUE,TRUE,box,Single Sleeve Side-Entry Box -FR,Single Sleeve Side-Entry Box -ES,,,,,,,a binder displays as a jquery tab
+3,Double Sleeve Side-Entry Box,8,TRUE,TRUE,box,Double Sleeve Side-Entry Box -FR,Double Sleeve Side-Entry Box -ES,,,,,,,a tab displays as a panel with formplates
+4,Double Hinged Top-Entry Box,9,TRUE,TRUE,box,Double Hinged Top-Entry Box -FR,Double Hinged Top-Entry Box -ES,,,,,,,
+5,Clipboard,5,TRUE,FALSE,tab,Clipboard -FR,Clipboard -ES,,,,,,,
+6,Flip-E-Locate,3,TRUE,FALSE,binder,Flip-E-Locate -FR,Flip-E-Locate -ES,,,,,,,
+7,Corkboard,6,TRUE,FALSE,tab,Corkboard -FR,Corkboard -ES,,,,,,,
+8,Binder,10,TRUE,FALSE,binder,Binder -FR,Binder -ES,,,,,,,
+9,Flip-E-Info Panel,2,FALSE,FALSE,tab,Flip-E-Info Panel -FR,Flip-E-Info Panel -ES,,,,,,,
+10,Flip-E-Locate Panel,4,FALSE,FALSE,tab,Flip-E-Locate Panel -FR,Flip-E-Locate Panel -ES,,,,,,,
+11,Module,11,TRUE,FALSE,box,Module -FR,Module -ES,,,,,,,
+12,Tab,12,FALSE,FALSE,tab,Tab -FR,Tab -ES,,,,,,,

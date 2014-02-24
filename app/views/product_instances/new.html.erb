@@ -1,0 +1,135 @@
+<div class="left_right_padded_div">
+	<label class="white_header_label"><%= (t(:product_registration))%></label>
+	<div style="color:#fff;font-size: 12px;padding-left: 10px">
+		<%= link_to t(:product_registration), validate_key_path(:method => :product) %>
+		<hr>
+	</div>
+	<div class="registration_div">
+		<div class="green_menu"><%= t(:product_registration) %></div>
+		<p style="color: black; padding: 4px;">
+			<%= raw(t(:welcome_to_the_application_paragraph))%>
+		</p>
+		<br />
+		<div class="registration_inner_div" style="color: black">
+			<%= form_for(@product_instance, :url=>{:action=> 'create', :key => @product_key, :client_id => @client_id, :user_id => @user_id}) do |f| %>
+			
+			<% if @product_instance.errors.any? %>
+			  <div id="error_explanation">
+			    <div class="alert alert-error">
+			      <%= t(:form_contains_errors, :errors => @product_instance.errors.count) %>.
+			    </div>
+			    <ul>
+			    <% @product_instance.errors.full_messages.each do |msg| %>
+			      <li>* <%= msg %></li>
+			   <% end %>
+			    </ul>
+			  </div>
+			<% end %>
+			
+			<b><u><%= t(:product_information) %></b></u>
+
+			
+			
+			
+			<% #get translated product_instances
+				 my_product_types = ProductInstance.object_title_array(ProductType.all, current_language_id)			
+			%>
+
+			<%= f.label :product_type, t(:product_type) %>
+			<%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "wider_width", :disabled=> true}  %>			
+			<%= f.hidden_field :product_type_id, value: @product_type_id %>
+
+			<%= f.label :product_key, t(:product_key) %>
+			<%= f.hidden_field :product_key, value: @product_key %>
+			<%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key) ,:class=>"wider_width", :disabled => true %>
+
+			
+			<%= f.label :product_title, t(:product_title_and_location) %>
+			<%= f.text_area :product_title, :class => "wider_width", :rows => "3", :cols=>"150" %>
+
+
+
+			
+			<br/>
+			<b><u><%= t(:product_address_location)%></u></b>
+				<%
+					if @client
+						if @client.address
+							@product_instance.address.fill_from_address(@client.address)							
+						end
+					end
+					
+				%>
+				
+				<%= render  partial: "address/address_form", locals: {my_form: f, address_object: @product_instance.address, address_for: :address} %>
+			
+			<br/>
+			<b><u><%= t(:signator) %></b></u>
+			<table><tr>
+				<td>
+					<%= f.label :first_name %>
+					<%= f.text_field :signator_first_name, :class => "medium_width" %>
+				</td>
+				<td>&nbsp;</td>
+				<td>
+					<%= f.label :last_name %>
+					<%= f.text_field :signator_last_name, :class => "medium_width" %>
+				</td>
+				</tr>
+			</table>
+			
+			<%= f.label :email_address %>
+			<%= f.email_field :signator_email_address, :class => "wider_width" %>
+			
+			<%= f.label :telephone_number %>
+			<%= f.text_field :signator_telephone_number, :class => "medium_width" %>			
+	      
+			<br />
+			<b><u><%= t(:client_information) %></u></b>
+			
+			
+			<% if @client_id %>				
+				<% if @user %>
+					<%= f.fields_for :user_accesses, @user_access do |uas_f| %>
+						<%= uas_f.hidden_field :user_id, value: @user_access.try(:user_id) %>
+						<%= uas_f.hidden_field :access_role_id, value: @user_access.try(:access_role_id) %>
+					<% end %>
+				<% end %>
+				
+				<%= label_tag :company_name, t(:company_name) %>
+				<%= text_field_tag :client_name, @client.try(:client_name), {:class=>"wider_width", :disabled => true}  %>
+		
+				<%= label_tag :sector, t(:sector) %>
+				<%= select_tag :sector_id, options_for_select(Sector.to_a, @client.try(:sector_id)), {:class => "medium_width", :disabled => true}  %>
+				
+				<%= f.hidden_field :client_id, value: @client.id.to_s %>
+				
+			<% else %>
+				
+				<%= f.fields_for :client, @client do |client| %>
+			
+					<%= client.label :company_name, t(:company_name) %>
+					<%= client.text_field :client_name, :class=>"wider_width"  %>
+			
+					<%= client.label :sector, t(:sector) %>
+					<%= client.select :sector_id, options_from_collection_for_select(Sector.all, "id", "sector"), {},{:class => "medium_width"}  %>
+
+					<br/>
+					<b><u><%= t(:client_head_office_address) %></u></b><br>
+					<%= t(:address) %>  <%= button_tag t(:same_as_above), :name=> "same_as_above", :value=>"1",  :remote => true, :method => :post %>	
+						
+					<%= render  partial: "address/address_form", locals: {my_form: client, address_object: @product_instance.client.address, address_for: :address} %>
+
+				<% end %>
+				
+			<% end %>
+			
+			<div class="row">
+			  <%= f.submit "Continue", class: "btn btn-success" %>
+			</div>
+			
+		    <% end %>
+		</div>
+     </div>
+</div>
+<Br />

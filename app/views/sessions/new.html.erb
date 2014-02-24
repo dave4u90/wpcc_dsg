@@ -1,0 +1,144 @@
+<% content_for :head do %>
+    <%= javascript_include_tag "jquery-1.11.0.min" %>
+    <%= javascript_include_tag "jquery.flexslider" %>
+    <%= javascript_include_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag "flexslider" %>
+    <script type="text/javascript">
+
+        function hide_error_messages() {
+            $(document).ready(function () {
+                $('#sign_in_error_div').hide()
+            });
+            $(document).ready(function () {
+                $('#email_not_confirmed_error_div').hide()
+            });
+            $(document).ready(function () {
+                $('#access_pending_error_div').hide()
+            });
+        }
+
+        $(document).ready(function () {
+            hide_error_messages();
+        });
+        email = "";
+        function send_confirmation_email() {
+            window.location.href = "<%= send_confirmation_email_path %>&email=" + email;
+        }
+    </script>
+<% end %>
+<div class="row-fluid">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <%= image_tag('/assets/slider/slide-1.jpg') %>
+
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="col-md-12">
+              <p>
+                <%= t('slider_caption1') %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <%= image_tag('/assets/slider/slide-1.jpg') %>
+
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="col-md-12">
+              <p>
+                <%= t('slider_caption2') %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span> </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span> </a>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="col-md-6 no-padding-margin-left">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t('login') %></h3>
+          </div>
+          <div class="panel-body">
+            <div class="alert alert-error" id="sign_in_error_div">
+              <%= t(:invalid_login) %>
+            </div>
+            <div class="alert alert-error" id="email_not_confirmed_error_div">
+              <%= t(:email_not_confirmed) %>
+              <br/></br>
+
+              <%= link_to t(:click_here), "javascript: send_confirmation_email();" %>&nbsp;<%= t(:send_email_again) %>
+            </div>
+            <div class="alert alert-error" id="access_pending_error_div">
+              <%= t(:access_pending_approval) %>
+            </div>
+            <%= form_for :session, url: {action: "create"}, html: {class: "form-search"}, remote: true do |f| %>
+                <div class="input-group">
+                  <%= f.text_field :email, class: "form-control", placeholder: t('email_address') %>
+                  <span class="input-group-addon">@</span>
+                </div>
+                <div class="input-group ">
+                  <%= f.password_field :password, class: "form-control", placeholder: t('password') %>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"> </span></span>
+                </div>
+                <div class="col-md-7 no-padding-margin-left">
+                  <div class="checkbox">
+                    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+                    <label>
+                      <%= t('remember_me') %></label>
+                  </div>
+                </div>
+                <div class="col-md-5 no-padding-margin-right">
+                  <%= link_to t('forgot_password'), new_password_reset_path, class: "btn btn-link pull-right no-padding-margin-right" %>
+                  <%= f.submit t('login'), class: "btn btn-success pull-right" %>
+                </div>
+                </form>
+                </div>
+                <div class="panel-footer">
+                  <%= t('dont_have_an_account') %>&nbsp;
+                  <%= link_to t('signup'), "/signup", class: "btn btn-link no-padding-margin-left btn-signup" %>
+                </div>
+            <% end %>
+            </div>
+      </div>
+      <div class="col-md-6 no-padding-margin-left">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= t('workplace_care_center_overview') %></h3>
+          </div>
+          <div class="panel-body">
+            <p>
+              <%= t('overview_text_para1') %>
+            </p>
+
+            <p>
+              <%= t('overview_text_para2_html') %>
+            </p>
+
+            <p>
+              <%= t('overview_text_para3') %>
+            </p>
+            <%= link_to t('register'), "/signup", class: "btn btn-success btn-xs pull-right" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

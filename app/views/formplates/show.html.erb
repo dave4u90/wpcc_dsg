@@ -1,0 +1,95 @@
+<% provide(:title, "WPCC " + @formplate.title) %>
+
+<div id="accordion">
+	<h3><%= raw("WPCC " + @formplate.title) %></h3>
+	<!-- in here we will display a list of things that are applicable to all instances of this form in all languages --->
+	<div id="accordion-1">	
+
+			<b><%=t :custom_title %></b>
+			<%#= long_one_line_text (t("field_productFormNickName")), @formplate.title, t("custom_title") %>
+			<input type="checkbox" name="isApplicable" id="jqxCheckbox" title="<%= t ("form_notapplicable_description")%>"><span title="<%=t ("form_notapplicable_description")%>"><%= t ("form_notapplicable") %></span></input>
+
+	</div>
+</div>
+
+
+
+
+
+<div style="padding-top: 5px;"></div>
+
+
+
+
+<div class="jq_tabs">			
+			<!-- write all the tabs here -->
+			<ul>
+			<%
+				 current_languages = Language.all
+				 current_product_instance = ProductInstance.first
+
+				 #this should be @product_instance.languages
+				 
+				 #If we dont have any langauges set up for this product, then load the default language
+				 i = 0
+				 sActive = ""
+				 current_languages.each do |lang| 
+					if current_language_id = lang.id 
+						sActive = " Active=""True"" "
+					else
+						sActive = ""
+					end
+					i += 1
+					
+			%>		
+					 <li id="languageTabLabel<%=sActive%>"><a href="#tab-<%= i.to_s%>"><%= 'lang' %></a></li>
+			<%	 	
+				 end
+				 
+			%>
+				<li><a href="#tab-<%= i+1%>"><%= t ("additional_languages") %></a></li>
+			</ul>
+			
+			<!-- now create the divs for the languages -->
+			<%
+				 i = 0
+				 current_languages.each do |lang|
+				 	#'Now for each language determine if there is a formInstance that exists or not.
+				 	#'--if a form instance exists for this form - determine if that formInstance is Standard or Custom
+				 	#'--|--if the forminstance is standard then AJAX-HREF for this formplate to render that standard formPlate
+				 	#'--|--if the formInstance is custom then AJAX-HREf for this table to then show list of uploaded files
+				 	#'--if there is no form instance, then default to AJAX-HREF to render formplate
+				 
+				 	
+				 	#'Load form instances that match formplateID, product_instanceId and languageID. Most recent formInstance would be the current one.					
+					
+					sAJAX_HREF = getLink("ajax_renderForm") + "?formPlateID=" + @formplate.id.to_s + "&product_instanceID=" + current_product_instance.id.to_s + "&languageID=" + lang.id.to_s
+					
+					%>
+						<div id="tab-<%= i+1%>" href="<%= sAJAX_HREF %>"></div>
+					<%
+					i += 1
+			   end 
+			%>
+			<div id="tab-<%= i+1 %>">
+				<!-- static content -->
+				<%= raw(t ("additional_languages_description")) %>
+			</div>
+</div>
+<div style="padding-top: 5px;"></div>
+
+<div align="center">
+<div id="toolbar" class="ui-widget-header ui-corner-all" style="padding-top: 5px; padding-right: 10px;">
+	<button id="saveButton">Save</button>
+	<button id="printButton">Preview & Print</button>
+
+	<button id="prevVersions">History</button>
+
+</div>				
+</div>
+
+
+
+
+
+<%= link_to "<<Back", :back %>

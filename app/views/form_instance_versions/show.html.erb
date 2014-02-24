@@ -1,0 +1,41 @@
+
+<%= provide(:title, t("wpcc") + " " + @form_instance.form.get_title().to_s ) %>
+
+<h3 class="title"><%= t("wpcc") + " "  + @form_instance.form.get_title().to_s %></h3>
+
+<!-- testing variables -->
+<p>
+  form_instance_version: <%= @form_instance_version.to_json %><br>
+  form_instance: <%= @form_instance.to_json %><br>
+  form: <%= @form.to_json %><br>
+
+</p>
+<!-- -->
+
+<div id="panel">
+  <ul><b></b></ul>
+  <div id="details">
+    
+    here we will loop through form_instance for its elemeents and write it.
+  </div>
+</div>
+
+
+<script type="application/x-javascript"><![CDATA[
+//]]>
+</script>
+
+<style>
+#toolbar {
+  padding: 4px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* support: IE7 */
+*+html #toolbar {
+  display: inline;
+}
+</style>

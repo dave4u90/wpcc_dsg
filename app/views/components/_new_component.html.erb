@@ -1,0 +1,56 @@
+<% if current_user.is_talott %>
+	<% parent_object = @component
+	   parent_object_type = nil
+	   if parent_object == nil
+		parent_object_type = "Board"
+		if @product_type != nil
+			parent_object = @product_type
+		else
+			parent_object = ProductType.first
+		end
+	   else
+		parent_object_type = @component.component_type.get_title(current_language_id)		
+	   end
+	   
+	%>
+	
+	<br /><br />
+	<div class="green_menu"><%= t(:add_component_here) %>: <%= parent_object.get_title(current_language_id) %> (<%= parent_object_type %>)</div>
+	<%= form_for(@new_component, :html => { :multipart => true }) do |cf| %>
+		<div class="registration_inner_div" style="background-color: white; color: black;">
+			<% #cf.hidden_field :parent_component_type, {:value => parent_object.class.to_s}%>
+			<%= cf.hidden_field :parent_component_id, {:value => parent_object.id.to_s}%>
+
+			<p>
+              <%= cf.label :component_type_id, t(:component_type) %>
+              <%= cf.select :component_type_id,
+                  options_from_collection_for_select(ComponentType.all, :id, :component_type_description), {},
+                  :class => "wider_width" %>
+
+			<p>
+              <%= cf.fields_for :literals, @new_component.literals.build do |builder| %>
+                <% Language.supported_languages.each do |l| %>
+                    <p>
+                        <%= l.language_description %>
+                        <%= builder.text_field  :literal, :class=>"wider_width" %>
+                        <%= builder.hidden_field  :language_id, value: l.id, :class=>"wider_width" %>
+                    </p>
+                <% end %>
+              <% end %>
+            </p>
+
+			<p>
+		<% @new_component.image = Image.new %>
+		<%= cf.fields_for :image, @new_component.image do |img| %>
+	              <%= img.label :image_url, t(:component_image) %>
+	              <%= img.file_field :image_url %>
+		<% end %>
+            <p/>
+
+            <p>
+              <%= button_tag t(:save), {:name => "add_component", :value => "true", :class => "btn btn-success"}%>
+            </p>
+
+		</div>
+	<% end %>
+<% end %>

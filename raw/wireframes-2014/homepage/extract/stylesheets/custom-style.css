@@ -1,0 +1,233 @@
+@font-face {
+    font-family: 'EbrimaRegular';
+    src: url('fonts/ebrima.eot');
+    src: url('fonts/ebrima.eot') format('embedded-opentype'), url('fonts/ebrima.woff') format('woff'), url('fonts/ebrima.ttf') format('truetype'), url('fonts/ebrima.svg#EbrimaRegular') format('svg');
+}
+
+body {
+    font-family: EbrimaRegular;
+    background: #3e304c;
+    font-size: 13px;
+    color:#4c4c4c;
+}
+p, a {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color:#4c4c4c;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: EbrimaRegular;
+}
+img{
+    width:100%;
+}
+header {
+    background: #ffffff;
+}
+.navbar-brand{
+    display:block;
+}
+.navbar {
+    background: #FFFFFF;
+    margin-bottom: 0px;
+}
+.navbar h1, h2 {
+    margin: 0;
+    padding: 0;
+    margin: 0 0 20px;
+}
+.navbar h1 {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    word-spacing: -2px;
+    margin: 45px 0 0;
+}
+.navbar h2 {
+    font-size: 16px;
+    text-align: right;
+}
+.navbar-toggle {
+    background: #B1DCF7;
+}
+.nav-bottom-custom {
+    background: #99cc66;
+}
+.nav > li > a {
+    text-transform:uppercase;
+}
+.carousel{
+    margin-bottom:12px;
+}
+.carousel-caption{
+    width:100%;
+    height:auto;
+    padding:1%;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    left:0;
+    bottom: 0;    
+}
+.carousel-caption p{
+    font-size:20px;
+    color:#ffffff;
+    text-align: left;
+}
+.no-padding-margin-left{
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+.no-padding-margin-right{
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+.panel-default{
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+}
+.panel-title{
+    font-weight:bold;
+}
+.panel p{
+    padding-bottom: 10px;
+}
+.panel-footer{
+    background:#ffffff;
+}
+.form-control{
+    height:40px;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-right: none;
+    font-family:Verdana;
+}
+.input-group-addon{
+    background:#ffffff;
+    color: #C9C9C9;
+}
+.btn{
+     padding-left:18px;
+     padding-right:18px;
+}
+.btn-success{
+    background-color: #99CC66;
+    border-radius: 0;
+    color: #333333;
+    font-family: EbrimaRegular;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btn-success:hover{
+    color: #000000;
+}
+.btn-link{
+    color: #57b0ff;
+}
+.btn-link:hover{
+    text-decoration: none;
+}
+.btn-xs{
+     font-size: 14px !important;
+    font-weight: lighter !important;
+    color: #4c5940;
+}
+.btn-sign-up{
+    border-radius:5px !important;
+    -moz-border-radius:5px !important;
+    -webkit-border-radius:5px !important;
+    background:#C74B1A;
+    border:1px solid #D37853;
+    color:#fff !important;
+    font-size:18px;
+}
+.glyphicon-sign-up{
+    font-size:10px !important;
+}
+.input-group-btn{
+    background:#F3F2EF;
+    padding-right: 5px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+}
+.input-text-signup{
+    height:48px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    
+}
+input[type='text']{
+    /*margin-bottom:20px !important;*/
+}
+.input-group{
+    margin-bottom:20px !important;
+}
+footer{
+    background:#333333;
+    color:#999999;
+    padding:30px 0;
+    margin-top:25px;
+}
+.site-map{
+    font-size:20px;
+    line-height:12px;
+    margin:60px 0 20px;
+}
+hr.footer-hr{
+    color:#999999 !important;
+    /*background: #999999 !important;*/
+    border-color:#999999;
+    height:1px;
+    margin:0 0 40px;
+}
+ul.footer-link{
+    width:auto;
+    height:auto;
+    overflow: hidden;
+    margin:0 0 70px;
+    padding: 0;
+}
+.footer-link li{
+    display: block;
+    margin:5px 0;
+}
+.footer-link li a{
+    text-decoration: none;
+    color:#999999;
+    display: block;
+    font-size:12px;
+}
+.footer-link li a:hover{
+    text-decoration: underline;
+}
+.social-h3{
+    text-align:center;
+    width:auto;
+    color: #ffffff;
+}
+.social{
+    width:52px;
+    height:52px;
+    display:block;
+    text-indent: -9999px;
+    background:url('../images/social-icons.png') 0 0 no-repeat;
+    float:left;
+    margin: 0 5px 40px;
+}
+.fb{
+    background-position:0px -55px;
+}
+.fb:hover{
+    background-position:0px -2px;
+}
+.lin{
+    background-position:-65px -55px;
+}
+.lin:hover{
+    background-position:-65px -2px;
+}
+.navbar-brand{
+    height: 100% !important;
+}

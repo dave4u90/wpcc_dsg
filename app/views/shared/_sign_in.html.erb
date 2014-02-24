@@ -1,0 +1,61 @@
+<% provide(:title, "Sign in") %> 
+<div class="sign_in_box">
+	
+	<div class="alert alert-error" id="sign_in_error_div">
+		<%= t(:invalid_login) %>
+	</div>
+	<div class="alert alert-error" id="email_not_confirmed_error_div">
+		<%= t(:email_not_confirmed) %><br/></br>
+		
+		<%= link_to t(:click_here), "javascript: send_confirmation_email();"  %>&nbsp;<%= t(:send_email_again) %>
+	</div>
+	<div class="alert alert-error" id="access_pending_error_div">
+		<%= t(:access_pending_approval) %>
+	</div>
+	
+	<%= form_for(:session, url: sessions_path,:remote=>true) do |f| %>
+        <span class="sign_in_label"><%= t(:email_username) %> </span>
+        <%= f.text_field :email %>
+        <span class="sign_in_label"><%= t(:password) %></span>
+        <%= f.password_field :password %>
+        <div class="pull-right">
+            <%= link_to t(:forgot_password), new_password_reset_path, class: "btn btn-success" %>
+            <%= f.submit t(:sign_in), class: "btn btn-success" %>
+        </div>
+	<% end %>
+	<div class="clearfix"></div>
+
+	<br />
+</div>
+<div class="sign_in_box" >
+	<ul style="font-size: 10pt; color: black">
+
+		<li><%= link_to t(:i_need_to_register_my_product), validate_key_path(:method => :product) %></li>
+
+	
+		<li><%= link_to t(:request_access_to_my_product), validate_key_path(:method => :user) %></li>
+	</ul>
+</div>	
+<script>
+
+function hide_error_messages() {
+	$(document).ready(function() {
+		$('#sign_in_error_div').hide()
+	});
+	$(document).ready(function() {
+		$('#email_not_confirmed_error_div').hide()
+	});
+	$(document).ready(function() {
+		$('#access_pending_error_div').hide()
+	});
+}
+
+$(document).ready(function() {
+		hide_error_messages();
+});
+email = "";
+function send_confirmation_email () {
+	window.location.href = "<%= send_confirmation_email_path %>&email=" + email;
+}
+</script>
+

@@ -1,0 +1,19 @@
+<div style="width: 100%;">
+	<div style="padding: 2px; text-align: center">		
+		
+		<%if current_user.is_talott() %>
+			<%= link_to t(:manage_product_types), ProductType, :class=>"btn btn-success", :style=>"padding-left:20px;padding-right:20px"%>		
+			<%= link_to t(:generate_product_keys), "/product_key/", :class=>"btn btn-success", :style=>"padding-left:20px;padding-right:20px"%>		
+
+		<% end %>
+		
+		<%= link_to t(:view_all_notes), notes_path(:user_id => current_user.id.to_s), :class=>"btn btn-success", :style=>"padding-left:20px;padding-right:20px"%>
+	
+	
+		<!-- disable the search functionality
+		<%= link_to_function t(:search), "openSearchPopUp()", :class=>"btn btn-success", :style=>"padding-left:20px;padding-right:20px" %> 
+		-->
+		<%= link_to t(:register_a_new_product), validate_key_path(:method => :product, :user_id => current_user.id.to_s), :class=>"btn btn-success", :style=>"padding-left:20px;padding-right:20px"%>    
+	</div>
+	
+</div>

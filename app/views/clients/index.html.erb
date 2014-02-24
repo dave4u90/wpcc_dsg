@@ -1,0 +1,14 @@
+<h1>List of all clients registered in the system</h1>
+
+
+<ul class="clients">
+
+<!-- for each producttype -->
+<% @clients.each do |client| %>
+  <!-- output each literal in each language -->
+  <li><%= client.id  %><%= " " + client.client_name %></li>
+
+<% end %>
+
+
+</ul>

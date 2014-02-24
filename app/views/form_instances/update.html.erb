@@ -1,0 +1,25 @@
+hello
+
+
+
+<br>
+
+form instance id=<%= @form_instance.id %><br>
+product_instance_id=<%= @product_instance.id %><br>
+
+<% params.each do |pp| %>
+    <% element_match = pp[0].to_s.match(/^e([\d]+)$/) %>
+    <% if element_match != nil %>
+        element_id=<%= pp[0].to_s %> | <%= pp[1].to_s%> | <%= element_match[1] %> <br>
+    <% end %>
+
+    <% form_field_match = pp[0].to_s.match(/^f([\d]+)_(.+)$/) %>
+    <% if form_field_match != nil %>
+        param=<%= pp[0].to_s %> | value=<%= pp[1].to_s%> | formID=<%= form_field_match[1] %> | form-field=<%= form_field_match [2] %> <br>
+    <% end %>
+
+
+<% end %>
+
+
+<%= @msg.html_safe %>

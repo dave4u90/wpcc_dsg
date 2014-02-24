@@ -1,0 +1,13 @@
+Changes 26-Feb-2013
+
+Changed styling of body links to be the same green as the board.
+Changed body font color to brilliant white, the same as the board.
+
+Added language_id and icon_url to components
+Added is_customizable to component_types
+
+Added icons to board_instances view
+
+
+
+

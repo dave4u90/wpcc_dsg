@@ -1,0 +1,8 @@
+<table width="100%" border="1">
+  <tr><td><b>Product_Key</b></td><td><b>ProductType</b></td><td><b>In Use?</b></td></tr>
+  <%
+    @keys.each do |k|
+      %><tr><td><%= k %></td><td><%= raw(k.product_type.get_title(Language.first.id)) %></td><td><%= ProductKey.key_in_use(k) %></td></tr>
+    <% end
+  %>
+</table>

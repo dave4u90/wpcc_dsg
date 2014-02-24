@@ -1,0 +1,107 @@
+id,literal_identifier_id,literal_identifier_type,language_id,literal
+393,126,Component,1,Test Binder 1 - En
+287,84,Component,1,Binder 4
+288,47,Component,1,Safe Work Operating Procedures - Know What To Do
+289,48,Component,1,<i>Our</i> Archived Health and Safety Documentation
+290,49,Component,1,In <i>Our</i> Workplace
+291,50,Component,1,All Contractors and Visitors Responsibilities - In <i>Our</i> Workplace
+292,71,Component,1,WPCC 1 <i>Commitment</i>
+293,72,Component,1,WPCC 2 <i>Requirements</i>
+294,73,Component,1,WPCC 3 <i>Hazards</i>
+295,74,Component,1,WPCC 4 <i>Training</i>
+296,75,Component,1,WPCC 5 <i>Inspections</i>
+297,76,Component,1,WPCC 6 <i>Awareness</i>
+298,77,Component,1,WPCC 7 <i>Emergency</i>
+299,81,Component,1,Binder 1
+300,82,Component,1,Binder 2
+301,83,Component,1,Binder 3
+302,3,Component,1,Safety is a Partnership - Know Your Role
+303,4,Component,1,Health and Safety Policy Statements
+304,5,Component,1,Panel 1 - Front
+305,6,Component,1,Panel 1 - Back
+306,7,Component,1,Panel 2 - Front
+307,8,Component,1,Panel 2 - Back
+308,9,Component,1,Panel 3 - Front
+309,10,Component,1,Panel 3 - Back
+310,11,Component,1,Proof of …
+311,12,Component,1,It's All About …
+312,13,Component,1,Proof of … <i>Our</i> Training and Certification
+313,14,Component,1,It's All About … <i>Our</i> Orientation and Training Binder 1
+314,15,Component,1,It's All About … <i>Our</i> Orientation and Training Binder 2
+315,16,Component,1,The Law
+316,17,Component,1,This Is How We Do It!
+317,18,Component,1,The Law - Governing Legislations &#183 Regulations &#183 Industry Standards
+318,20,Component,1,<i>Our</i> Policies and Procedures Binder 1 - This Is How We Do It!
+319,21,Component,1,<i>Our</i> Policies and Procedures Binder 2 - This Is How We Do It!
+320,22,Component,1,Committee Meeting Minutes and <i>Our</i> Health and Safety Continuous Improvement Plan
+321,23,Component,1,Addressing …
+322,24,Component,1,Post related Health and Safety Material Only!
+323,25,Component,1,Addressing … Safety Talks and Other Highlights
+324,26,Component,1,Addressing … Health and Wellness
+325,27,Component,1,Health and Safety Workplace Inspection Reports and Records of Corrective Actions Taken
+326,28,Component,1,It Must Be Done!
+327,29,Component,1,Preventive Maintenance - It Must Be Done!
+328,30,Component,1,Workplace Inspections - It Must be Done!
+329,31,Component,1,"Health and Safety Assessments, Survey Reports and Records of Corrective Actions Taken"
+330,32,Component,1,Know What To Do
+331,33,Component,1,Accidents and Emergencies Happen - Know What To Do
+332,35,Component,1,<i>Our</i> Emergency Contacts
+333,36,Component,1,<i>Our<i> Floor Plans
+334,37,Component,1,Panel 1 - Front
+335,38,Component,1,Panel 1 - Back
+336,39,Component,1,Panel 2 - Front
+337,40,Component,1,Panel 2 - Back
+338,41,Component,1,Panel 3 - Front
+339,42,Component,1,Panel 3 - Back
+340,43,Component,1,Panel 1 - Front
+341,44,Component,1,Panel 1 - Back
+342,45,Component,1,Panel 2 - Front
+343,46,Component,1,Panel 2 - Back
+344,2,Component,1,Know Your Role
+345,92,Component,1,Senior Management Responsibilities
+346,92,Component,2,Responsabilités - Haute direction
+347,93,Component,1,Employer / Management Responsibilities
+349,95,Component,1,Accountability - Employer / Management
+351,96,Component,1,Supervisor Responsibilities
+353,97,Component,1,Accountability - Supervisor
+355,98,Component,1,Employee / Worker / Supplied Labour Responsibilities
+357,99,Component,1,Accountability - Employee / Worker / Supplied Labour
+359,109,Component,1,Contractor / Subcontractor / Consultant / Visitor Responsibilities
+361,101,Component,1,Health and Safety Representative / Committee Responsibilities
+363,102,Component,1,First Aid Attendant / First Aider Responsibilities
+365,103,Component,1,Environmental Designate Responsibilities
+367,108,Component,1,Contractor / Subcontractor / Consultant / Visitor Responsibilities
+369,110,Component,1,Contractor / Subcontractor / Consultant / Visitor Responsibilities
+371,111,Component,1,Accountability - Contractor / Subcontractor / Consultant
+373,107,Component,1,Owner Responsibilities
+375,112,Component,1,Directors / Officers of the Corporation Responsibilities
+377,113,Component,1,Supplier of Tools and Equipment Responsibilities
+379,114,Component,1,Additional Responsibilities of Others in our workplace
+381,115,Component,1,Additional Responsibilities of Others in our workplace
+383,116,Component,1,Additional Responsibilities of Others in our workplace
+385,117,Component,1,Our Emergency Contacts and Building Floor Plan(s)
+396,118,Component,1,Sign Off Forms
+389,119,Component,1,Sample/Test Workspace Module
+348,93,Component,2,Responsabilités – Employeur/Direction
+350,95,Component,2,Imputabilité – Employeur/Direction
+352,96,Component,2,Responsabilités - Superviseur
+354,97,Component,2,Imputabilité - Superviseur
+356,98,Component,2,Responsabilités – Employé/Travailleur/Main-d’œuvre fournie
+358,99,Component,2,Imputabilité - Employé/Travailleur/Main-d’œuvre fournie
+360,109,Component,2,Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur
+362,101,Component,2,Responsabilités – Agent/Comité de la santé et de la sécurité au travail
+364,102,Component,2,Responsabilités – Secouriste opérationnel/secouriste
+366,103,Component,2,Responsabilités – Représentant en matière d’environnement
+368,108,Component,2,Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur
+370,110,Component,2,Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur
+372,111,Component,2,Imputabilité – Fournisseur/Sous-traitant/Expert-conseil
+374,107,Component,2,Responsabilités - Propriétaire
+376,112,Component,2,Responsabilités – Dirigeant/Membre de la direction
+378,113,Component,2,Responsabilités – Fournisseur d’outils et d’équipement
+380,114,Component,2,Autres responsabilités – Autres faisant partie de notre milieu de travail
+382,115,Component,2,Autres responsabilités – Autres faisant partie de notre milieu de travail
+384,116,Component,2,Autres responsabilités – Autres faisant partie de notre milieu de travail
+386,117,Component,2,Nos coordonnées d’urgence et plans d’étage
+397,118,Component,2,Formulaires d’autorisation écrite
+394,126,Component,2,Test Binder 1 - Fr
+395,126,Component,3,Test Binder 1 - Sp

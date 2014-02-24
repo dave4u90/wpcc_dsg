@@ -1,0 +1,11 @@
+element_type_id,element_type_name,html_tag,csvlist,sqllist,islist,isglobal,has_inner_value_type,html_close_tag,element_value_field,has_caption,is_editable,htmlclass
+1,SmallText,"input type=""text"" size=""30""",,,FALSE,FALSE,FALSE,</input>,StringValue,TRUE,TRUE,0
+2,LongText,"textarea rows=""20"" cols=""60""",,,FALSE,FALSE,TRUE,</textarea>,StringValue,TRUE,TRUE,0
+3,MediumText,"textarea rows=""5"" cols=""50""",,,FALSE,FALSE,TRUE,</textarea>,StringValue,TRUE,TRUE,0
+4,NewLine,br,,,FALSE,FALSE,FALSE,</br>,StringValue,FALSE,FALSE,0
+5,DropDown,"select size=""1""",,,TRUE,FALSE,FALSE,</select>,StringValue,TRUE,TRUE,0
+6,CityDropDown,"select size""1""",,"Select CityName as Indx, CityName as Description From Cities",TRUE,TRUE,FALSE,</select>,StringValue,TRUE,TRUE,0
+7,ProvinceDropDown,"select size=""1""",,"Select Distinct name as state, name as Description From states",TRUE,TRUE,FALSE,</select>,StringValue,TRUE,TRUE,0
+8,CountryDropDown,"select size=""1""",,"Select Distinct name as Country, name as Description From countries",TRUE,TRUE,FALSE,</select>,StringValue,TRUE,TRUE,0
+11,LongOneLineText,"input type=""text"" size=""40""",,,FALSE,FALSE,FALSE,</input>,StringValue,TRUE,TRUE,0
+12,CanadianPostalCode,"input type=""text"" size=""10""",,,FALSE,TRUE,FALSE,</input>,StringValue,TRUE,TRUE,6

@@ -1,0 +1,49 @@
+<div>
+	<label style="padding-left: 10px;color: #fff;font-size: 18px"> Welcome <%= current_user.name%></label>
+</div>
+<div style="color:#fff;font-size: 12px;padding-left: 10px">
+	Element Type Details
+</div>
+<br />
+ 
+<div style="padding-left: 10px;padding-right: 10px">
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu">
+			Element Type Details
+		</div>
+		<div style="padding:10px">
+			<div class="row-fluid" style="color:#000;font-size: 14px;">
+				<strong>Name:</strong> <%= @elementtype.element_name %>
+			</div>
+		</div>
+
+		<table class="table-condensed" style="color:#000">
+			<% for attribute in @elementtype.attributes.keys %>
+			<tr>
+				<td> <%= attribute.humanize %></td><td> <%= @elementtype.attributes[attribute].to_s %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+
+<div class="clearfix"></div>
+<div style="width: 100%;height:40px;padding-top: 15px;position: relative" class="row-fluid">
+	<div class="pull-right" style="padding-right: 10px"> 
+		<%= link_to "Printable (PDF)", element_type_path(@elementtype.id, :format => "pdf"), :class=>"btn btn-success" %>
+		<%= link_to "Back", :back, :class=>"btn btn-success" %>
+ 	</div>
+	
+</div>
+
+<br />
+
+
+
+
+
+
+
+
+

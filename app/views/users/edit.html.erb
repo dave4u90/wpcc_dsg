@@ -1,0 +1,27 @@
+<div style="padding:10px;">
+	<%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages' %>
+	<div class="forgot_email_div" style="width: 100%">
+		<div class="green_menu">
+			Edit Account
+		</div>
+		<div style="padding:10px;"> 
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirm Password" %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.label :language, "Language" %>
+			<%= f.collection_select :locale, Language.all, :locale, :language_description %> 
+			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %> 
+			<% end %> 
+		</div>
+	</div> 
+</div>

@@ -1,0 +1,7 @@
+<% if @countries %>
+  <% @countries.each do |s| %>
+     <option value="<%= s.name %>"><%= s.name.humanize %></option>
+  <% end %>
+
+<% end %>
+<option value="Other">Other</option>

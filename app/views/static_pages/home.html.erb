@@ -1,0 +1,18 @@
+<div class="row-fluid span12" style="height: 100%">
+	<div class="span6" id="sign_in_div">
+		<%= render :partial=>"shared/sign_in"%>
+	</div> 
+	<div class="span6 desc_div"> 
+		<p>
+			<%= (t('home_first_paragraph')) %>  
+		</p> 
+		<p>
+			<%= (t('home_second_paragraph')) %>  
+		</p> 
+		<p>
+			<%= (t('home_third_first_paragraph')) %> <%= link_to t(:to_register), validate_key_path(:method=> :product), :id=>"white_underline_link" %>, <%= (t('home_third_second_paragraph')) %> 
+		</p>
+	</div>
+
+</div>
+

@@ -1,0 +1,27 @@
+<h1>Listing d_loggers</h1>
+
+<table border=1> 
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Id</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @d_loggers.each do |d_logger| %>
+  <tr>
+    <td><%= d_logger.name %></td>
+    <td><%= d_logger.description %></td>
+    <td><%= d_logger.id %></td>
+    <td><%= link_to 'Show', d_logger %></td>
+    <td><%= link_to 'Edit', edit_d_logger_path(d_logger) %></td>
+    <td><%= link_to 'Destroy', d_logger, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New D logger', new_d_logger_path %>

@@ -1,0 +1,30 @@
+<% provide(:title, 'Add Company Name') %>
+<h1>Add your company name</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@client) do |f| %>
+    
+
+      <%= f.label :company_name %>
+      <%= f.text_field :client_name %>
+
+      <%= f.fields_for :address do |address_fields| %>
+    	<%= address_fields.label :street %>
+    	<%= address_fields.text_field :line1 %>
+
+    	<%= address_fields.label :city %>
+    	<%= address_fields.text_field :city %>
+
+    	<%= address_fields.label :post_code %>
+    	<%= address_fields.text_field :other_address_details %>
+
+
+
+      <% end %>
+
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

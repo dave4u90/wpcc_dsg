@@ -1,0 +1,20 @@
+<!-- @@kk: remove all inline styles, and manage styles from CSS -->
+<% content_for :head do %>
+    <%= javascript_include_tag :notes %>
+<% end %>
+
+<div style="color:#fff;font-size 12px; padding-left: 10px">
+  <!-- @@kk: put link to product_instance.index -->
+  <%= link_to t(:products), ProductInstance %> - <%= link_to t(:notes), Note %>
+  <hr>
+  <br/>
+</div>
+
+
+<%
+   @product_instance_id = params[:product_instance_id]
+%>
+
+<div style="padding: 8px;">
+  <%= render "notes/show_notes", :partial => true %>
+</div>

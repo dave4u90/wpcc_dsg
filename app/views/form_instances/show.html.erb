@@ -1,0 +1,59 @@
+
+<%= provide(:title, t("wpcc") + " " + @form_instance.form.get_title().to_s ) %>
+
+<h3 class="title"><%= t("wpcc") + " "  + @form_instance.form.get_title().to_s %></h3>
+
+<!-- testing variables -->
+<p>
+  
+</p>
+<!-- -->
+
+<div id="panel">
+  <ul><b><%= t(:update_history) %></b></ul>
+  <div id="details">
+    <% #initial version counter
+	iv = 0
+    %>
+    <ul>
+    <% @form_instance.form_instance_versions.each do |version| %>
+      <% if iv == version.version %>
+	 <li>
+	    <%
+		view_link = link_to t(:view), version
+		precise_version = number_with_precision version.get_version, :precision => 2
+		formatted_update_date = version.updated_at.to_formatted_s (:long_ordinal)
+		li = t(:revision_text, :revision => (version.revision+1), :user => version.user.mail_to_s, :updated_at => formatted_update_date, :link_url => view_link, :version => precise_version) %>
+	    <%= li.html_safe %>
+	    </li>
+      <% else %>
+          </ul>
+          <li>
+	   <%= raw (t( :version_text, :version=> (version.version.to_s + '.00'), :created_at => version.created_at.to_formatted_s(:long_ordinal), :user => raw(version.user.mail_to_s))) %>
+          </li><ul>
+      <% end %>      
+    <%  iv = version.version %>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<script type="application/x-javascript"><![CDATA[
+//]]>
+</script>
+
+<style>
+#toolbar {
+  padding: 4px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* support: IE7 */
+*+html #toolbar {
+  display: inline;
+}
+</style>

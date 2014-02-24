@@ -1,0 +1,39 @@
+id,product_type_id,component_id,sequence,,,,comment,,,
+1,1,1,1,,,,wpcc1,,,
+2,1,2,2,,,,wpcc1,,,
+3,2,3,1,,,,wpcc2,,,
+4,2,4,2,,,,wpcc2,,,
+5,3,5,1,,,,wpcc3,,,
+6,3,6,2,,,,wpcc3,,,
+7,4,7,1,,,,wpcc4,,,
+8,4,8,2,,,,wpcc4,,,
+9,5,9,1,,,,wpcc5,,,
+10,5,10,2,,,,wpcc5,,,
+11,6,11,1,,,,wpcc6,,,
+12,6,12,2,,,,wpcc6,,,
+13,6,13,3,,,,wpcc6,,,
+14,7,14,1,,,,wpcc7,,,
+15,7,15,2,,,,wpcc7,,,last complete series
+16,9,,1,,,,wpcc signature series,,,incomplete from here and below - inclusive\
+17,9,,2,,,,wpcc signature series,,,
+18,9,,3,,,,wpcc signature series,,,
+19,9,,4,,,,wpcc signature series,,,
+20,9,,5,,,,wpcc signature series,,,
+21,9,,6,,,,wpcc signature series,,,
+22,9,,7,,,,wpcc signature series,,,
+23,10,35,1,,,,wpcc cube,,,
+24,10,36,2,,,,wpcc cube,,,
+25,10,37,3,,,,wpcc cube,,,
+26,10,38,4,,,,wpcc cube,,,
+27,10,39,5,,,,wpcc cube,,,
+28,10,40,6,,,,wpcc cube,,,
+29,10,41,7,,,,wpcc cube,,,
+30,,,,,,,,,,
+31,,,,,,,,,,
+32
+33
+34
+35
+36
+37
+38

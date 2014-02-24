@@ -1,0 +1,55 @@
+<div class="left_right_padded_div">
+	<label class="white_header_label"><%= (t("user_registration_header"))%></label>
+	<div style="color:#fff;font-size: 12px;padding-left: 10px">
+          
+                <% if @method == :user %>
+                     
+                    <% my_title = t(:request_access) %>
+                    <% my_descr = t(:request_access_paragraph) %>
+                    
+                    <%= link_to t(:user_registration), (new_user_path :method => "request_access") %>
+                <% else %>
+
+                    <% my_title = t(:request_access) %>
+                    <% my_descr = t(:request_access_paragraph) %>
+                  
+
+                    <%= link_to t(:product_registration), (new_product_instance_path :method => "initial") %>
+                <% end %>
+                
+                
+		<hr>
+	</div>
+	<div class="registration_div">
+		<div class="registration_div">
+                  
+                  
+                  
+                  
+			<div class="green_menu"><%= my_title %></div>
+			<p style="color: black; padding: 4px;">
+				<%= raw my_descr %>
+			</p>
+			<%
+				#1. Validate Registration Key
+				#2. Create User
+				#3. Email Verification
+							
+			%>
+			
+
+				
+			<% form_path = (post_validate_key_path :method => @method, :client_id => @client_id, :user_id => @user_id) %>
+
+			
+			<%= form_tag form_path do  %>
+                          <%= render :partial=> "shared/validate_key"%>
+                        <%  end  %>
+		
+		</div>
+	</div>
+        <br / >
+        
+        
+        <%= render :partial => 'shared/already_registered' %>
+        

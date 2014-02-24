@@ -1,0 +1,134 @@
+<div class="forgot_email_div" style="width: 100%">
+        <div class="green_menu" style="padding-right: 4px;">
+          <%= t(:notes)%>
+        </div>
+        <div style="color: white; padding: 10px;">
+           <div class="note_container">           
+            <% @notes_container.each do |pi| %>
+			<h3>
+				<table width="100%"><tr><td align="left">						
+					<b><u><%= raw(pi.get_title (current_language_id)) %></u></b>
+				</td>
+				<td align="right">
+					<% if pi.class == ProductInstance %>
+					  <u><%= raw(pi.product_type.get_title(current_language_id))	%></u>					
+					<% else %>
+					  <u><%= raw(pi.component_type.get_title(current_language_id))	%></u>
+					<% end %>
+				</tD>
+				</tr></table>
+			</h3>
+			
+			
+	       <%
+			pi_looper = []
+			if pi.class == ProductInstance
+				pi_looper = pi.notes
+			else
+				pi_looper = pi.notes(@product_instance)
+			end
+			
+	       %>
+	       
+	       
+			<div>
+				<% if pi_looper.empty? %>
+				   <div style="padding-left: 10px"><%= t(:no_notes_available) %></div>           
+				<% end %>
+				<% pi_looper.each do |pin| %>
+				   <div class="note" style="padding-left: 10px">
+					<h3>
+						<table width="100%"><tr>
+							<td align="left"><%= pin.subject.to_s %></td>
+							<td align="right"><%= t(:by) %>: <%= pin.user.name.to_s %>
+								(<%= pin.created_at.to_formatted_s(:long_ordinal) %>)
+							</td>
+						</tr></table>
+							
+					</h3>
+				        <div><%= pin.note %><br><br>
+
+				        </div>
+				   </div>
+				<% end %>
+			</div>
+	            <% end %>
+		</div>
+	</div>
+	   
+	   
+	   
+	<!-- create new note HTML -->      
+        <div style="padding: 12px; border: box;">
+		<h3><%= t(:post_a_note) %></h3>
+		<%
+		 n = Note.new
+		 n.product_instance_id = @product_instance_id
+		 
+		 my_notes_objects = ProductInstance.object_title_array(@notes_container, current_language_id)
+		 
+		%>
+	
+		<div><p>
+			<%= form_for (n) do |my_form| %>
+      
+				<%= my_form.label :product_instance_id  , t(:product), :style=>"padding: 0px"%>
+				<%= my_form.hidden_field :note_object_type, :value => @notes_container.first.class.to_s %>
+				<% if @notes_container.first.class == ProductInstance %>
+					<%= my_form.hidden_field :product_instance_id, :value => @product_instance_id.to_s %> 
+					<%= my_form.select :product_instance_id, options_for_select(my_notes_objects, selected: @product_instance_id) %>
+				<% else %>
+				    <%= my_form.select :component_id, options_for_select(my_notes_objects) %>
+				    <%= my_form.hidden_field :product_instance_id, :value => @product_instance_id.to_s %>       				    
+				<% end %>
+				<%= my_form.hidden_field :user_id, :value => current_user.id.to_s %>
+				<%= my_form.label :subject, t(:subject) %>
+				<%= my_form.text_field :subject, :class => "wider_width" %>
+				
+				<%= my_form.label :language, t(:language) + ": " + current_language.to_s %>
+		    
+				<%= my_form.label :note, t(:note) %>
+				<%= my_form.text_area :note, {:class=> "wider_width", :rows => 5, :cols => 40} %>
+				<br>
+				<%= my_form.submit :value => t(:create_note), :class => "btn btn-success" %>
+		
+			<% end %>
+		</p></div>
+        </div>
+</div>
+	
+	
+<script>
+  $(function() {
+    $( ".note" ).accordion({
+      heightStyle: "content"
+    });
+    $ (".note_container").accordion({
+	heightStyle: "content"
+    });
+    $( ".note_container" ).accordion({
+      collapsible: true 
+    });    
+    <% if @notes_container.nil? %>
+	    $ (".note_container").accordion({
+		active: false
+	    });
+    <% else %>
+	<% if @notes_container.size == 1 %>
+
+	<% else %>
+	    $ (".note_container").accordion({
+		active: false
+	    });	    
+	<% end %>
+    <% end %>
+    $( ".note" ).accordion({
+      collapsible: true 
+    });
+    $( ".note" ).accordion({
+      active: false 
+    });
+
+  });
+
+</script>

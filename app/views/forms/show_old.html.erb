@@ -1,0 +1,163 @@
+
+<div style="color:#fff;font-size 12px; padding-left: 10px">
+	<!-- @@kk: put link to product_instance.index -->
+	<%= link_to t(:products), ProductInstance %> - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
+	
+	<% if @component %>
+	  <%= link_to @component.get_title(current_language_id), (component_path@component, :product_instance_id => @product_instance.id) %> - 
+  	<% end %>
+  	
+	<%= link_to @form.get_title(current_language_id), @form %>
+	
+	<hr>
+</div> 
+
+
+
+<div id="tabs">
+  <ul>
+
+	<!--
+		create local hrefs for each tab for each language that is installed
+		for this product_instance.
+		if no languages are installed, then just create one for the first lanuage
+		
+		languages would either be an Array
+		or it will be a single language. so check if its an array, if its not
+		an array just write the tab-href
+	-->
+	
+	<% i = 1%>
+	<% languages = @form.product_instance.get_languages()  %>
+	
+		<% if languages.class == Array %>
+	
+	
+		<% languages.each do |l| %>
+		    <%= raw(write_tab_link(i, l)) %>
+		    <% i = i + 1 %>
+		<% end %>
+	<% else %>
+		<%  l = languages %>
+		<%= raw(write_tab_link(i, l)) %>
+	<% end %>
+	<li><a href="#last"><%=t (:additional_languages)%></a></li>
+  </ul>
+  
+  <!--
+	create the actual tab content for each language.
+	in this case, each language will yield a form_instance. if the given language doesnt
+	have a form_instance, then system will create with default entries.
+	
+	depending on what the form_instance is, render the tab content
+  -->  
+  <% i = 1 %>
+
+     <% if languages.class == Array %>
+    
+	   <% languages.each do |l| 
+	     %>
+	     <%= raw(write_form_tab(i, l, @form_instance)) %>
+		 <% i = i + 1 %>
+	   <% end %>
+     <% else %>
+     
+       <% l = languages %>
+		
+		<%
+		#load up the current form_instance for the current form -- fi is the relative form instance.
+		#the get_form_instance_or_create method determines the most relevant form_instance (if its the newest one or not)
+		fi = @form_instance %>
+		<%= form_for @form do |my_form| %>
+			
+			<%
+				#formplate identifier keys
+			%>
+			 <input type="hidden" name="form_instance_id" value="<%=  fi.id.to_s %>" />
+			 <input type="hidden" name="form_id" value="<%=  @form.id.to_s %>" />
+
+			 <input type="hidden" name="product_instance_id" value="<%=  @form.product_instance.id.to_s %>" />
+
+		
+		        <%= raw (write_form_tab(i, l, fi)) %>
+		<% end %>
+     <%end %>
+
+   <!--
+	render the content for how to add more languages in to this product instance
+   -->
+  <div id="last">
+	<p class="plain"><%= raw(t(:additional_languages_description))%></p>
+  </div>
+  
+  
+  
+  
+  
+</div>
+
+<script language="javascript" type="text/javascript">
+	$(document).ready(function() {
+	  $("#tabs").tabs();
+          $(".datepicker" ).datepicker({
+	    showButtonPanel: true
+          });
+	  	  
+	  $("#accordion").accordion({
+			collapsible: true,
+			heightStyle: 'content'
+		    });
+	});
+	
+	
+	function validate_and_submit(){
+		if (validate())
+			submit_form();
+	}
+	function validate() {
+		alert ('validing the form');
+		return true;
+	}
+	function submit_form() {
+		alert ('ready to submit form');
+		
+	}
+	function save_or_discard() {
+	  //check to see if any changes were made...if changes were made then confirm if they
+	  //want to save or discard before continuing.
+	}
+
+	function edit_form(sender)  {
+	  //if sender's value is disable_edit then disable edit and change the value to enable edit
+	  if (sender.value == '<%= t(:disable_edit) %>') {
+	    sender.value = '<%= t(:enable_edit) %>';
+	    lock_form (sender.form, true);
+	  } else {
+	    sender.value = '<%= t(:disable_edit) %>'
+	    lock_form(sender.form, false)
+	  }
+	}
+	function lock_form(frm, lock)  {
+	  alert(frm);
+	  frm.locked = lock;
+	}
+	//this javascript function will lock the obj if lock=true, and unlock it if lock= false
+	function lock_object(obj, lock)  {
+	  //code
+	  obj.locked = lock;
+	}
+</script>
+<style>
+#toolbar {
+  padding: 4px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* support: IE7 */
+*+html #toolbar {
+  display: inline;
+}
+</style>

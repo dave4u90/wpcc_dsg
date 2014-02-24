@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @d_logger.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @d_logger.description %>
+</p>
+
+<p>
+  <b>Id:</b>
+  <%= @d_logger.id %>
+</p>
+
+
+<%= link_to 'Edit', edit_d_logger_path(@d_logger) %> |
+<%= link_to 'Back', d_loggers_path %>

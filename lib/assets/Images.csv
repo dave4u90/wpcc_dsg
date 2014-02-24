@@ -1,0 +1,20 @@
+image_id,image_url,height_width_ratio,height,width,which-board?,other comment
+1,wpcc1_1.png,2.221004566,2432,1095,wpcc1,
+2,wpcc1_2.png,1.837121212,2425,1320,wpcc1,
+3,wpcc2_1.png,1.833333333,2420,1320,wpcc2,
+4,wpcc2_2.png,1.771994135,2417,1364,wpcc2,
+5,wpcc3_1.png,2.257703081,2418,1071,wpcc3,
+6,wpcc3_2.png,1.810164425,2422,1338,wpcc3,
+7,wpcc4_1.png,1.893219018,2429,1283,wpcc4,
+8,wpcc4_2.png,1.807004471,2425,1342,wpcc4,
+9,wpcc5_1.png,2.206927985,2421,1097,wpcc5,
+10,wpcc5_2.png,1.854517611,2422,1306,wpcc5,
+11,wpcc6_1.png,2.338476374,2425,1037,wpcc6,
+12,wpcc6_2.png,1.858346095,2427,1306,wpcc6,
+13,wpcc6_3.png,1.818660647,2417,1329,wpcc6,
+14,wpcc7_1.png,2.226499552,2487,1117,wpcc7,
+15,wpcc7_2.png,1.279057592,2443,1910,wpcc7,
+16,wpcc_flip_e_info_panel.png,1.561904762,1640,1050,wpcc1-flip-e-info
+17,know_your_role_binder.png,0.898533724,1532,1705,wpcc1-know-your-role-single-sideentry box
+18,wpcc2_1_1.png,1,1,1,wpcc2_1_1-lawbinder
+19,wpcc2_1_2.png,1,1,1,wpcc2_1_2-lawbinder2

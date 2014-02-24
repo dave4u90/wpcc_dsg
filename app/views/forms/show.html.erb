@@ -1,0 +1,148 @@
+
+
+<div style="color:#fff;font-size 12px; padding-left: 10px">
+	<!-- @@kk: put link to product_instance.index -->
+	<%= link_to t(:products), ProductInstance %> - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
+	
+	<% if @component %>
+	  <%= link_to @component.get_title(current_language_id), (component_path@component, :product_instance_id => @product_instance.id) %> - 
+  	<% end %>
+  	
+	<%= link_to @form.get_title(current_language_id), @form %>
+	
+	<hr>
+</div> 
+
+<div style="padding-left: 10px; padding-right: 10px">
+
+<div id="tabs">
+  <ul>
+
+	<!--
+		create local hrefs for each tab for each language that is installed
+		for this product_instance.
+	-->
+	
+	<% i = 1 %>
+	<% languages = @form.product_instance.get_languages()  %>
+	
+	
+	<% languages.each do |l| %>
+	    <li><a href="#tabs-<%= i.to_s %>"><%= (l.language_description) %></a></li>
+	    
+	    <% i = i + 1 %>
+	<% end %>
+	<li><a href="#last"><%=t (:additional_languages)%></a></li>
+	
+  </ul>
+  
+  <!--
+	create the actual tab content for each language.
+	in this case, each language will yield a form_instance. if the given language doesnt
+	have a form_instance, then system will create with default entries.
+	
+	depending on what the form_instance is, render the tab content
+  -->  
+  <% i = 1 #reset the loop counter for tabs back to 1 %>
+  <% languages.each do |l| %>
+  
+    <div id="tab-<%= i.to_s %>" style="background-color: #e2e2e2; padding-left: 3px; padding-right: 5px; padding-top: 5px; padding-bottom: 3px;"%>
+      <% fi = @form.get_form_instance_or_create (l.id) %>
+      
+      
+      <div style="border-style: solid; border-color: #cccccc; border-width: 1px; width: 100%; background-color: white;">
+	<p style="padding: 5px;" class="plain">
+	  1234
+	</p>
+      </div>
+      
+      <!--
+       in here would be a tab for the current language in the sequence
+      -->
+      
+    </div>
+
+    
+	<% i = i + 1 %>
+  <% end %>
+
+
+
+   <!--
+	render the content for how to add more languages in to this product instance
+   -->
+  <div id="last">
+	<p class="plain"><%= raw(t(:additional_languages_description))%></p>
+  </div>
+  
+  
+  
+  
+  
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function() {
+	  $("#tabs").tabs();
+          $(".datepicker" ).datepicker({
+	    showButtonPanel: true
+          });
+	  	  
+	  $("#accordion").accordion({
+			collapsible: true,
+			heightStyle: 'content'
+		    });
+	});
+	
+	
+	function validate_and_submit(){
+		if (validate())
+			submit_form();
+	}
+	function validate() {
+		alert ('validing the form');
+		return true;
+	}
+	function submit_form() {
+		alert ('ready to submit form');
+		
+	}
+	function save_or_discard() {
+	  //check to see if any changes were made...if changes were made then confirm if they
+	  //want to save or discard before continuing.
+	}
+
+	function edit_form(sender)  {
+	  //if sender's value is disable_edit then disable edit and change the value to enable edit
+	  if (sender.value == '<%= t(:disable_edit) %>') {
+	    sender.value = '<%= t(:enable_edit) %>';
+	    lock_form (sender.form, true);
+	  } else {
+	    sender.value = '<%= t(:disable_edit) %>'
+	    lock_form(sender.form, false)
+	  }
+	}
+	function lock_form(frm, lock)  {
+	  alert(frm);
+	  frm.locked = lock;
+	}
+	//this javascript function will lock the obj if lock=true, and unlock it if lock= false
+	function lock_object(obj, lock)  {
+	  //code
+	  obj.locked = lock;
+	}
+</script>
+<style>
+#toolbar {
+  padding: 4px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/* support: IE7 */
+*+html #toolbar {
+  display: inline;
+}
+</style>

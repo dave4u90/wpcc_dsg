@@ -1,0 +1,20 @@
+<% provide(:title, 'Generate New Products') %>
+<h1>Generate New Products [Admin]</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= form_for(@product) do |f| %>
+  	<div class="field">
+	<%= f.label :product_type %><br />
+	<%= f.collection_select(:product_type_id, ProductType.all, :id, :product_type_description, :prompt => "Please select a product type ")%>
+
+	<%= f.label :enter_number_of_products %>
+	<%= f.text_field :number_of_products %>
+	
+	<%= f.submit "Create products", class: "btn btn-large btn-primary" %>
+	</div>
+
+    <% end %>
+  </div>
+</div>
+

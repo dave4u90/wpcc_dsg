@@ -1,0 +1,14 @@
+<% provide(:title, 'All Formplates') %>
+<h1>All Formplates</h1>
+
+
+<ul class="formplates">
+	<% @formplates.each do |f| %>
+	<li>
+  
+  <%= link_to f.formplate_title, f%>
+ 
+</li>
+  <% end %>
+  
+</ul>

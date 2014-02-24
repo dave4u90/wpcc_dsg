@@ -1,0 +1,81 @@
+id,component_description,component_type_id,upc_code,direct_sub_components,num_formplates,icon_url,image_url,image_id,,,which-board?
+1,Know Your Role,2,,,0,,,,,,
+2,Safety is a Partnership - Know Your Role,9,,,0,,wpcc1_1.png,1,,,wpcc1
+3,Health and Safety Policy Statements,1,,,0,,wpcc8_1.png,16,,,wpcc8
+4,Panel 1 - Front,12,,,0,,wpcc1_2.png,2,,,wpcc1
+5,Panel 1 - Back,12,,,0,,,,,,
+6,Panel 2 - Front,12,,,0,,,,,,
+7,Panel 2 - Back,12,,,0,,,,,,
+8,Panel 3 - Front,12,,,0,,,,,,
+9,Panel 3 - Back,12,,,0,,,,,,
+10,Proof of ...,2,,,0,proofOf.png,,,,,
+11,It's All About ...,4,,,0,allAbout.png,wpcc4_1.png,7,,,wpcc4
+12,Proof of ... <i>Our</i> Training and Certification,9,,,0,,wpcc4_1.png,8,,,wpcc4
+13,It's All About ... <i>Our</i> Orientation and Training Binder 1,9,,,0,,,,,,
+14,It's All About ... <i>Our</i> Orientation and Training Binder 2,9,,,0,,,,,,
+15,The Law,3,,,0,,,,,,
+16,This Is How We Do It!,4,,,0,,wpcc2_1.png,3,,,wpcc2
+17,The Law - Governing Legislations &#183 Regulations &#183 Industry Standards,9,,,0,,wpcc2_2.png,4,,,wpcc2
+18,<i>Our</i> Policies and Procedures Binder 1 - This Is How We Do It!,9,,,0,,,,,,
+19,<i>Our</i> Policies and Procedures Binder 2 - This Is How We Do It!,9,,,0,,,,,,
+20,Committee Meeting Minutes and <i>Our</i> Health and Safety Continuous Improvement Plan,5,,,0,,,,,,
+21,Addressing ...,3,,,0,,,,,,
+22,Post related Health and Safety Material Only!,8,,,0,,wpcc6_1.png,11,,,wpcc6
+23,Addressing ... Safety Talks and Other Highlights,p,,,0,,wpcc6_2.png,12,,,wpcc6
+24,Addressing ... Health and Wellness,9,,,0,,wpcc6_3.png,13,,,wpcc6
+25,Health and Safety Workplace Inspection Reports and Records of Corrective Actions Taken,5,,,0,,,,,,
+26,It Must Be Done!,3,,,0,,,,,,
+27,Preventive Maintenance - It Must Be Done!,9,,,0,,wpcc5_1.png,9,,,wpcc5
+28,Workplace Inspections - It Must be Done!,9,,,0,,wpcc5_2.png,10,,,wpcc5
+29,"Health and Safety Assessments, Survey Reports and Records of Corrective Actions Taken",5,,,0,,,,,,
+30,Know What To Do,3,,,0,,,,,,
+31,Accidents and Emergencies Happen - Know What To Do,9,,,0,,wpcc3_1.png,5,,,wpcc3
+32,<i>Our</i> Emergency Contacts,1,,,0,,wpcc3_2.png,6,,,wpcc3
+33,<i>Our<i> Floor Plans,7,,,0,,,,,,
+34,Panel 1 - Front,12,,,0,,,,,,
+35,Panel 1 - Back,12,,,0,,wpcc7_1.png,14,,,wpcc7
+36,Panel 2 - Front,12,,,0,,wpcc7_2.png,15,,,wpcc7
+37,Panel 2 - Back,12,,,0,,,,,,
+38,Panel 3 - Front,12,,,0,,,,,,
+39,Panel 3 - Back,12,,,0,,,,,,
+40,Panel 1 - Front,13,,,0,,,,,,
+41,Panel 1 - Back,13,,,0,,,,,,
+42,Panel 2 - Front,13,,,0,,,,,,
+43,Panel 2 - Back,13,,,0,,,,,,
+44,Safe Work Operating Procedures - Know What To Do,9,,0,0,,,,,,
+45,<i>Our</i> Archived Health and Safety Documentation,9,,0,0,wpcc9.png,,,,,
+46,In <i>Our</i> Workplace,2,,0,0,,,,,,
+47,All Contractors and Visitors Responsibilities - In <i>Our</i> Workplace,9,,0,0,,,,,,
+48,WPCC 1 <i>Commitment</i>,14,,0,0,wpcc1.png,,,,,
+49,WPCC 2 <i>Requirements</i>,14,,0,0,wpcc2.png,wpcc8_2.png,17,,,wpcc8
+50,WPCC 3 <i>Hazards</i>,14,,0,0,wpcc3.png,,,,,
+51,WPCC 4 <i>Training</i>,14,,0,0,wpcc4.png,,,,,
+52,WPCC 5 <i>Inspections</i>,14,,0,0,wpcc5.png,,,,,
+53,WPCC 6 <i>Awareness</i>,14,,0,0,wpcc6.png,,,,,
+54,WPCC 7 <i>Emergency</i>,14,,0,0,wpcc7.png,,,,,
+55,Binder 1,9,7-72934-12320-8,0,0,,,,,,
+56,Binder 2,9,7-72934-12321-5,0,0,,,,,,
+57,Binder 3,9,7-72934-12322-2,0,0,,,,,,
+58,Binder 4,9,7-72934-12323-9,0,0,,,,,,
+59,Senior Management Responsibilities <br> Responsabilités - Haute direction,15,,,,,,,,,
+60,Employer / Management Responsibilities <br>  Responsabilités – Employeur/Direction,15,,,,,,,,,
+61,Accountability - Employer / Management<br>Imputabilité – Employeur/Direction,15,,,,,,,,,
+62,Supervisor Responsibilities<br>Responsabilités - Superviseur,15,,,,,,,,,
+63,Accountability - Supervisor<br>Imputabilité - Superviseur,15,,,,,,,,,
+64,Employee / Worker / Supplied Labour Responsibilities<br>Responsabilités – Employé/Travailleur/Main-d’œuvre fournie,15
+65,Accountability - Employee / Worker / Supplied Labour<br>Imputabilité - Employé/Travailleur/Main-d’œuvre fournie,15
+66,Health and Safety Representative / Committee Responsibilities<br>Responsabilités – Agent/Comité de la santé et de la sécurité au travail,15
+67,First Aid Attendant / First Aider Responsibilities<br>Responsabilités – Secouriste opérationnel/secouriste,15
+68,Environmental Designate Responsibilities<br>Responsabilités – Représentant en matière d’environnement,15
+69,Owner Responsibilities<br>Responsabilités - Propriétaire,15
+70,Contractor / Subcontractor / Consultant / Visitor Responsibilities<br>Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur,15
+71,Contractor / Subcontractor / Consultant / Visitor Responsibilities<br>Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur,15
+72,Contractor / Subcontractor / Consultant / Visitor Responsibilities<br>Responsabilités – Fournisseur/Sous-traitant/Expert-conseil/Visiteur,15
+73,Accountability - Contractor / Subcontractor / Consultant<br>Imputabilité – Fournisseur/Sous-traitant/Expert-conseil,15
+74,Directors / Officers of the Corporation Responsibilities<br>Responsabilités – Dirigeant/Membre de la direction,15
+75,Supplier of Tools and Equipment Responsibilities<br>Responsabilités – Fournisseur d’outils et d’équipement,15
+76,Additional Responsibilities of Others in our workplace<br>Autres responsabilités – Autres faisant partie de notre milieu de travail,15
+77,Additional Responsibilities of Others in our workplace<br>Autres responsabilités – Autres faisant partie de notre milieu de travail,15
+78,Additional Responsibilities of Others in our workplace<br>Autres responsabilités – Autres faisant partie de notre milieu de travail,15
+79,Our Emergency Contacts and Building Floor Plan(s)<br>Nos coordonnées d’urgence et plans d’étage,15
+80,Sign Off Forms<br>Formulaires d’autorisation écrite,1

@@ -1,0 +1,18 @@
+<% provide(:title, 'All Element Values') %>
+<h1>All Element Values</h1>
+
+
+<ul class="elementValues">
+	<% @elementvalues.each do |element| %>
+	<li>
+  
+  <%= link_to element.element_value, element %>
+ 
+</li>
+  <% end %>
+  
+</ul>
+
+<%= link_to "Printable (PDF)", element_values_path(:format => "pdf") %>
+
+<%= link_to "<<Back", :back %>

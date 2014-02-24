@@ -1,0 +1,42 @@
+id (0),component_description (1),component_description_english (2),component_type_id (3),upc_code (4),direct_sub_components (5) ,num_formplates (6),icon_url (7),image_url (8),image_id (9),,,which-board?/component,,component_type,,,,,comment headers
+1,wpcc1_1 Health and Safety Statement Flip-E-Info,Health and Safety Policy Statements,1,,,0,,wpcc1_1.png,1,,,wpcc1,,Flip-E-Info (1),,,,,
+2,wpcc1_2 Know Your Role Single Side Entry Box,Know Your Role,2,,,0,,wpcc1_2.png,2,,,wpcc1,,Single Sleeve Side-Entry Box (2),,,,,
+3,wpcc2_1 The Law Double Side Entry Box,The Law,3,,,0,,wpcc2_1.png,3,,,wpcc2,,Double Sleeve Side-Entry Box (3),,,,,
+4,wpcc2_2 This is How we do it! Double Top Entry Box,This Is How We Do It!,5,,,0,,wpcc2_2.png,4,,,wpcc2,,Double Hinged Top-Entry Box (4),,,,,
+5,wpcc3_1 Inspection Reports Clipboard,Health and Safety Workplace Inspection Reports and Records of Corrective Actions Taken,5,,,0,,wpcc3_1.png,5,,,wpcc3,,Clipboard (5),,,,,
+6,wpcc3_2 Know what to do - Double Side Entry Box,Know What To Do,3,,,0,,wpcc3_2.png,6,,,wpcc3,,Double Sleeve Side-Entry Box (3),,,,,
+7,wpcc4_1 Proof Of - Single Side Entry Box,Proof of ... <i>Our</i> Orientation and Training,2,,,0,,wpcc4_1.png,7,,,wpcc4,,Single Sleeve Side-Entry Box (2),,,,,
+8,wpcc4_2 Its All About - Double Hinged Top Entry Box,It's All About … <i>Our</i> Orientation and Training,4,,,0,,wpcc4_1.png,8,,,wpcc4,,Double Hinged Top-Entry Box (4),,,,,
+9,wpcc5_1 Maintenance Reports ClipBoard,Maintenance Reports / Inspection Reports / Records of Corrective Actions Taken,5,,,0,,wpcc5_1.png,9,,,wpcc5,,Clipboard (5),,,,,
+10,wpcc5_2 It Must be Done! Double Side Entry Box,It Must Be Done!,3,,,0,,wpcc5_2.png,10,,,wpcc5,,Double Sleeve Side-Entry Box (3),,,,,
+11,wpcc6_1 Improvement Plan - Clipboard,<i>Our</i> Health and Safety Continous Improvement Plan,5,,,0,,wpcc6_1.png,11,,,wpcc6,,Clipboard (5),,,,,
+12,wpcc6_2 Addressing - Double Side Entry Box,Addressing … Safety Talks and Health and Wellness,3,,,0,,wpcc6_2.png,12,,,wpcc6,,Double Sleeve Side-Entry Box (3),,,,,
+13,wpcc6_3 Health and Safety Corkboard,Health and Safety Corkboard,7,,,0,,wpcc6_3.png,13,,,wpcc6,,Corkboard (7),,,,,
+14,wpcc7_1 Emergency Contacts Flip-E-Info,<i>Our</i> Emergency Contacts,1,,,0,,wpcc7_1.png,14,,,wpcc7,,Flip-E-Info (1),,,,,
+15,wpcc7_2 Floor Plan - FlipELocate,Floor Plan,6,,,0,,wpcc7_2.png,15,,,wpcc7,,Flip-E-Locate (6),,,,,
+16,wpcc1_flip-e-info-panel 1 front,Panel 1 - Front,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+17,wpcc1_flip-e-info-panel 1 black,Panel 1 - Back,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+18,wpcc1_flip-e-info-panel 2 front,Panel 2 - Front,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+19,wpcc1_flip-e-info-panel 2 black,Panel 2 - Back,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+20,wpcc1_flip-e-info-panel 3 front,Panel 3 - Front,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+21,wpcc1_flip-e-info-panel 3 back,Panel 3 - Back,9,,,0,,wpcc_flip_e_info_panel.png,16,,,wpcc1_1 Health and Safety Statement Flip-E-Info,,Flip-E-Info Panel (9)
+22,wpcc1 Know Your Role Binder (KYR),Safety is a Partnership - Know Your Role,8,,,0,,know_your_role_binder.png,17,,,wpcc1_2 Know Your Role Single Side Entry Box,,Binder (8)
+23,wpcc2_law binder 1,The <i>Law</i> Governing Legislations Regulations and Industry Standards ,8,,,0,,wpcc2_1_1.png,18,,,wpcc2_1 The Law Double Side Entry Box,,Binder (8)
+24,wpcc2_law_binder2,Law Binder 2 <name tbd>,8,,,0,,wpcc2_1_2.png,19,,,wpcc2_1 The Law Double Side Entry Box,,Binder (8)
+25,wpcc1-KRY binder's Tab1,Tab 1,12,,,0,,,0,,,wpcc1 Know Your Role Binder (KYR),,Tab (12)
+26,wpcc1-KRY binder's Tab2,Tab 2,12,,,0,,,0,,,wpcc2_law binder 1,,Tab (12)
+27,wpcc1-KRY binder's Tab3,Tab 3,12,,,0,,,0,,,wpcc2_law_binder2,,Tab (12)
+28,wpcc1-KRY binder's Tab4,Tab 4,12,,,0,,,0,,,wpcc1-KRY binder's Tab1,,Tab (12)
+29,wpcc1-KRY binder's Tab5,Tab 5,12,,,0,,,0,,,wpcc1-KRY binder's Tab2,,Tab (12)
+30,wpcc1-KRY binder's Tab6,Tab 6,12,,,0,,,0,,,wpcc1-KRY binder's Tab3,,Tab (12)
+31,wpcc1-KRY binder's Tab7,Tab 7,12,,,0,,,0,,,wpcc1-KRY binder's Tab4,,Tab (12)
+32,wpcc1-KRY binder's Tab8,Tab 8,12,,,0,,,0,,,wpcc1-KRY binder's Tab5,,Tab (12)
+33,wpcc1-KRY binder's Tab9,Tab 9,12,,,0,,,0,,,wpcc1-KRY binder's Tab6,,Tab (12)
+34,wpcc1-KRY binder's Tab10,Tab 10,12,,,0,,,0,,,wpcc1-KRY binder's Tab7,,Tab (12)
+35,cube_binder1,Cube Binder 1,8,,,,,,,,,cube,,Binder (8)
+36,cube_binder2,Cube Binder 2,8,,,,,,,,,cube,,Binder (8)
+37,cube_binder3,Cube Binder 3,8,,,,,,,,,cube,,Binder (8)
+38,cube_binder4,Cube Binder 4,8,,,,,,,,,cube,,Binder (8)
+39,cube_binder5,Cube Binder 5,8,,,,,,,,,cube,,Binder (8)
+40,cube_binder6,Cube Binder 6,8,,,,,,,,,cube,,Binder (8)
+41,cube_binder 7,Cube Binder 7,8,,,,,,,,,cube,,Binder (8)

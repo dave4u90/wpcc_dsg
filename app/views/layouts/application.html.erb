@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= yield :head %>
+  <meta charset="UTF-8">
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "custom-style" %>
+  <%= stylesheet_link_tag "fancybox" %>
+  <%= stylesheet_link_tag "jquery.fancybox" %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+<div>
+  <%= render 'layouts/header' %>
+  <% #only output flash alerts that are not of json type. thru naming convention, flash elements that start with a key json_* is json
+     flash.each do |key, value|
+       if key.to_s.match(/^json_*/) == nil %>
+          <div class="alert alert-<%= key %>">
+            <%= raw(value) %>
+          </div>
+      <%
+         end
+         end %>
+  <div style="min-height: 400px; padding-left: 100px; padding-right: 100px;">
+    <%= yield %>
+  </div>
+
+  <%#= render 'layouts/upload_dialog' %>
+
+  <div class="clearfix"></div>
+  <%= render 'layouts/footer' %>
+
+</div>
+</body>
+</html>

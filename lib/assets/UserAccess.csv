@@ -1,0 +1,18 @@
+id,user_id,product_instance_id,access_role_id,,,,,,,,
+1,1,1,1,,,,John Simpson,,Product Instance=1,,
+2,2,1,1,,,,Fahad Jawaid,,Product Instance=1,,
+3,3,1,1,,,,Terry Tesla,,Product Instance=1,,
+4,4,1,1,,,,Tetyana Tesla,,Product Instance=1,,
+5,5,1,5,,,,Talott User,,Product Instance=1,,
+6,6,1,1,,,,Test Administrator,,Product Instance=1,,
+7,7,1,6,,,,CRUD User,,Product Instance=1,,
+8,2,2,5,,,,Fahad Jawaid,,Product Instance=2,,
+9,7,2,6,,,,CRUD User,,Product Instance=2,,
+10,6,2,1,,,,Test Administrator,,Product Instance=2,,
+11,2,3,1,,,,Fahad Jawaid,,Administrator,,WPCC3
+12,2,4,1,,,,Fahad Jawaid,,Administrator,,WPCC4
+13,2,5,1,,,,Fahad Jawaid,,Administrator,,WPCC5
+14,2,6,1,,,,Fahad Jawaid,,Administrator,,WPCC6
+15,2,7,1,,,,Fahad Jawaid,,Administrator,,WPCC7
+16,2,8,1,,,,Fahad Jawaid,,Administrator,,WPCC8
+17,2,2,1,,,,Fahad Jawaid,,Administrator,,WPCC2

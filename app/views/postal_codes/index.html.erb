@@ -1,0 +1,39 @@
+    <% if @requested_item == "street" %>      
+      <% if @postal_codes %>
+            <% @postal_codes.each do |pc| %>
+               <option value="<%= pc.city %>"><%= pc.city %></option>
+            <% end %>
+      <% else %>
+          <option value="<%= t(:other)%>" selected="true"><%= t(:other) %></option>  
+      <% end %>
+      
+    <% elsif @requested_item == "city" %>
+      
+      <% if @postal_codes %>
+         <%= @postal_codes.first.city.to_s %>
+      <% else %>
+         <%= t(:other) %>
+      <% end %>
+      
+    <% elsif @requested_item == "country" %>
+      <% @countries.each do |c| %>
+          <% is_selected = "false" %>
+          <% if @postal_codes %>
+               <% if @postal_codes.first.country_id == c.id %>
+                   <% is_selected = "true" %>
+               <% end %>
+          <% end %>      
+          <option value="<%= c.name.to_s %>" selected="<%= is_selected %>"><%= c.name.humanize %></option>      
+      <% end %>
+      
+      <% if @postal_codes
+          is_selected = "false"
+         else
+          is_selected = "true"
+         end
+      %>
+  
+      <option value="<%= t(:other) %>" selected="<%= is_selected %>"><%= t(:other) %></option>            
+    <% end %>
+  
+

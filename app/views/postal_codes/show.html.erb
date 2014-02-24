@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Street:</b>
+  <%= @postal_code.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @postal_code.city %>
+</p>
+
+<p>
+  <b>Id:</b>
+  <%= @postal_code.id %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @postal_code.country %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @postal_code.country_id %>
+</p>
+
+<p>
+  <b>State province county:</b>
+  <%= @postal_code.state_province_county_id %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @postal_code.postal_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_postal_code_path(@postal_code) %> |
+<%= link_to 'Back', postal_codes_path %>

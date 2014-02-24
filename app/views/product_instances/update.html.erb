@@ -1,0 +1,40 @@
+Update Product Instance - Programmer only view for Edit!
+
+
+Listing all the param's that were submitted!<Br><Br>	
+<%
+params.each do |p|
+%>
+	<%= p.to_s %>=<%= params[p].to_s %>--><%= params.keys.include?(p)%><Br>
+<%
+end
+%>
+
+<%= @msg %><Br><br>
+
+Testing FieldMap - getPropertyFunction<br>
+
+<%= FieldMap.get_property @product_instance.get_extended_properties, "product_key", "is_read_only"  %>
+
+<br><br>
+
+Testing FieldMap - is rendered function<br>
+
+<%= FieldMap.is_rendered @product_instance.get_extended_properties, "product_key"  %>
+
+
+Testing FieldMap - updateable fields<br>
+
+<% upd = FieldMap.get_updateable_fields (@product_instance.get_extended_properties) %>
+
+<% upd.each do |u| %>
+<%= u.to_s %><br>
+<% end %>
+
+
+Testing FieldMap - update_object<br>
+
+
+<%= @product_instance.class.to_s %><br>
+
+<%= FieldMap.update_object @product_instance, params[:product_instance] %>

@@ -1,0 +1,270 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+*/
+
+body
+{
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+p.plain {
+    color: black;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.alert-success {
+    color: green;
+}
+
+.alert-failure {
+    color: red;
+}
+
+a, a:visited {
+    color: #e4e4e4;
+    text-decoration: underline;
+}
+
+a:hover
+{
+    background-color: transparent;
+}
+a.button_link {
+    color: black;
+    font-size: medium;
+    height: 10px;
+}
+a.button_link_arrow {
+    height: 10px;
+}
+/* Footer styles*/
+
+.footer_div
+{
+    padding-right: 15px;
+    height: 90px;
+    background-color: #808080;
+}
+
+.footer_link_style
+{
+    color: #eeeeee;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.row.footer_bottom_link_div
+{
+    margin-left: 10px;
+    padding-bottom: 5px;
+    float: right;
+}
+
+#footer_inner_div
+{
+    padding-top: 15px;
+}
+
+.white_link
+{
+    color: #DCDCDC;
+    font-size:11px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: right;
+}
+
+.white_label
+{
+    color: #DCDCDC;
+    font-size: 12px;
+    float: right;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+}
+
+/* home page */
+#sign_in_div
+{
+    padding-left: 20px;
+    padding-right:20px;
+    border-right: 1px solid #ccc;
+    height: 386px;
+}
+
+.span6.desc_div
+{
+    padding-right:10px;
+}
+
+#white_underline_link
+{
+    text-decoration: underline;
+    color: #DCDCDC;
+}
+
+.btn.btn-success
+{
+    font-size:14px;
+}
+
+.sign_in_box
+{
+    background-color: #e2e2e2;
+    border-style: solid;
+    border-color: 1px solid #fff;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 25px;
+    border:1px solid;
+}
+
+span.sign_in_label
+{
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-white,
+.btn-white:hover,
+.btn-warning,
+.btn-warning:hover,
+.btn-danger,
+.btn-danger:hover,
+.btn-success,
+.btn-success:hover,
+.btn-info,
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
+    text-shadow: 0 -1px 0 #fff;
+}
+
+.btn.white.sign_in_form_button
+{
+    color: #000;
+    font-size:  16px;
+}
+
+label.white_header_label
+{
+    color: #fff;
+    font-size: 20px;
+}
+
+div.left_right_padded_div
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.row-fluid.white_small_label
+{
+    color: #DCDCDC;
+    font-size:16px;
+}
+
+.registration_div
+{
+    background-color: #fff;
+    width: 100%;
+    border:1px solid;
+}
+
+.forgot_email_div
+{
+    background-color: #fff;
+    width: 350px;
+    border:1px solid;
+}
+
+.registration_inner_div
+{
+    padding:10px;
+}
+
+.green_menu
+{
+    background-color: #669999;
+    height: 25px;
+    padding-left: 10px;
+    padding-top:4px;
+    font-weight: bold;
+}
+
+.pagination-centered.header
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+a.language_white_link
+{
+    color: #DCDCDC;
+    font-family: helvetica;
+}
+
+
+label.blank_label
+{
+    color: #000;
+}
+
+.medium_width
+{
+    width:200px;
+}
+
+.wider_width
+{
+    width: 300px;
+}
+.extra_wide_width {
+    width: 400px;
+}
+#wider_green_button
+{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.blue_link
+{
+    color: #0066cc;
+    font-size: 15px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+ul#top_ul
+{
+    background-color: #ffffff;
+    height:25px;
+    opacity: .7;
+    margin-top:4px;
+}
+
+#fat-menu
+{
+    padding-top:0px;
+    margin-top:-6px;
+    height:25px;
+}
+
+#users_table
+{
+    color:#000;
+}
