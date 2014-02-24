@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  responds_to :json
+  respond_to :json
   
   
   def new
