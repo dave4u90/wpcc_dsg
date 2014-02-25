@@ -14,11 +14,6 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
-  <script type="text/javascript">
-      $(document).ready(function () {
-
-      });
-  </script>
 </head>
 <body>
 <div>
@@ -32,7 +27,7 @@
       <%
          end
          end %>
-  <div style="min-height: 400px; padding-left: 100px; padding-right: 100px;">
+  <div class="content">
     <%= yield %>
   </div>
 
