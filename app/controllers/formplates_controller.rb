@@ -1,11 +1,13 @@
 class FormplatesController < ApplicationController
-	def index
-		@formplates = Formplate.all
-	end
+  before_filter :login_required
 
-	def show
-		@formplate = Formplate.find(params[:id])
-	end
+  def index
+    @formplates = Formplate.all
+  end
+
+  def show
+    @formplate = Formplate.find(params[:id])
+  end
 
 
 end

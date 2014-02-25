@@ -29,8 +29,6 @@ Wpcc::Application.routes.draw do
   match '/product_instances/request_initial', :to => "product_instances#request_initial", as: 'request_initial_verification'
 
   match '/product_instance/pi_same_as_above', :to => 'product_instance#copy_pi_address_to_client', :as => :pi_same_as_above
-
-  match '/signout', :to => "static_pages#home"
   
   match '/product_key/validate_key', :to => "product_key#validate_key", :as => :validate_key
   match '/product_key/post_validate_key', :to => "product_key#post_validate_key", :as => :post_validate_key
@@ -107,7 +105,5 @@ Wpcc::Application.routes.draw do
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-
-  
+  match '/signout', to: 'sessions#destroy'
 end

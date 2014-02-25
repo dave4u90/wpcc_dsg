@@ -1,4 +1,5 @@
 class AddressController < ApplicationController
+  before_filter :login_required
 	def new
 		@address = Address.new
 	end

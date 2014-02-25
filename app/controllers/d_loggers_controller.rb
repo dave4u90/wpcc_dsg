@@ -1,4 +1,5 @@
 class DLoggersController < ApplicationController
+  before_filter :login_required
   # GET /d_loggers
   # GET /d_loggers.json
   def index

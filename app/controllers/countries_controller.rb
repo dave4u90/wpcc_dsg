@@ -1,34 +1,35 @@
 class CountriesController < ApplicationController
+  before_filter :login_required
+
   def new
   end
 
   def show
-      @my_id = params[:id]
-      if is_number?(@my_id.to_s)
-	@country = Country.find(@my_id)
+    @my_id = params[:id]
+    if is_number?(@my_id.to_s)
+      @country = Country.find(@my_id)
+    else
+      @countries = Country.where ("name LiKE '" + @my_id.to_s + "'")
+      if @countries.empty?
       else
-	@countries = Country.where ("name LiKE '" + @my_id.to_s + "'")
-	if @countries.empty?
-	else
-	  @country = @countries.first
-	end	
+        @country = @countries.first
       end
-      
-      if @country
-        @states = @country.states
-      else
-	@states = nil
-      end
-      
-      
+    end
 
-      render 'show', :layout => false  
+    if @country
+      @states = @country.states
+    else
+      @states = nil
+    end
+
+
+    render 'show', :layout => false
   end
-  
+
 
   def index
     @countries = Country.all
-    render 'index', :layout => false  
+    render 'index', :layout => false
   end
 
 end

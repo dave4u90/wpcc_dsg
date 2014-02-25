@@ -1,20 +1,21 @@
 class PostalCodesController < ApplicationController
+  before_filter :login_required
   # GET /postal_codes
   # GET /postal_codes.json
   def index
-    
+
     @requested_item = params[:requested_item]
     @postal_code = params[:postal_code]
     if @postal_code == nil
       @postal_code = "NULL"
     end
-    
-    @countries = Country.all
-    
-    @postal_codes = PostalCode.where ("postal_code LIKE '" + params[:postal_code].to_s + "'")
-    
 
-     render 'index', :layout => false  
+    @countries = Country.all
+
+    @postal_codes = PostalCode.where ("postal_code LIKE '" + params[:postal_code].to_s + "'")
+
+
+    render 'index', :layout => false
   end
 
   # GET /postal_codes/1
