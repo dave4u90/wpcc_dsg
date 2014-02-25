@@ -63,7 +63,7 @@ group :image do
 end
 
 group :production do
-	#gem 'pg'
+	gem 'pg'
 end
 
 
