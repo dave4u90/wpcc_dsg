@@ -1,27 +1,27 @@
-div.input-data{
-padding:0.1em;
-margin:0.1em;
+div.input-data {
+  padding: 0.1em;
+  margin: 0.1em;
 }
 
-    div.inputdata label{
-    float:left;
-    margin-right:10px;
-    padding:5px 0;
-    color:gray;
-    }
+div.inputdata label {
+  float: left;
+  margin-right: 10px;
+  padding: 5px 0;
+  color: gray;
+}
 
-    div.inputdata span{
-    display: block;
-    overflow: hidden;
-    }
+div.inputdata span {
+  display: block;
+  overflow: hidden;
+}
 
-        div.inputdata input{
-        width:100%;
-        padding-top:8px;
-        border:none;
-        background:none;
-        }
+div.inputdata input {
+  width: 100%;
+  padding-top: 8px;
+  border: none;
+  background: none;
+}
 
-    .clear {
-    clear: both;
-    }
+.clear {
+  clear: both;
+}

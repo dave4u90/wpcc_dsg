@@ -2,6 +2,7 @@
  *= require jquery.ui.all
  *= require note
  *= require product_instances
+ *= require static_pages
  */
 /*Fronm bootstrap*/
 *:before, *:after {
@@ -99,6 +100,10 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
+.page_header{
+  color: #FFFFFF !important;
+  padding: 0 !important;
+}
 
 /*From application.css*/
 body {
