@@ -11,18 +11,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
 
-  begin
-    # do something dodgy
-  rescue ActiveRecord::RecordNotFound
-    flash[:notice] = "The resource is unavailable"
-  rescue ActiveRecord::ActiveRecordError
-    flash[:notice] = "Active Record Error occured. Please contact administrator."
-  rescue # StandardError
-    flash[:notice] = "Active Record Error occured. Please contact administrator."
-  rescue Exception
+  rescue_from Exception do |e|
+    logger.info = "#{e.message}"
     flash[:notice] = "Sorry an error occured. Please contact administrator."
-  ensure
-    redirect_to root_path and return
+    redirect_to "/" and return
   end
 
 
