@@ -9,6 +9,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'prawn'
 gem 'jquery-ui-rails'
+gem "recaptcha", :require => "recaptcha/rails"
 #gem 'mysql2' 
 
 

@@ -1,4 +1,64 @@
-<% provide(:title, 'Contact Us') %>
-<h1>Contact Us</h1>
+<div class="page_content">
+  <h1 class="page_header"><%= t('content_us') %></h1>
+  <hr/>
+  <div class="about_us_content_box">
+    <div class="col-md-6 no-padding-margin-left">
+      <div class=" panel-default">
 
-<p>The Contact Us page for the WPCC Document Management System</p>
+        <div class="panel-body">
+          <%= form_for @enquiry, url: {controller: :static_pages, action: :contact} do |f| %>
+              <% if @enquiry.errors.any? %>
+                  <div class="alert alert-error">
+                    <h2><%= pluralize(@enquiry.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+                    <ul>
+                      <% @enquiry.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <b style="margin-bottom: 5px;"><%= t('name') %></b><br/>
+
+              <div class="input-group">
+                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-user"> </span></span>
+                <%= f.text_field :name, class: "form-control", placeholder: t('name') %>
+              </div>
+              <b style="margin-bottom: 5px;"><%= t('email') %></b> <br/>
+
+              <div class="input-group ">
+                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
+                <%= f.text_field :email, class: "form-control", placeholder: t('email') %>
+              </div>
+              <b style="margin-bottom: 5px;"><%= t('telephone_text') %></b> <br/>
+
+              <div class="input-group ">
+                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-phone-alt"> </span></span>
+                <%= f.text_field :telephone, class: "form-control", placeholder: t('telephone_text') %>
+              </div>
+              <%= recaptcha_tags(display: {theme: 'clean'}) %>
+              <b style="margin-bottom: 5px;"><%= t('message') %></b> <br/>
+
+              <div class="input-group ">
+                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-pencil"> </span></span>
+                <%= f.text_area :message, class: "form-control", placeholder: t('message_placeholder'), style: "height: 100px;" %>
+              </div>
+              <%= f.submit 'Submit', class: "btn btn-success pull-right" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 no-padding-margin-left">
+      <div class="panel-default pull-right">
+        <div class="panel-default">
+          <div class="grey_panel" >
+            <div class="grey-panel-header">
+              <b style="color: rgb(255, 255, 255); vertical-align: middle ! important; padding-left: 10px; float: left; padding-top: 15px; font-size: 15px;"><%= t('sales')%></b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

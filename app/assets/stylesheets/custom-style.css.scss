@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
-.page_header{
+.page_header {
   color: #FFFFFF !important;
   padding: 0 !important;
 }
@@ -502,6 +502,25 @@ h2.logo-main-slogan {
   color: #C9C9C9;
 }
 
+.input-group-addon-black {
+  background: #ffffff;
+  color: #000000;
+}
+
+.grey_panel {
+  background: none repeat scroll 0 0 #BBBBBB;
+  height: 163px;
+  margin-right: 10px;
+  margin-top: 30px;
+  width: 400px;
+}
+
+.grey-panel-header{
+  background: none repeat scroll 0 0 #666666;
+  height: 50px;
+  width: 100%;
+}
+
 .btn {
   padding-left: 18px;
   padding-right: 18px;
@@ -657,7 +676,7 @@ ul.footer-link {
   height: 100% !important;
 }
 
-.sign_up_image{
+.sign_up_image {
   margin-top: 10px;
   cursor: pointer;
 }
