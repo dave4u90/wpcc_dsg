@@ -1,6 +1,4 @@
 class NewsLettersController < ApplicationController
-  before_filter :login_required
-
   def create
     @news_letter = NewsLetter.new(params[:news_letter])
     if @news_letter.save
