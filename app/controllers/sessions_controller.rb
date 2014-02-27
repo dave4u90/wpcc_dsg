@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      flash[:notice] = "You are already signed in."
+      flash[:notice] ||= "You are already signed in."
       redirect_to product_instances_path and return
     end
   end

@@ -53,7 +53,7 @@ module SessionsHelper
   def login_required
     unless signed_in?
       flash[:notice] = "Please log in to continue"
-      redirect_to root_path
+      redirect_to "/"
     end
   end
 end
