@@ -67,7 +67,8 @@ class User < ActiveRecord::Base
 			end
 		end
 		return product_instances
-	end
+  end
+
 	def is_talott()
 		self.user_accesses.each do |ua|
 			if ua.access_role.is_talott

@@ -1,5 +1,6 @@
 class ProductInstancesController < ApplicationController
-  before_filter :login_required, except: [:new]
+  before_filter :login_required, only: [:show, :edit, :update]
+  before_filter :only_admin_allowed, only: [:edit]
 
 
   def index

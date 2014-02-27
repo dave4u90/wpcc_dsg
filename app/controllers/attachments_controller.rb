@@ -1,4 +1,5 @@
 class AttachmentsController < ApplicationController
+  before_filter :login_required, only: [:show, :edit, :update]
 
   # GET /attachments
   # GET /attachments.json

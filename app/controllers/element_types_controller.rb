@@ -1,5 +1,6 @@
 class ElementTypesController < ApplicationController
   before_filter :login_required
+  before_filter :only_talott_allowed, only: [:edit]
 
   def new
   end

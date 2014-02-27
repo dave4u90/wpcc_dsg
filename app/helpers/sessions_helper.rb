@@ -9,13 +9,6 @@ module SessionsHelper
     current_user.present? and session[:user_id].present?
   end
 
-  def login_required
-    unless signed_in?
-      flash[:notice] = "Please log in to continue"
-      redirect_to root_path
-    end
-  end
-
   def current_user=(user)
     @current_user = user
     session[:user_id] = user.try(:id)
@@ -43,5 +36,24 @@ module SessionsHelper
     session[:return_to] = request.url
   end
 
+  def only_admin_allowed
+    unless current_user.admin
+      flash[:notice] = "Only for administrator. You are not allowed to access that page."
+      redirect_to "/"
+    end
+  end
 
+  def only_talott_allowed
+    unless current_user.is_tallot
+      flash[:notice] = "Only for talott user. You are not allowed to access that page."
+      redirect_to "/"
+    end
+  end
+
+  def login_required
+    unless signed_in?
+      flash[:notice] = "Please log in to continue"
+      redirect_to root_path
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, only: [:show, :edit]
   helper :all
 
   def show

@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, only: [:show]
+  before_filter :only_admin_allowed, only: [:edit]
 
   def index
     @clients = Client.all
