@@ -190,7 +190,7 @@
                   </td>
                   <td>
                     <% if u.is_active %>
-                        <% unless u.admin %>
+                        <% unless (u.admin or current_user.id == u.id) %>
                             <%= button_tag t(:suspend), {:name => "suspend_user", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:suspend_user_account) + "');"} %>
                         <% end %>
                     <% else %>

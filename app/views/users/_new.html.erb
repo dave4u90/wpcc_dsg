@@ -1,0 +1,58 @@
+<p style="color: black; padding: 4px;">
+  <%= raw(t(:welcome_to_the_application_paragraph)) %>
+</p>
+<br/>
+
+<div class="registration_inner_div">
+  <%= form_for(@user, :url => {:controller => "product_instances", :action => 'create_user'}, :remote => true) do |f| %>
+      <%= hidden_field_tag :product_key, @product_key %>
+      <div id="user_errors">
+
+      </div>
+
+      <%= f.hidden_field :product_instance_id, value: @product_instance.id %>
+
+      <span style="margin-bottom: 5px;"><%= t(:language) %></span><br/>
+      <%= f.select("locale", options_from_collection_for_select(Language.supported_languages, "locale", "language_description"), {}, :class => "widest_width") %>
+      <br/>
+
+
+      <span style="margin-bottom: 5px;"><%= t(:name) %></span><br/>
+      <%= f.text_field :name, :class => "widest_width" %>
+      <br/>
+
+      <span style="margin-bottom: 5px;"><%= t(:email) %></span><br/>
+      <%= f.email_field :email, :class => "widest_width" %>
+      <br/>
+
+      <span style="margin-bottom: 5px;"><%= t(:confirm_email) %></span><br/>
+      <%= f.email_field :email_confirmation, :class => "widest_width" %>
+      <br/>
+
+      <span style="margin-bottom: 5px;"><%= t(:password) %></span><br/>
+      <%= f.password_field :password, :class => "widest_width" %>
+      <br/>
+
+      <span style="margin-bottom: 5px;"><%= t(:confirm_password) %></span><br/>
+      <%= f.password_field :password_confirmation, :class => "widest_width" %>
+      <br/>
+
+      <%= f.hidden_field :client_id, :value => @client.id %>
+
+      <b><u><%= t(:user_address) %></u></b><br/>
+
+      <%= render partial: "address/address_form", locals: {my_form: f, address_object: @address, address_for: :address} %>
+      <%= image_tag "product_key_image_card.png" %>
+      <div class="clearfix"></div>
+      <br/>
+
+      <span style="margin-bottom: 5px;"><%= t(:product_registration_key) %></span><br/>
+      <%= text_field_tag :product_key, @product_key, :class => "widest_width", :disabled => 'true' %>
+      <br/>
+      <br/>
+      <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "margin-right: 210px;display: none;") %>
+      <%= button_tag t(:next), {id: "user_registration_button", class: "btn btn-success pull-right user_registration_button click_button", style: "margin-right: 210px;"} %>
+  <% end %>
+</div>
+<br/>
+

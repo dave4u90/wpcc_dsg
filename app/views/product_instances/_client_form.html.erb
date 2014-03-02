@@ -1,0 +1,38 @@
+<b><u><%= t(:client_information) %></u></b><br/> <br/>
+<%= form_for(:product_instance, :url => {:controller => "product_instances", :action => 'create_client', :id => @product_instance.id }, html: {id: "client_form", class: "validate product_instance_form", novalidate: ""}, :remote => true) do |f| %>
+    <div id="client_errors">
+
+    </div>
+    <% if @client.present? and !@client.new_record? %>
+        <% if @user.present? %>
+            <%= f.fields_for :user_accesses, @user_access do |uas_f| %>
+                <%= uas_f.hidden_field :user_id, value: @user_access.try(:user_id) %>
+                <%= uas_f.hidden_field :access_role_id, value: @user_access.try(:access_role_id) %>
+            <% end %>
+        <% end %>
+        <%= f.fields_for :client, @client do |client| %>
+            <span style="margin-bottom: 5px;"><%= t(:company_name) %></span><br/>
+            <%= client.text_field :client_name, :value => @client.try(:client_name), :class => "widest_width", :disabled => true %><br />
+
+            <span style="margin-bottom: 5px;"><%= t(:sector) %></span><br/>
+            <%= client.select :sector_id, options_for_select(Sector.to_a, @client.try(:sector_id)), {}, {:class => "widest_width", :disabled => true} %>
+        <% end %>
+
+    <% else %>
+        <%= f.fields_for :client, @client do |client| %>
+
+            <span style="margin-bottom: 5px;"><%= t(:company_name) %></span><br/>
+            <%= client.text_field :client_name, :class => "widest_width" %><br />
+
+            <span style="margin-bottom: 5px;"><%= t(:sector) %></span><br/>
+            <%= client.select :sector_id, options_from_collection_for_select(Sector.all, "id", "sector"), {}, {:class => "widest_width"} %><br />
+
+            <b><u><%= t(:client_head_office_address) %></u></b><br>
+            <%= t(:address) %>
+
+            <%= render partial: "address/address_form", locals: {my_form: client, address_object: @address, address_for: :address} %>
+        <% end %>
+    <% end %>
+    <%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "display: none;margin-right:230px;")%>
+    <%= button_tag t(:next), {id: "client_register_button", class: "btn btn-success pull-right client_submit_register click_button", style: "margin-right: 230px;"} %>
+<% end %>

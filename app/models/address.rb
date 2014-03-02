@@ -18,6 +18,7 @@ class Address < ActiveRecord::Base
 	attr_accessible :line1, :line2, :line3, :city, :state_province_county, :country, :other_address_details, :post_zip_code
 
 	has_one :client
+  has_one :product_instance
 	
 	
 	def my_updatable_attributes

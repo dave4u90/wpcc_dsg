@@ -99,7 +99,7 @@
             </li>
             <% unless current_user %>
                 <li>
-                  <%= link_to t('register'), "/signup" %>
+                  <%= link_to t('register'), validate_key_path(:method => :user) %>
                 </li>
             <% end %>
             <li>

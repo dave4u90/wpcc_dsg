@@ -1,4 +1,5 @@
 class ProductInstancesController < ApplicationController
+  include ActionView::Helpers::JavaScriptHelper
   before_filter :login_required, only: [:show, :edit, :update]
   #before_filter :only_admin_allowed, only: [:edit]
 
@@ -10,7 +11,6 @@ class ProductInstancesController < ApplicationController
       @product_instances = @product_type.product_instances.find_all_by_client_id(current_user.client_id)
     else
       @product_instances = ProductInstance.find_all_by_client_id(current_user.client_id)
-
       @product_instances.each do |d|
         logger.info d.inspect
       end
@@ -23,7 +23,6 @@ class ProductInstancesController < ApplicationController
 
   def new
     @product_instance = ProductInstance.new
-
     @client_id = params[:client_id]
     @user_id = params[:user_id]
     if @client_id
@@ -66,72 +65,106 @@ class ProductInstancesController < ApplicationController
   end
 
   def create
-    #step1 user submits the key
-    #using ProductKey model check to see if key is valid
-    #if key is valid - check to make sure product is not in use (can not register an already registered key)
-    #render new and show new product instance fields in the view.
-
-    #step 2 user submits product_instance items
-    #validate and save them in the database
-    #render user.new with this product_key
-
-
-    #----load all the variables
-    @product_key = params[:key]
-    @product_instance = ProductInstance.new(params[:product_instance])
-
-
-    @client_id = params[:client_id]
-    @user_id = params[:user_id]
-    if @client_id
-      @client = Client.find(@client_id)
-    end
-    if @user_id
-      @user = User.find(@user_id)
-      if @user
-        @user_access = @product_instance.user_accesses.first
-        @user_access.user_id = @user_id
+    @address = Address.new(params[:product_instance][:address])
+    product_instance_params = params[:product_instance]
+    product_instance_params.delete(:address)
+    @product_instance = ProductInstance.new(product_instance_params)
+    if @product_instance.valid?
+      @address.save
+      @product_instance.address = @address
+      @product_instance.save
+      UserMailer.signator_new_product_registration_email(@product_instance).deliver
+      @client = @product_instance.client || @product_instance.build_client
+      @user = User.find_by_id(params[:user_id])
+      if @user.present?
+        @user_access = @product_instance.user_accesses.first || @product_instance.user_accesses.build
+        @user_access.user_id = params[:user_id]
         @user_access.access_role_id = AccessRole.get_administrator_id
       end
+      @product_form_object = ActionView::Helpers::FormBuilder.new(:product_instance, @product_instance, ActionView::Base.new(@product_instance), {:remote => true}, proc { |f|})
+      binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_client_form.html.erb")
+      render :js => "show_client_register_form('#{ escape_javascript binded_html}')" and return
+    else
+      @object = @product_instance
+      binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+      render :js => "$('#product_instance_errors').html('#{ escape_javascript binded_html}')" and return
     end
+  end
 
-    @product_key = params[:key]
-    @product_key_object = ProductKey.find_by_product_key(@product_key)
-
-    @product_type_id = @product_key_object.product_type_id
-
-
-    #if param[same_as_above] is there then it means its just a clcik on same as above
-    if params['same_as_above']
-      #set client address = values from pi.address and render new
-      if @product_instance.client
-        if @product_instance.client.address && @product_instance.address
-          @product_instance.client.address.fill(@product_instance.address)
-          @same_as_above = true
+  def create_client
+    @product_instance = ProductInstance.find(params[:id])
+    @user_access = @product_instance.user_accesses.first || @product_instance.user_accesses.build
+    @client = @product_instance.client || @product_instance.build_client
+    @address = @client.new_record? ? @client.build_address : @client.address
+    client_params = params[:product_instance][:client]
+    address_attributes = params[:product_instance][:client][:address_attributes]
+    client_params.delete(:address_attributes)
+    if @client.new_record?
+      if @client.update_attributes(client_params)
+        @product_instance.update_attributes(:client_id => @client.id)
+        if @user_access.update_attributes(params[:product_instance][:user_accesses])
+          if @address.update_attributes(address_attributes)
+            if current_user.present?
+              flash[:notice] = "Product has been successfully registered"
+              flash.keep(:notice)
+              render :js => "window.location.replace('#{root_url}')" and return
+            else
+              @user = User.new
+              @address = @user.build_address
+              @product_key = @product_instance.product_key
+              binded_html = render_to_body(:file => "#{Rails.root}/app/views/users/_new.html.erb")
+              render :js => "show_user_register_form('#{escape_javascript binded_html}');" and return
+            end
+          else
+            @object = @address
+            binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+            render :js => "$('#client_errors').html('#{ escape_javascript binded_html}')" and return
+          end
+        else
+          @object = @user_access
+          binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+          render :js => "$('#client_errors').html('#{ escape_javascript binded_html}')" and return
         end
-      end
-
-      render 'new'
-      return
-    end
-
-
-    #create process starts here --->
-
-    k_msg = t(:product_registered_successfully, :link => (view_context.link_to t(:click_here), product_instances_path(@product_instance)))
-    if @product_instance.save
-      UserMailer.signator_new_product_registration_email(@product_instance).deliver
-      flash[:success]= k_msg
-      if current_user
-        redirect_to ProductInstance
       else
-        redirect_to root_path
+        @object = @client
+        raise @client.to_yaml
+        binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+        render :js => "$('#client_errors').html('#{ escape_javascript binded_html}')" and return
       end
     else
-      render 'new'
+      if @user_access.new_record?
+        if @user_access.update_attributes(params[:product_instance][:user_accesses])
+          success_message = t(:product_registered_successfully, :link => (view_context.link_to t(:click_here), product_instances_path(@product_instance)))
+          flash[:notice] = success_message
+          flash.keep(:notice)
+          render :js => "window.location.replace('#{product_instances_url}')" and return
+        else
+          @object = @user_access
+          binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+          render :js => "$('#client_errors').html('#{ escape_javascript binded_html}')" and return
+        end
+      end
     end
+  end
 
-
+  def create_user
+    @user = User.new(params[:user])
+    product_key = params[:product_key]
+    @product_instance = ProductInstance.find(params[:user][:product_instance_id])
+    if @user.valid?
+      @user_access = @user.user_accesses.build(:product_instance_id => @product_instance.id, :access_role_id => AccessRole.get_administrator_id)
+      find_other_users = User.where(client_id: @user.client_id)
+      @user.is_active = true unless find_other_user.present?
+      @user.save
+      UserMailer.send_reg_email(@user).deliver
+      flash[:notice] = "You have successfully registered."
+      flash.keep(:notice)
+      render :js => "window.location.replace('#{sucess_user_url}')" and return
+    else
+      @object = @user
+      binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
+      render :js => "$('#user_errors').html('#{escape_javascript binded_html}')" and return
+    end
   end
 
   def update
@@ -278,4 +311,5 @@ class ProductInstancesController < ApplicationController
     @pi = ProductInstance.new(params[:product_instance])
     render :js => 'alert(' + @pi.address.line1.to_s + ')'
   end
+
 end

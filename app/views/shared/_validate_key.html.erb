@@ -1,14 +1,28 @@
-        <div class="pagination-centered">
-                <%= image_tag "product_key_image_card.png" %> 
-        </div>
-        <div class="clearfix"></div>
-        <br />
-        <p style="padding: 4px;">
-                    <%= label_tag :product_registration_key, t(:product_registration_key) %>
-                    <%= text_field_tag "reg_key", @key, :class=>"wider_width"  %><br/>
-
-                    <% #button tag needs to submit the reg_key for server side validation %>
-
-                    <%= button_tag t(:next), {class: "btn btn-success" } %><br /><br />
-                    <%= image_tag 'icons/1of5_process.png' %>
-        </p>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#reg_key").val("");
+        $('#key_in_use_error').hide();
+        $('#invalid_key_error').hide();
+    });
+</script>
+<%= hidden_field_tag :user_id, @user_id %>
+<%= hidden_field_tag :client_id, @client_id %>
+<%= hidden_field_tag :method, @method %>
+<div style="margin-top: 20px;">
+    <%= image_tag "product_key_image_card.png"  %>
+</div>
+<div class="clearfix"></div>
+<br/>
+<p style="padding: 4px;">
+  <span><%= t(:product_registration_key) %></span><br/>
+<div class="alert alert-error" id="key_in_use_error">
+  <%= t(:key_in_use_error) %>
+</div>
+<div class="alert alert-error" id="invalid_key_error">
+  <%= t(:invalid_key_error) %>
+</div>
+<%= text_field_tag "reg_key", @key, :class => "widest_width" %><br/>
+<%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "margin-right: 220px;display: none;")%>
+<%= button_tag t(:next), {id: "register_button1", class: "btn btn-success pull-right product_key_button click_button", style: "margin-right: 230px;"} %><br/>
+<br/>
+</p>

@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
 
-  rescue_from Exception do |e|
-    logger.info = "#{e.message}"
-    flash[:notice] = "Sorry an error occured. Please contact administrator."
-    redirect_to "/" and return
-  end
+  #rescue_from Exception do |e|
+  #  logger.info "#{e.message}"
+  #  flash[:notice] = "Sorry an error occured. Please contact administrator."
+  #  redirect_to "/" and return
+  #end
 
 
   def set_locale

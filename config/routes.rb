@@ -32,7 +32,9 @@ Wpcc::Application.routes.draw do
   
   match '/product_key/validate_key', :to => "product_key#validate_key", :as => :validate_key
   match '/product_key/post_validate_key', :to => "product_key#post_validate_key", :as => :post_validate_key
-  
+  match '/product_instances/create_client', :to => "product_instances#create_client"
+  match '/product_instances/create_user', :to => "product_instances#create_user"
+
   match "users/email_confirmation", :to => "users#email_confirmation"
   match "users/send_confirmation_email", :to => "users#send_confirmation_email", :as => :send_confirmation_email
 
@@ -103,7 +105,7 @@ Wpcc::Application.routes.draw do
 
   match '/contact', to: 'static_pages#contact'
 
-  match '/signup', to: 'users#new'
+  match '/signup', to: 'product_key#validate_key'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
 end

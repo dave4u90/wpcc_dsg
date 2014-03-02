@@ -1,0 +1,76 @@
+<% #get translated product_instances
+   my_product_types = ProductInstance.object_title_array(ProductType.all, current_language_id)
+%>
+<hr/>
+
+<div class="registration_inner_div" style="width: 500px;color: black">
+  <%= form_for(:product_instance, :url => {:controller => "product_instances", :action => 'create'}, html: {id: "product_instance_form", class: "validate product_instance_form", novalidate: ""}, :remote => true) do |f| %>
+      <div id="product_instance_errors">
+
+      </div>
+
+      <%= f.hidden_field :client_id, value: @client_id %>
+      <%= hidden_field_tag :user_id, @user.present? ? @user.id : nil %>
+      <b><u><%= t('product_information') %></u></b><br/>
+      <span style="margin-bottom: 5px;"><%= t(:product_type) %></span><br/>
+      <%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "widest_width", :disabled => true} %>
+      <br/>
+      <%= f.hidden_field :product_type_id, value: @product_type_id %>
+
+
+      <span style="margin-bottom: 5px;"><%= t(:product_key) %></span><br/>
+      <%= f.hidden_field :product_key, value: @product_key %>
+      <%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key), :class => "widest_width", :disabled => true %>
+      <br/>
+
+
+      <span style="margin-bottom: 5px;"><%= t(:product_title_and_location) %></span><br/>
+      <%= f.text_area :product_title, :class => "widest_width", :rows => "3", :cols => "150" %>
+      <br/>
+
+      <br/>
+      <b><u><%= t(:product_address_location) %></u></b><br/>
+
+      <%
+         if @client
+           if @client.address
+             @address.fill_from_address(@client.address)
+           end
+         end
+      %>
+
+      <%= render partial: "address/address_form", locals: {my_form: f, address_object: @address, address_for: :address} %>
+
+
+      <br/>
+      <b><u><%= t(:signator) %></b></u>
+      <table>
+        <tr>
+          <td>
+            <span style="margin-bottom: 5px;"><%= t(:first_name) %></span><br/>
+            <%= f.text_field :signator_first_name, :class => "medium_wide_width" %>
+          </td>
+          <td>&nbsp;</td>
+          <td>
+            <span style="margin-bottom: 5px;"><%= t(:last_name) %></span><br/>
+            <%= f.text_field :signator_last_name, :class => "medium_wide_width" %>
+          </td>
+        </tr>
+      </table>
+
+      <span style="margin-bottom: 5px;"><%= t(:email_address) %></span><br/>
+      <%= f.email_field :signator_email_address, :class => "widest_width" %>
+
+      <span style="margin-bottom: 5px;"><%= t(:telephone_number) %></span><br/>
+      <%= f.text_field :signator_telephone_number, :class => "widest_width" %>
+      <%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "margin-right: -30px;display: none;")%>
+      <%= button_tag t(:next), {id: "product_instance_button", class: "btn btn-success pull-right product_instance_submit_register click_button", style: "margin-right: -20px;"} %>
+      <br/>
+  <% end %>
+</div>
+
+
+
+
+
+

@@ -1,81 +1,70 @@
-
-
-
 <%
-#this subpage takes in a variable for address called:
-#--address_object - new or existing address object
-#--my_form - the form which this is partial of
-#address_for - this is what the address is for. normally = :address
+   #this subpage takes in a variable for address called:
+   #--address_object - new or existing address object
+   #--my_form - the form which this is partial of
+   #address_for - this is what the address is for. normally = :address
 
 %>
 
-<%= my_form.fields_for :address, :remote => true do |af| %>
+<%= my_form.fields_for :address, address_object, :remote => true do |af| %>
 
-        <%= af.label :street, t(:street) %>
-        <%= af.text_field :line1, :class=>"wider_width", value: address_object.try(:line1)  %><br/>
-        <%= af.text_field :line2, :class=>"wider_width", value: address_object.try(:line2)  %><br />
-        <%= af.text_field :line3, :class=>"wider_width", value: address_object.try(:line3)  %>
+    <span style="margin-bottom: 5px;"><%= t(:street) %></span><br/>
+    <%= af.text_field :line1, :class => "widest_width", value: address_object.try(:line1) %><br/>
+    <%= af.text_field :line2, :class => "widest_width", value: address_object.try(:line2) %><br />
+    <%= af.text_field :line3, :class => "widest_width", value: address_object.try(:line3) %><br >
 
-        
-        
-        <%= af.label :country, t(:country) %>
-        <%= af.select( "country", options_for_select(Country.to_a, address_object.try(:country)), {  },:class => "country" ) %>
+    <span style="margin-bottom: 5px;"><%= t(:country) %></span><br/>
+    <%= af.select("country", options_for_select(Country.to_a, address_object.try(:country)), {}, :class => "country widest_width") %><br />
 
+    <span style="margin-bottom: 5px;"><%= t(:province_state) %></span><br/>
+    <%= af.select(:state_province_county, options_for_select(State.to_a, address_object.try(:state_province_county)), {}, :class => "state_province_county widest_width") %><br />
 
-        <%= af.label :province, t(:province_state) %>
-        <%= af.select( :state_province_county, options_for_select(State.to_a, address_object.try(:state_province_county)), {  },:class => "state_province_county") %>
+    <span style="margin-bottom: 5px;"><%= t(:city) %></span><br/>
+    <%= af.text_field :city, :class => "city widest_width", value: address_object.try(:city) %><br />
 
-        <%= af.label :city, t(:city) %>
-        <%= af.text_field :city, :class=> "city", value: address_object.try(:city)  %>
+    <span style="margin-bottom: 5px;"><%= t(:postal_code) %></span><br/>
+    <%= af.text_field :post_zip_code, :class => "post_code widest_width", value: address_object.try(:post_zip_code) %><br />
 
-        
-        <%= af.label :post_zip_code, t(:postal_code) %>
-        <%= af.text_field :post_zip_code, :class=>"post_code", value: address_object.try(:post_zip_code)  %>
-
-        </p>
 <% end %>
 
 
 <script language="javascript">
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    $(".country").change(function() {
-                var country = $(this).val();
-                if(country == "") country="<%= Country.first.name.to_s %>";
+        $(".country").change(function () {
+            var country = $(this).val();
+            if (country == "") country = "<%= Country.first.name.to_s %>";
 
-                load_states(country);                         
+            load_states(country);
         });
 
-    $(".country").load ("/countries/");
-        load_states("<%= Country.first.name.to_s %>");    
-        });
-
-
-
+        $(".country").load("/countries/");
+        load_states("<%= Country.first.name.to_s %>");
+    });
 
 
     /*This functionality enables loading of country street etc from postal-code --currently disabled
      *
      *
-    $(".post_code").change(function () {
-        var post_code = $(this).val();
-        load_post_code(post_code)
-    });
-    */    
+     $(".post_code").change(function () {
+     var post_code = $(this).val();
+     load_post_code(post_code)
+     });
+     */
 
-function load_states(c) {
-    var country_states_ajax_url = "/countries/" + c;
-    $(".state_province_county").load(country_states_ajax_url);    
-}
-function load_cities(s) {
-    var ajax_url = "/states/" + s;
-    $(".state_province_county").load(country_states_ajax_url);    
-}
-function load_post_code(post_code) {
-    //    alert(post_code)
-    var ajax_url = "/postal_codes?requested_item=country&postal_code=" + post_code;
-    $(".country").load (ajax_url);
-    
-}
+    function load_states(c) {
+        var country_states_ajax_url = "/countries/" + c;
+        $(".state_province_county").load(country_states_ajax_url);
+    }
+    function load_cities(s) {
+        var ajax_url = "/states/" + s;
+        $(".state_province_county").load(country_states_ajax_url);
+    }
+    function load_post_code(post_code) {
+        //    alert(post_code)
+        var ajax_url = "/postal_codes?requested_item=country&postal_code=" + post_code;
+        $(".country").load(ajax_url);
+
+    }
 
 </script>
