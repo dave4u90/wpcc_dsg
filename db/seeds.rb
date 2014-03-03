@@ -935,7 +935,7 @@ end
 ##------These are the associations of elements that comprise the formplate
 puts "Adding Clients"
 Client.delete_all
-CSV.foreach("#{Rails.root}/lib/assets/client.csv", {:headers => :first_row}) do |row|
+CSV.foreach("#{Rails.root}/lib/assets/Client.csv", {:headers => :first_row}) do |row|
    if row[0] != "client_id" && row[0] != "" ##ignore header
       c = Client.new
       c.client_name = row[1]
