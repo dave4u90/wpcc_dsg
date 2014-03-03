@@ -1,19 +1,23 @@
 class ProductInstancesController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
-  before_filter :login_required, only: [:index, :show, :edit, :update]
+  before_filter :login_required, only: [:show, :edit, :update]
   #before_filter :only_admin_allowed, only: [:edit]
 
 
   def index
     #Filter product instances to only show those the client has access to
-    if params[:product_type_id]
-      @product_type = ProductType.find(params[:product_type_id])
-      @product_instances = @product_type.product_instances.find_all_by_client_id(current_user.client_id)
-    else
-      @product_instances = ProductInstance.find_all_by_client_id(current_user.client_id)
-      @product_instances.each do |d|
-        logger.info d.inspect
+    if current_user.present?
+      if params[:product_type_id]
+        @product_type = ProductType.find(params[:product_type_id])
+        @product_instances = @product_type.product_instances.find_all_by_client_id(current_user.client_id)
+      else
+        @product_instances = ProductInstance.find_all_by_client_id(current_user.client_id)
+        @product_instances.each do |d|
+          logger.info d.inspect
+        end
       end
+    else
+      flash[:notice] = "Please login to continue"
     end
   end
 
