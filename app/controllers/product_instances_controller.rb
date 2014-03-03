@@ -154,7 +154,7 @@ class ProductInstancesController < ApplicationController
     if @user.valid?
       @user_access = @user.user_accesses.build(:product_instance_id => @product_instance.id, :access_role_id => AccessRole.get_administrator_id)
       find_other_users = User.where(client_id: @user.client_id)
-      @user.is_active = true unless find_other_user.present?
+      @user.is_active = true unless find_other_users.present?
       @user.save
       UserMailer.send_reg_email(@user).deliver
       flash[:notice] = "You have successfully registered."
