@@ -9,7 +9,8 @@
           <%= form_for @enquiry, url: {controller: :static_pages, action: :contact} do |f| %>
               <% if @enquiry.errors.any? %>
                   <div class="alert alert-error">
-                    <h2><%= pluralize(@enquiry.errors.count, "error") %> prohibited this post from being saved:</h2>
+                    <b style="font-size: 16px;"><%= pluralize(@enquiry.errors.count, "error") %> prohibited this post
+                      from being saved:</b>
 
                     <ul>
                       <% @enquiry.errors.full_messages.each do |msg| %>
@@ -52,9 +53,9 @@
     <div class="col-md-6 no-padding-margin-left">
       <div class="panel-default pull-right">
         <div class="panel-default">
-          <div class="grey_panel" >
+          <div class="grey_panel">
             <div class="grey-panel-header">
-              <b style="color: rgb(255, 255, 255); vertical-align: middle ! important; padding-left: 10px; float: left; padding-top: 15px; font-size: 15px;"><%= t('sales')%></b>
+              <b style="color: rgb(255, 255, 255); vertical-align: middle ! important; padding-left: 10px; float: left; padding-top: 15px; font-size: 15px;"><%= t('sales') %></b>
             </div>
           </div>
         </div>

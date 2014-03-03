@@ -102,6 +102,7 @@ Wpcc::Application.routes.draw do
   root to: 'sessions#new'
 
   match '/about', to:  'static_pages#about'
+  match '/works', to: 'static_pages#how_it_works'
 
   match '/contact', to: 'static_pages#contact'
 

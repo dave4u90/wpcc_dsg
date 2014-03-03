@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, except: [:new, :create, :edit, :update]
 
   def new
   end
