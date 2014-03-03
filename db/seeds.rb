@@ -984,7 +984,7 @@ end
 ##------These are the associations of elements that comprise the formplate
 puts "Adding Addresses"
 Address.delete_all
-CSV.foreach("#{Rails.root}/lib/assets/address.csv", {:headers => :first_row}) do |row|
+CSV.foreach("#{Rails.root}/lib/assets/Address.csv", {:headers => :first_row}) do |row|
    if row[0] != "address_id" && row[0] != "" ##ignore header
       a = Address.new
       a.line1 = row[1]

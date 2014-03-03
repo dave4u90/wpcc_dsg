@@ -31,7 +31,8 @@ class ProductKeyController < ApplicationController
         validate_key_for_product(params[:reg_key], params[:user_id], params[:client_id])
       else
         flash[:notice] = "Please log in to continue"
-        redirect_to root_path
+        flash.keep(:notice)
+        render :js => "window.location.replace('#{root_url}')" and return
       end
     end
   end
