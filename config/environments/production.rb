@@ -18,12 +18,12 @@ Wpcc::Application.configure do
   # config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-      :address => "smtp.netfirms.com",
+      :address => "smtp.workplacecarecentre.com",
       :port => 587,
       :authentication => :plain,
-      :user_name => 'admin@netfirms.com',
+      :user_name => 'admin@workplacecarecentre.com',
       :password => ' WbZ8FT~2',
-      :enable_starttls_auto => true
+      :enable_starttls_auto => false
   }
 
   config.i18n.fallbacks = true
