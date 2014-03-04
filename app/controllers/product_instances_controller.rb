@@ -18,6 +18,7 @@ class ProductInstancesController < ApplicationController
       end
     else
       flash[:notice] = "Please login to continue"
+      redirect_to root_path
     end
   end
 

@@ -15,7 +15,9 @@ module SessionsHelper
   end
 
   def current_user
+    @current_user = nil
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.where(remember_token: cookies[:remember_token]).first if cookies[:remember_token]
   end
 
   def current_user?(user)
