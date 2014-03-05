@@ -1,11 +1,11 @@
 Wpcc::Application.routes.draw do
-   
+
   resources :postal_codes
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #connect ':controller/service.wsdl', :action => 'wsdl'
-  
+
   # Install the default route as the lowest priority
   #connect ':controller/:action/:id.:format'
   #connect ':controller/:action/:id'
@@ -14,14 +14,14 @@ Wpcc::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
-   
-  resources :request_access
-  
 
-   
+  resources :request_access
+
+
+
   resources :notes
   resources :note
-  
+
   match 'user/sucess' => 'users#sucess', :as => :sucess_user
 
   match '/users/request_access', :to => "users#request_access", as: 'request_access_verification'
@@ -29,7 +29,7 @@ Wpcc::Application.routes.draw do
   match '/product_instances/request_initial', :to => "product_instances#request_initial", as: 'request_initial_verification'
 
   match '/product_instance/pi_same_as_above', :to => 'product_instance#copy_pi_address_to_client', :as => :pi_same_as_above
-  
+
   match '/product_key/validate_key', :to => "product_key#validate_key", :as => :validate_key
   match '/product_key/post_validate_key', :to => "product_key#post_validate_key", :as => :post_validate_key
   match '/product_instances/create_client', :to => "product_instances#create_client"
@@ -40,15 +40,16 @@ Wpcc::Application.routes.draw do
 
   #update product instance methods
   match '/product_instances/{id}/authorize_user', :to => "product_instances#/{id}/authorize_user", :as => :authorize_user
- 
+
   match 'users/current_user_request_access', :to => "users#current_user_request_access", :as => :current_user_request_access
   match 'users/grant_access', :to => "users#grant_access", :as => :grant_user_access
-  
+
   match 'product_instances/notify_signator', :to => 'product_instances#notify_signator', :as => :notify_signator
 
 
 
   resources :users
+  resources :product_instances
 
 
   # Nested routes for product_types and product_instances
@@ -57,42 +58,39 @@ Wpcc::Application.routes.draw do
       resources :components
     end
   end
-  
 
-  
+
+
   #Nested routes for countries, states and cities
   resources :countries do
     match '/countries/:country_name', :to => "countries#show", :as => :country_states_ajax
   end
 
-  resources :product_types 
+  resources :product_types
   resources :city
 
-  
-  resources :product_instances
-  
   resources :attachments
-  
+
   resources :languages
-  
+
   resources :component_types
 
   resources :element_types
   resources :element_values
 
   resources :form_instances
-  resources :form_instance_versions 
-  resources :components 
-  resources :formplates 
+  resources :form_instance_versions
+  resources :components
+  resources :formplates
   resources :forms
-  
+
   resources :clients
 
   resources :address
 
   resources :products
 
-  
+
   resources :product_keys
   resources :product_key
   resources :news_letters, only: [:create]
