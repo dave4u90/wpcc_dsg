@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    if current_user
+    if current_user.present?
       flash[:notice] ||= "You are already signed in."
       redirect_to product_instances_path and return
     end
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       sign_in user
       session[:locale] = current_user.locale
 
-      @redirect_path = "/product_instances/?locale="+params[:locale]
+      @redirect_path = product_instances_url(locale: params[:locale])
       flash[:notice] = "Welcome #{user.name}."
       logger.info @redirect_path
     else

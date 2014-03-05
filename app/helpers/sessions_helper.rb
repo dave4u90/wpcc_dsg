@@ -6,7 +6,7 @@ module SessionsHelper
   end
 
   def signed_in?
-    current_user.present? and session[:user_id].present?
+    current_user.present? and (session[:user_id].present? or cookies[:remember_token].present?)
   end
 
   def current_user=(user)

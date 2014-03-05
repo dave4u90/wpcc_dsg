@@ -1,6 +1,6 @@
 class ProductInstancesController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
-  before_filter :login_required, only: [:show, :edit, :update]
+  before_filter :login_required, only: [:index,:show, :edit, :update]
   #before_filter :only_admin_allowed, only: [:edit]
 
 
@@ -300,7 +300,7 @@ class ProductInstancesController < ApplicationController
     if product_instance_id
       @product_instance = ProductInstance.find(product_instance_id)
       if @product_instance
-#				UserMailer.signator_new_product_registration_email(@product_instance).deliver
+#       UserMailer.signator_new_product_registration_email(@product_instance).deliver
         flash[:success] = t(:email_sent_successfully)
         redirect_to product_instances_path
       end
