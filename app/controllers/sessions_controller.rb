@@ -10,12 +10,7 @@ class SessionsController < ApplicationController
   def create
     @email = params[:session][:email]
     user = User.find_by_email(params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if params[:remember_me]
-        cookies.permanent[:remember_token] = user.remember_token
-      else
-        cookies[:remember_token] = user.remember_token
-      end
+    if user && user.authenticate(params[:session][:password]
       if user.email_confirmed == false
         render :js => "email='" + @email + "'; hide_error_messages(); $('#email_not_confirmed_error_div').show()"
         return
@@ -26,7 +21,11 @@ class SessionsController < ApplicationController
         return
       end
 
-
+      if params[:remember_me]
+        cookies.permanent[:remember_token] = user.remember_token
+      else
+        cookies[:remember_token] = user.remember_token
+      end
       sign_in user
       session[:locale] = current_user.locale
 
