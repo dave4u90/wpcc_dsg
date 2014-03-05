@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def create
     @email = params[:session][:email]
     user = User.find_by_email(params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password]
+    if user && user.authenticate(params[:session][:password])
       if user.email_confirmed == false
         render :js => "email='" + @email + "'; hide_error_messages(); $('#email_not_confirmed_error_div').show()"
         return
