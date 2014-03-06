@@ -13,14 +13,14 @@
       <%= hidden_field_tag :user_id, @user.present? ? @user.id : nil %>
       <b><u><%= t('product_information') %></u></b><br/>
       <span style="margin-bottom: 5px;"><%= t(:product_type) %></span><br/>
-      <%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "widest_width", :disabled => true} %>
+      <%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "widest_width", :disabled => true, :style => "background: #999999;"} %>
       <br/>
       <%= f.hidden_field :product_type_id, value: @product_type_id %>
 
 
       <span style="margin-bottom: 5px;"><%= t(:product_key) %></span><br/>
       <%= f.hidden_field :product_key, value: @product_key %>
-      <%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key), :class => "widest_width", :disabled => true %>
+      <%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key), :class => "widest_width", :style => "background: #999999;", :disabled => true %>
       <br/>
 
 

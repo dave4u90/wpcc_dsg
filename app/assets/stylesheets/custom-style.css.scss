@@ -3,10 +3,15 @@
  *= require note
  *= require product_instances
  *= require static_pages
+ *= product_key
  */
 /*Fronm bootstrap*/
 *:before, *:after {
   -moz-box-sizing: border-box;
+}
+
+.container {
+  width: 1024px !important;
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -277,7 +282,7 @@ label.blank_label {
   width: 200px !important;
 }
 
-.medium_wide_width{
+.medium_wide_width {
   width: 250px !important;
 }
 
@@ -289,7 +294,7 @@ label.blank_label {
   width: 400px !important;
 }
 
-.widest_width{
+.widest_width {
   width: 500px !important
 }
 
@@ -376,6 +381,10 @@ h1, h2, h3, h4, h5, h6 {
 
 img {
   /*width: 100%;*/
+}
+
+.glyphicon-chevron-right {
+  width: 5px;
 }
 
 header {
@@ -518,12 +527,12 @@ h2.logo-main-slogan {
 .grey_panel {
   background: none repeat scroll 0 0 #BBBBBB;
   height: 163px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-top: 30px;
   width: 400px;
 }
 
-.grey-panel-header{
+.grey-panel-header {
   background: none repeat scroll 0 0 #666666;
   height: 50px;
   width: 100%;
@@ -603,6 +612,8 @@ footer {
   color: #999999;
   padding: 30px 0;
   margin-top: 25px;
+  width: 100%;
+  float: left;
 }
 
 .btn-signup {
@@ -649,10 +660,8 @@ ul.footer-link {
 
 .social-h3 {
   text-align: center;
-  width: 510px !important;
-  float: left;
   color: #ffffff;
-  margin-left: -20px;
+  float: right;
 }
 
 .social {

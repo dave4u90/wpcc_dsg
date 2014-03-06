@@ -1,61 +1,72 @@
-<div class="page_content">
-  <h1 class="page_header"><%= t('contact_us') %></h1>
-  <hr/>
-  <div class="about_us_content_box">
-    <div class="col-md-6 no-padding-margin-left">
-      <div class=" panel-default">
+<div class="col-md-12">
+  <div class="container">
+    <h1 class="no-padding-margin-left" style="color: #FFFFFF;"><%= t('contact_us') %></h1>
+    <hr style="width: 97%; margin-left: 0px;">
 
-        <div class="panel-body">
-          <%= form_for @enquiry, url: {controller: :static_pages, action: :contact} do |f| %>
-              <% if @enquiry.errors.any? %>
-                  <div class="alert alert-error">
-                    <b style="font-size: 16px;"><%= pluralize(@enquiry.errors.count, "error") %> prohibited this post
-                      from being saved:</b>
+    <div class="about_us_content_box" style="float: left;">
+      <!-- Contact From -->
+      <div class="col-md-6 no-padding-margin-left">
+        <div class=" panel-default">
+          <div class="panel-body" style="margin-left: 25px; float: left;">
+            <%= form_for @enquiry, url: {controller: :static_pages, action: :contact} do |f| %>
+                <% if @enquiry.errors.any? %>
+                    <div class="alert alert-error">
+                      <b style="font-size: 16px;"><%= pluralize(@enquiry.errors.count, "error") %> prohibited this post
+                        from being saved:</b>
 
-                    <ul>
-                      <% @enquiry.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-              <% end %>
-              <b style="margin-bottom: 5px;"><%= t('name') %></b><br/>
+                      <ul>
+                        <% @enquiry.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+                <b style="margin-bottom: 5px;"><%= t('name') %></b><br/>
 
-              <div class="input-group">
-                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-user"> </span></span>
-                <%= f.text_field :name, class: "form-control", placeholder: t('name') %>
-              </div>
-              <b style="margin-bottom: 5px;"><%= t('email') %></b> <br/>
+                <div class="input-group">
+                  <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-user"> </span></span>
+                  <%= f.text_field :name, class: "form-control", placeholder: t('name') %>
+                </div>
+                <b style="margin-bottom: 5px;"><%= t('email') %></b> <br/>
 
-              <div class="input-group ">
-                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
-                <%= f.text_field :email, class: "form-control", placeholder: t('email') %>
-              </div>
-              <b style="margin-bottom: 5px;"><%= t('telephone_text') %></b> <br/>
+                <div class="input-group ">
+                  <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
+                  <%= f.text_field :email, class: "form-control", placeholder: t('email') %>
+                </div>
+                <b style="margin-bottom: 5px;"><%= t('telephone_text') %></b> <br/>
 
-              <div class="input-group ">
-                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-phone-alt"> </span></span>
-                <%= f.text_field :telephone, class: "form-control", placeholder: t('telephone_text') %>
-              </div>
-              <%= recaptcha_tags(display: {theme: 'clean'}) %>
-              <b style="margin-bottom: 5px;"><%= t('message') %></b> <br/>
+                <div class="input-group ">
+                  <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-phone-alt"> </span></span>
+                  <%= f.text_field :telephone, class: "form-control", placeholder: t('telephone_text') %>
+                </div>
+                <%= recaptcha_tags(display: {theme: 'clean'}) %>
+                <b style="margin-bottom: 5px;"><%= t('message') %></b> <br/>
 
-              <div class="input-group ">
-                <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-pencil"> </span></span>
-                <%= f.text_area :message, class: "form-control", placeholder: t('message_placeholder'), style: "height: 100px;" %>
-              </div>
-              <%= f.submit 'Submit', class: "btn btn-success pull-right" %>
-          <% end %>
+                <div class="input-group ">
+                  <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-pencil"> </span></span>
+                  <%= f.text_area :message, class: "form-control", placeholder: t('message_placeholder'), style: "height: 100px;" %>
+                </div>
+                <%= f.submit t('submit'), class: "btn btn-success pull-right" %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-6 no-padding-margin-left">
-      <div class="panel-default pull-right">
-        <div class="panel-default">
-          <div class="grey_panel">
-            <div class="grey-panel-header">
-              <b style="color: rgb(255, 255, 255); vertical-align: middle ! important; padding-left: 10px; float: left; padding-top: 15px; font-size: 15px;"><%= t('sales') %></b>
+      <div class="col-md-6 no-padding-margin-left pull-right">
+        <div class="panel-default pull-right">
+          <div class="panel-default">
+            <div class="grey_panel">
+              <div class="col-md-12 grey-panel-header">
+                <b style="color: rgb(255, 255, 255); vertical-align: middle ! important; padding-left: 10px; float: left; padding-top: 15px; font-size: 15px;"><%= t('sales') %></b>
+              </div>
+              <div class="col-md-12" style="margin-top: 15px;">
+                <%= image_tag("icons/phone_number.png") %>
+                <b style="font-size: 18px; padding-left: 10px; padding-top: 2px;">(613) 277-9762</b>
+              </div>
+              <div class="col-md-12" style="margin-top: 15px;">
+                <%= image_tag("icons/mail.png") %>
+                <b style="font-size: 18px; padding-left: 15px;padding-top: 2px;">info@workplacecarecentre.com</b>
+              </div>
             </div>
           </div>
         </div>

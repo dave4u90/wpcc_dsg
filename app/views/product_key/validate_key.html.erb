@@ -1,7 +1,7 @@
 <!-- define styles for the vertical tabs -->
 <style type="text/css">
     .ui-tabs-vertical {
-        width: 47em;
+        width: 42em;
     }
 
     .ui-tabs-vertical .ui-tabs-nav {
@@ -32,7 +32,7 @@
     .ui-tabs-vertical .ui-tabs-panel {
         padding: 1em;
         float: right;
-        width: 47em;
+        width: 42em;
     }
 
     span.glyphicon-chevron-right {
@@ -44,8 +44,13 @@
     }
 
 </style>
+<%= javascript_include_tag "jquery.maskedinput.min.js" %>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#product_instance_address_post_zip_code").mask("a9a 9a9");
+        $("#product_instance_signator_telephone_number").mask("(999) 999 9999 9999");
+    });
     $(document).ajaxStart(function () {
         $(".click_button").hide();
         $(".loader").show();
@@ -73,7 +78,7 @@
         }, 0);
     }
 
-    function show_user_register_form(binded_html){
+    function show_user_register_form(binded_html) {
         $("#user_register_form_content").html(binded_html);
         setTimeout(function () {
             $("#tabs").tabs("enable", 3);
@@ -126,71 +131,82 @@
     });
 </script>
 
-<div class="page_content">
-  <h1 class="page_header"><%= t('registration_caps') %></h1>
-  <hr/>
-  <div class="about_us_content_box">
-    <div id="tabs">
-      <ul>
-        <li style=""><a href="#tabs-1">
-          <span class="glyphicon glyphicon-chevron-right active_green"></span>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span style="margin-left: 15px;"><%= t('registration_key') %></span></a>
-        </li>
-        <li>
-          <a href="#tabs-2">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right active_green"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span style="margin-left: 15px;"><%= t('location_address') %></span></a>
-        </li>
-        <li>
-          <a href="#tabs-3">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right active_green"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span style="margin-left: 15px;"><%= t('client_information') %></span></a>
-        </li>
-        <li>
-          <a href="#tabs-4">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="glyphicon glyphicon-chevron-right active_green"></span>
-            <span style="margin-left: 15px;"><%= t('user_registration_header') %></span></a></li>
-      </ul>
-      <div id="tabs-1" class="panel_tabs">
-        <span><%= t('registration_key') %></span>
-        <hr/>
-        <%= t('request_access_paragraph').html_safe %>
-        <%= form_for :product_key, :url => {:controller => "product_key", :action => "post_validate_key"}, :html => {id: "product_key_form", novalidate: ""}, :remote => true do |f| %>
-            <%= render partial: "shared/validate_key" %>
-        <% end %>
-      </div>
-      <div id="tabs-2" class="panel_tabs">
-        <span><%= t('details') %></span>
-        <hr/>
-        <div style="width:520px">
-          <span><%= (t(:welcome_to_the_application_paragraph)).html_safe %></span>
-
-          <div id="product_register_form_content"></div>
+<div class="col-md-12">
+  <div class="container">
+    <h1 class="no-padding-margin-left" style="color: #FFFFFF;"><%= t('registration_caps') %></h1>
+    <hr style="width: 97%; margin-left: 0px;">
+    <div class="about_us_content_box">
+      <hr/>
+      <div id="tabs">
+        <!-- Panel Content -->
+        <div class="col-md-4">
+          <ul>
+            <li style=""><a href="#tabs-1">
+              <span class="glyphicon glyphicon-chevron-right active_green"></span>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span style="margin-left: 15px;"><%= t('registration_key') %></span></a>
+            </li>
+            <li>
+              <a href="#tabs-2">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right active_green"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span style="margin-left: 15px;"><%= t('location_address') %></span></a>
+            </li>
+            <li>
+              <a href="#tabs-3">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right active_green"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span style="margin-left: 15px;"><%= t('client_information') %></span></a>
+            </li>
+            <li>
+              <a href="#tabs-4">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right active_green"></span>
+                <span style="margin-left: 15px;"><%= t('user_registration_header') %></span></a></li>
+          </ul>
         </div>
-      </div>
-      <div id="tabs-3" class="panel_tabs">
-        <span><%= t('client_information') %></span>
-        <hr/>
-        <div id="client_register_form_content"></div>
-      </div>
-      <div id="tabs-4" class="panel_tabs">
-        <span><%= t('user_registration') %></span>
-        <hr/>
-        <div id="user_register_form_content"></div>
+
+        <div class="col-md-8 pull-right">
+          <div id="tabs-1" class="panel_tabs">
+            <span><%= t('registration_key') %></span>
+            <hr/>
+            <%= t('request_access_paragraph').html_safe %>
+            <%= form_for :product_key, :url => {:controller => "product_key", :action => "post_validate_key"}, :html => {id: "product_key_form", novalidate: ""}, :remote => true do |f| %>
+                <%= render partial: "shared/validate_key" %>
+            <% end %>
+          </div>
+          <div id="tabs-2" class="panel_tabs">
+            <span><%= t('details') %></span>
+            <hr/>
+            <div style="width:520px">
+              <span><%= (t(:welcome_to_the_application_paragraph)).html_safe %></span>
+
+              <div id="product_register_form_content"></div>
+            </div>
+          </div>
+          <div id="tabs-3" class="panel_tabs">
+            <span><%= t('client_information') %></span>
+            <hr/>
+            <div id="client_register_form_content"></div>
+          </div>
+          <div id="tabs-4" class="panel_tabs">
+            <span><%= t('user_registration') %></span>
+            <hr/>
+            <div id="user_register_form_content"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
 

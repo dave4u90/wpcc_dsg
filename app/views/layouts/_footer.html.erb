@@ -1,6 +1,7 @@
 <footer>
-  <div class="container">
-    <div class="col-md-12">
+  <div class="col-md-12">
+    <div class="container">
+      <!-- Newsletter Form -->
       <div class="col-md-6 no-padding-margin-left">
         <%= image_tag('sign-up.png', class: "sign_up_image",
                       onclick: "$('#mce-FNAME').val('');
@@ -8,7 +9,7 @@
             $('#mce-EMAIL').val('');$('.fancybox-overlay').show(); $('#suc_msg').html('');",
                       onblur: " if (this.value==''){this.value='Email Address'}",
                       onfocus: " if (this.value=='Email Address'){this.value=''}") %>
-        <h2 class="site-map">SITE MAP</h2>
+        <h2 class="site-map"><%= t('site_map') %></h2>
         <hr class="col-md-8 footer-hr">
         <div class="col-md-12 no-padding-margin-left">
           <div class="col-md-6 no-padding-margin-left">
@@ -27,10 +28,11 @@
                 <%= link_to t('register'), validate_key_path(:method => :user) %>
               </li>
               <li>
-                <%= link_to 'Inquire', "/contact" %>
+                <%= link_to t('inquire'), "/contact" %>
               </li>
             </ul>
           </div>
+          <!-- Footer Menu -->
           <div class="col-md-6 no-padding-margin-left">
             <ul class="footer-link">
               <li>
@@ -52,84 +54,25 @@
             </ul>
           </div>
         </div>
-
       </div>
-      <div class="col-md-6">
-        <div class="col-md-12">
-          <h3 class="social-h3">Connect with us:
-            <%= link_to '', "https://www.facebook.com/WorkplaceCareCentre", :class => "social fb" %>&nbsp;
-            <%= link_to '', "http://www.linkedin.com/company/workplace-care-centre---occupational-health-and-safety", :class => "social lin" %>
-          </h3>
-        </div>
-        <!-- <div class="col-md-6 no-padding-margin-left">
-        <h3 style="text-align: center;"><a class="social fb" href="#">facebook</a> &nbsp; <a class="social lin" href="#">facebook</a></h3>
-        </div> -->
-
+      <!-- Social Menu -->
+      <div class="pull-right">
+        <h3 class="social-h3 col-md-12" style="margin-right: 10px;">
+          <span><%= t('connect_with_us:') %></span>
+          <%= link_to '', "https://www.facebook.com/WorkplaceCareCentre", :class => "social fb pull-right" %>&nbsp;
+          <%= link_to '', "http://www.linkedin.com/company/workplace-care-centre---occupational-health-and-safety", :class => "social lin pull-right" %>
+        </h3>
       </div>
-      <div class="clearfix">&nbsp;</div>
-      <div class="col-md-12 no-padding-margin-left">
-        <%= t('footer_license_text') %>
-        <br/>
-        <%= t('footer_text') %>
-      </div>
-
     </div>
 
-  </div>
-  <%= render 'layouts/fancybox' %>
-  <!-- TEST ENVIRONMENT INFORMATION -->
-  <div>
-    <% if Rails.env.development? %>
-        <hr/>
-        <div style="padding: 15px">
-          <h3><u>Test Environment</u></h3>
+    <div class="clearfix">&nbsp;</div>
 
-          <p><b>New Product Instance Key</b><br/>
-            <% k= ProductInstance.get_new_key(ProductType.first) %>
-            <%= k %> - Valid? <%= ProductKey.valid_key(k) %> - In Use? <%= ProductKey.key_in_use (k) %> - Clean
-            Key: <%= ProductKey.clean_key(k) %>
-          </p>
-
-          <p><b>Current Language</b><br/>
-            <% cur_l_id = current_language_id()
-               cur_l = Language.find(cur_l_id)
-            %>
-            <%= cur_l_id %> is <%= cur_l.to_s %> and locale is <%= I18n.locale.to_s %>
-          </p>
-        </div>
-        <hr/>
-        <h3><u>Params</u></h3>
-        <% params.each do |p| %>
-            <%= p[0] %> = <%= p[1] %>
-            <br>
-        <% end %>
-        <hr/>
-        <h3><u>Sessions</u></h3>
-        <% session.each do |s| %>
-            <%= s[0] %> = <%= s[1] %>
-            <br>
-        <% end %>
-        <hr/>
-        <h3><u>Address Cloning</u></h3>
-        <% m = Address.first.my_updatable_attributes %>
-        <% m.each do |p| %>
-            <%= p[0] %> = <%= p[1] %>
-            <br>
-        <% end %>
-        <hr/>
-        <H3>Time</H3>
-        <%= Time.current.to_formatted_s(:long_ordinal) %>
-        <hr/>
-        <h3>Encode/Decode</h3>
-        <%
-           #orig_str = "WbZ8FT~2"
-           orig_str = "fahadjawaid"
-           encd_str = ApplicationHelper.encode(orig_str)
-           decoded_str = ApplicationHelper.decode(encd_str)
-        %>
-        Original: >>'<%= orig_str %>'<<<br/>
-        Encode: >>'<%= encd_str %>'<<<br/>
-        Decode: >>'<%= decoded_str %>'<<<br/>
-    <% end %>
+    <!-- Footer License Text -->
+    <div class="container">
+      <%= t('footer_license_text') %>
+      <br/>
+      <%= t('footer_text') %>
+    </div>
+    <%= render 'layouts/fancybox' %>
   </div>
 </footer>
