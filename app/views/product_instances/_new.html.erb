@@ -61,9 +61,21 @@
       <span style="margin-bottom: 5px;"><%= t(:email_address) %></span><br/>
       <%= f.email_field :signator_email_address, :class => "widest_width" %>
 
-      <span style="margin-bottom: 5px;"><%= t(:telephone_number) %></span><br/>
-      <%= f.text_field :signator_telephone_number, :class => "widest_width" %>
-      <%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "margin-right: -30px;display: none;")%>
+      <table>
+        <tr>
+          <td>
+            <span style="margin-bottom: 5px;"><%= t(:telephone_number) %></span><br/>
+            <%= f.select :phone_country_code, [["Canada & USA      +1", "+1"]], {}, {:class => "medium_wide_width"} %>
+          </td>
+          <td>&nbsp;</td>
+          <td>
+            <span style="margin-bottom: 5px;"></span><br/>
+            <%= f.text_field :signator_telephone_number, :class => "medium_wide_width" %>
+          </td>
+        </tr>
+      </table>
+
+      <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "margin-right: -30px;display: none;") %>
       <%= button_tag t(:next), {id: "product_instance_button", class: "btn btn-success pull-right product_instance_submit_register click_button", style: "margin-right: -20px;"} %>
       <br/>
   <% end %>

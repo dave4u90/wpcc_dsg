@@ -132,7 +132,6 @@ class ProductInstancesController < ApplicationController
         end
       else
         @object = @client
-        raise @client.to_yaml
         binded_html = render_to_body(:file => "#{Rails.root}/app/views/product_instances/_product_instance_errors.html.erb")
         render :js => "$('#client_errors').html('#{ escape_javascript binded_html}')" and return
       end

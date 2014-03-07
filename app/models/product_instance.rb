@@ -18,6 +18,7 @@ class ProductInstance < ActiveRecord::Base
   belongs_to :address, :foreign_key => "product_location_address_id", :class_name => "Address"
 
   accepts_nested_attributes_for :client, :address, :user_accesses
+  attr_accessor :phone_country_code
 
 
   VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

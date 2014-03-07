@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
   #rescue_from Exception do |e|
     #logger.info "#{e.message}"
     #flash[:notice] = "Sorry an error occured. Please contact administrator."
+    #if request.xhr?
+    #render :js => "window.location.replace('#{root_url}')"
+    #else
     #redirect_to "/" and return
+    #end
   #end
 
 

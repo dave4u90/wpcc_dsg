@@ -48,8 +48,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#product_instance_address_post_zip_code").mask("a9a 9a9");
-        $("#product_instance_signator_telephone_number").mask("(999) 999 9999 9999");
+
     });
     $(document).ajaxStart(function () {
         $(".click_button").hide();
@@ -62,6 +61,8 @@
     });
     function show_product_register_form(binded_html) {
         $("#product_register_form_content").html(binded_html);
+        $("#product_instance_address_post_zip_code").mask("a9a 9a9");
+        $("#product_instance_signator_telephone_number").mask("(999) 999 9999 ext 9999");
         setTimeout(function () {
             $("#tabs").tabs("enable", 1);
             $("#tabs").tabs("option", "active", 1);
@@ -71,6 +72,7 @@
 
     function show_client_register_form(binded_html) {
         $("#client_register_form_content").html(binded_html);
+        $("#product_instance_client_address_attributes_post_zip_code").mask("a9a 9a9");
         setTimeout(function () {
             $("#tabs").tabs("enable", 2);
             $("#tabs").tabs("option", "active", 2);
@@ -80,6 +82,7 @@
 
     function show_user_register_form(binded_html) {
         $("#user_register_form_content").html(binded_html);
+        $("#user_address_attributes_post_zip_code").mask("a9a 9a9");
         setTimeout(function () {
             $("#tabs").tabs("enable", 3);
             $("#tabs").tabs("option", "active", 3);

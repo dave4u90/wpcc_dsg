@@ -1,3 +1,9 @@
+<%= javascript_include_tag "jquery.maskedinput.min.js" %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#enquiry_telephone").mask("(999) 999 9999 ext 9999");
+    });
+</script>
 <div class="col-md-12">
   <div class="container">
     <h1 class="no-padding-margin-left" style="color: #FFFFFF;"><%= t('contact_us') %></h1>
@@ -36,8 +42,22 @@
                 <b style="margin-bottom: 5px;"><%= t('telephone_text') %></b> <br/>
 
                 <div class="input-group ">
-                  <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-phone-alt"> </span></span>
-                  <%= f.text_field :telephone, class: "form-control", placeholder: t('telephone_text') %>
+
+                  <table>
+                    <tr>
+                      <div class="input-group">
+                        <td>
+                          <%= f.select :phone_country_code, [["Canada & USA      +1", "+1"]], {}, {:class => "form-control"} %>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+
+                          <%= f.text_field :telephone, class: "form-control medium_wide_width", placeholder: t('telephone_text') %>
+                        </td>
+                      </div>
+                    </tr>
+                  </table>
+
                 </div>
                 <%= recaptcha_tags(display: {theme: 'clean'}) %>
                 <b style="margin-bottom: 5px;"><%= t('message') %></b> <br/>
