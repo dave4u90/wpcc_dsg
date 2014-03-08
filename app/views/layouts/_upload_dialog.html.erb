@@ -1,8 +1,9 @@
+<%= javascript_include_tag 'jquery-fileupload' %>
 <!-- file upload dialogbox -->
 <div id="upload_dialog" title="<%= t(:attach_files) %>">
   <div id="file_upload_container">
 
-    <%= s3_uploader_form(id: "s3-uploader") do |f| %>
+    <%= s3_uploader_form id: "s3-uploader" do |f| %>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
           <div class="span7">
@@ -10,6 +11,7 @@
                         <span class="btn btn-success fileinput-button">
                           <i class="icon-plus icon-white"></i>
                           <span><%= t(:attach_files) %></span>
+                          <%= hidden_field_tag "Content-type", "" %>
                           <%= file_field_tag :file, multiple: true %>
                         </span>
             <button type="submit" class="btn btn-primary start">
@@ -102,11 +104,13 @@
     </td>
     {% } else { %}
     <td class="preview">{% if (file.thumbnail_url) { %}
-      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img
+      src="{%=file.thumbnail_url%}"></a>
       {% } %}
     </td>
     <td class="name">
-      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">
+        {%=file.name%}</a>
     </td>
     <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
     <td colspan="2"></td>
@@ -121,4 +125,56 @@
   </tr>
   {% } %}
 </script>
+
+
+<script type="text/javascript" charset="utf-8">
+    // Load existing files:
+    function uploaderReady() {
+        // // Initialize the jQuery File Upload widget:
+        $('#upload_dialog').fileupload({
+            //forceIframeTransport: true,    // DO NOT SET: https://github.com/blueimp/jQuery-File-Upload/issues/1803
+            autoUpload: false,
+            dataType: 'xml',  // S3 returns xml, so expect xml in return
+            paramName: "file",
+            singleFileUploads: true,
+            limitMultiFileUploads: 20,
+            sequentialUploads: false,
+            multipart: true,
+            previewSourceFileTypes: /^image\/(gif|jpeg|png)$/,
+            uploadTemplateId: 'template-upload',
+            downloadTemplateId: 'template-download'
+        });
+        $('#upload_dialog').bind('fileuploaddone', function (e, data) {
+            var test = data.jqXHR.responseText;
+            var response = $(data.jqXHR.responseText);
+            data.result = {'files': [
+                {
+                    'name': "NAME",//response.find('name').text(),
+                    'size': "SIZE"//response.find('size').text(),
+                    //'type': response.find('type').text(),
+                    //'url': response.find('url').text(),
+                    //'thumbnail_url': response.find('thumbnailUrl').text()
+                }
+            ]}
+        });
+
+        $('#upload_dialog').bind('fileuploadstop', function (e) {
+            window.location.replace(window.location.href);
+        })//end fileuploader
+
+    }
+    $(document).ready(uploaderReady);
+    $(document).on('page:load', uploaderReady);
+    $(function () {
+        // Initialize the jQuery File Upload widget:
+        uploaderReady();
+    });
+
+</script>
+
+
+
+
+
+
 

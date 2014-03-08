@@ -23,7 +23,7 @@
 
 
 <!-- bread crumb of pages -->
-<div style="color:#fff; font-size 12px; padding-left: 10px">
+<div style="color:#fff; font-size: 12px; padding-left: 10px">
 	<!-- @@kk: put link to product_instance.index -->
 	<%= link_to t(:products), ProductInstance %> - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
 	<%= link_to raw(@component.get_title(current_language_id)), (component_path @component, :product_instance_id => @product_instance.id) %>

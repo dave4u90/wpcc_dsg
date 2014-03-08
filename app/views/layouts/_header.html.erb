@@ -4,9 +4,9 @@
         $(".button_link").button();
         $("input[type=button]").button();
         $("#upload_dialog").dialog({
-            resizable: false,
+            resizable: true,
             height: 500,
-            width: 500,
+            width: 900,
             modal: true
         });
         upload_dialog_close();
@@ -16,7 +16,7 @@
         $("#upload_dialog").dialog("open");
         x = $("div[role='dialog']").first();
         x.css('z-index', 2000);
-        x.css('width', '570px !important');
+        x.css('width', '900px !important');
         x.css('height', '160px !important');
     }
     function upload_dialog_close() {
