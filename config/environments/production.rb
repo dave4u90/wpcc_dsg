@@ -1,4 +1,4 @@
-Wpcc::Application.configure do
+  Wpcc::Application.configure do
 
   config.cache_classes = true
 

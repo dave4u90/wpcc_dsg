@@ -25,8 +25,8 @@
           </div>
           <div class="span5">
             <!-- The global progress bar -->
-            <div class="progress progress-success progress-striped active fade">
-              <div class="bar" style="width:0%;"></div>
+            <div class="progress progress-success progress-striped active" role="progressbar">
+              <div id="global_progress" class="bar" style="width:0%;background-color: #248F24;display: block; float: left">&nbsp;&nbsp;</div>
             </div>
           </div>
         </div>
@@ -67,8 +67,8 @@
     </td>
     {% } else if (o.files.valid && !i) { %}
     <td>
-      <div class="progress progress-success progress-striped active">
-        <div class="bar" style="width:0%;"></div>
+      <div class="progress progress-success progress-striped active" role="progressbar">
+        <div class="bar" style="width:0%;background-color: #248F24; display: block; float: left;">&nbsp;&nbsp;</div>
       </div>
     </td>
     <td class="start">{% if (!o.options.autoUpload) { %}
@@ -144,24 +144,36 @@
             uploadTemplateId: 'template-upload',
             downloadTemplateId: 'template-download'
         });
+
         $('#upload_dialog').bind('fileuploaddone', function (e, data) {
-            var test = data.jqXHR.responseText;
-            var response = $(data.jqXHR.responseText);
+            var response = data.jqXHR.responseText;
+            var xml = response;
+            var location = $.parseXML(xml);
+            xml = $(location);
+            var url = xml.find("Location");
+
             data.result = {'files': [
                 {
                     'name': "Successfully Uploaded",//response.find('name').text(),
                     'size': "SIZE"//response.find('size').text(),
                     //'type': response.find('type').text(),
-                    //'url': response.find('url').text(),
-                    //'thumbnail_url': response.find('thumbnailUrl').text()
+                    //'url': url.text(),
+                    //'thumbnail_url': url.text()
                 }
             ]}
         });
 
         $('#upload_dialog').bind('fileuploadstop', function (e) {
             window.location.replace(window.location.href);
-        })//end fileuploader
+        });
 
+        $('#upload_dialog').bind('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#global_progress').css(
+                    'width',
+                    progress + '%'
+            );
+        });
     }
     $(document).ready(uploaderReady);
     $(document).on('page:load', uploaderReady);
