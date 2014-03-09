@@ -22,7 +22,7 @@
       :port => 587,
       :authentication => :plain,
       :user_name => 'admin@workplacecarecentre.com',
-      :password => ' WbZ8FT~2',
+      :password => 'WbZ8FT~2',
       :enable_starttls_auto => false
   }
 
