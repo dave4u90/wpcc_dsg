@@ -88,7 +88,7 @@ btn-user-new {
 }
 
 .field_with_errors {
-  @extend .control-group;
+  @extend .has-error;
   @extend .error;
 }
 
