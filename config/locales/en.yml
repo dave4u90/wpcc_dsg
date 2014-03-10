@@ -65,7 +65,6 @@ en:
   lastName: "Last Name"
   email: "Email Address"
   telephone: "Telephone (###) ###-#### x ####"
-  telephone: "Telephone (###) ###-#### x ####"
   telephone_text: "Telephone"
   no_notes_found: "No notes found"
   notes_to_review: "Note(s) to Review"

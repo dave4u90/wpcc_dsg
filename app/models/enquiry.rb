@@ -3,7 +3,7 @@ class Enquiry < ActiveRecord::Base
 
   VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :email, presence: {message: "can not be blank."}, format: {with: VALID_EMAIL}, uniqueness: {case_sensitive: false}
+  validates :email, presence: {message: "can not be blank."}, format: {with: VALID_EMAIL}
   validates :name, :telephone, :message, presence: {message: "can not be blank."}
 
   after_create :send_enquiry_email
