@@ -179,7 +179,7 @@
 
         <div class="col-md-8 pull-right">
           <div id="tabs-1" class="panel_tabs">
-            <span><%= t('registration_key') %></span>
+            <b style="color: #4C4C4C;"><%= t('registration_key') %></b>
             <hr/>
             <%= t('request_access_paragraph').html_safe %>
             <%= form_for :product_key, :url => {:controller => "product_key", :action => "post_validate_key"}, :html => {id: "product_key_form", novalidate: ""}, :remote => true do |f| %>
@@ -187,7 +187,7 @@
             <% end %>
           </div>
           <div id="tabs-2" class="panel_tabs">
-            <span><%= t('details') %></span>
+            <b style="color: #4C4C4C;"><%=  t('details') %></b>
             <hr/>
             <div style="width:520px">
               <span><%= (t(:welcome_to_the_application_paragraph)).html_safe %></span>
@@ -196,12 +196,12 @@
             </div>
           </div>
           <div id="tabs-3" class="panel_tabs">
-            <span><%= t('client_information') %></span>
+            <b style="color: #4C4C4C;"><%= t('client_information') %></b>
             <hr/>
             <div id="client_register_form_content"></div>
           </div>
           <div id="tabs-4" class="panel_tabs">
-            <span><%= t('user_registration') %></span>
+            <b style="color: #4C4C4C;"><%=  t('user_registration') %></b>
             <hr/>
             <div id="user_register_form_content"></div>
           </div>
