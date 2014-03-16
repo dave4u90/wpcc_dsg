@@ -15,6 +15,13 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+  <script type="text/javascript">
+      $(function () {
+          var current_time = new Date();
+          alert(current_time);
+          document.cookie ="time_zone=" + current_time.getTimezoneOffset();
+      });
+  </script>
 </head>
 <body>
 <div>

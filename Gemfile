@@ -9,18 +9,19 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'prawn'
 gem 'jquery-ui-rails'
+gem 'jquery-cookie-rails'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "jquery-fileupload-rails"
 gem 'mysql2'
 
 
-gem "therubyracer"
+#gem "therubyracer"
 
-gem "execjs"
+#gem "execjs"
 
 
-gem "less-rails"
-gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
+#gem "less-rails"
+#gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 
 
 group :development do
@@ -68,7 +69,7 @@ group :image do
 end
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 

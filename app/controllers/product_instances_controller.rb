@@ -103,8 +103,9 @@ class ProductInstancesController < ApplicationController
     @client = @product_instance.client || @product_instance.build_client
     @address = @client.new_record? ? @client.build_address : @client.address
     client_params = params[:product_instance][:client]
-    address_attributes = params[:product_instance][:client][:address_attributes]
-    client_params.delete(:address_attributes)
+    address_attributes = params[:product_instance][:client].present? ? params[:product_instance][:client][:address_attributes] : Hash.new
+    client_params.delete(:address_attributes) if @client.new_record?
+
     if @client.new_record?
       if @client.update_attributes(client_params)
         @product_instance.update_attributes(:client_id => @client.id)

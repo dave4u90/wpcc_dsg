@@ -45,7 +45,7 @@
                       <tr>
                         <td align="left"><%= pin.subject.to_s %></td>
                         <td align="right"><%= t(:by) %>: <%= pin.user.name.to_s %>
-                          (<%= pin.created_at.to_formatted_s(:long_ordinal) %>)
+                          (<%= pin.created_at.in_time_zone(Time.zone.name).to_formatted_s(:long_ordinal) %>)
                         </td>
                       </tr>
                     </table>
