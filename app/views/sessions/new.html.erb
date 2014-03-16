@@ -135,7 +135,7 @@
             <p>
               <%= t('overview_text_para3') %>
             </p>
-            <%= link_to t('register'), "/signup", class: "btn btn-success pull-right" %>
+            <%= link_to t('register'), validate_key_path(:method => :user), class: "btn btn-success pull-right" %>
           </div>
         </div>
       </div>

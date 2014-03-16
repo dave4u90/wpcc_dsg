@@ -19,20 +19,22 @@
 <body>
 <div>
   <%= render 'layouts/header' %>
-  <% #only output flash alerts that are not of json type. thru naming convention, flash elements that start with a key json_* is json
-     flash.each do |key, value|
-       if key.to_s.match(/^json_*/) == nil %>
-          <div class="alert alert-<%= key %>">
-            <%= raw(value) %>
-          </div>
-      <%
-         end
-         end %>
+  <div class="container">
+    <% #only output flash alerts that are not of json type. thru naming convention, flash elements that start with a key json_* is json
+       flash.each do |key, value|
+         if key.to_s.match(/^json_*/) == nil %>
+            <div class="alert alert-<%= key %>">
+              <%= raw(value) %>
+            </div>
+        <%
+           end
+           end %>
+  </div>
   <div class="content">
     <%= yield %>
   </div>
 
-  <%#= render 'layouts/upload_dialog' %>
+<%#= render 'layouts/upload_dialog' %>
 
   <div class="clearfix"></div>
   <%= render 'layouts/footer' %>
