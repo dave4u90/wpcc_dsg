@@ -32,7 +32,7 @@ Wpcc::Application.routes.draw do
 
   match '/product_key/validate_key', :to => "product_key#validate_key", :as => :validate_key
   match '/product_key/post_validate_key', :to => "product_key#post_validate_key", :as => :post_validate_key
-  match '/product_instances/create_client', :to => "product_instances#create_client"
+  match '/product_instances/create_client', :to => "product_instances#create_client", :defaults => { :format => 'js' }
   match '/product_instances/create_user', :to => "product_instances#create_user"
 
   match "users/email_confirmation", :to => "users#email_confirmation"

@@ -1,4 +1,5 @@
-Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
+#Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
+Rails.application.config.middleware.delete "JQuery::FileUpload::Rails::Middleware"
 
 S3DirectUpload.config do |c|
   c.access_key_id = "AKIAIJYE5DCLWM432DDQ"       # your access key id

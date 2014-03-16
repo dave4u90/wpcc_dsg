@@ -1,87 +1,124 @@
-
-
 <!-- define styles for the vertical tabs -->
 <style>
-  .ui-tabs-vertical { width: 55em; }
-  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-  .ui-tabs-vertical .ui-tabs-nav li a { display: block; }
-  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 39em;	 }
-  p {color: black}
-  h2 {padding-top: 0px; margin-top: 0px; text-align: left}
+    .ui-tabs-vertical {
+        width: 55em;
+    }
+
+    .ui-tabs-vertical .ui-tabs-nav {
+        padding: .2em .1em .2em .2em;
+        float: left;
+        width: 12em;
+    }
+
+    .ui-tabs-vertical .ui-tabs-nav li {
+        clear: left;
+        width: 100%;
+        border-bottom-width: 1px !important;
+        border-right-width: 0 !important;
+        margin: 0 -1px .2em 0;
+    }
+
+    .ui-tabs-vertical .ui-tabs-nav li a {
+        display: block;
+    }
+
+    .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+        padding-bottom: 0;
+        padding-right: .1em;
+        border-right-width: 1px;
+        border-right-width: 1px;
+    }
+
+    .ui-tabs-vertical .ui-tabs-panel {
+        padding: 1em;
+        float: right;
+        width: 39em;
+    }
+
+    p {
+        color: black
+    }
+
+    h2 {
+        padding-top: 0px;
+        margin-top: 0px;
+        text-align: left
+    }
 
 </style>
 
 <script>
-  $(function() {
-    $( "#binder" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-    $( "#binder li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-    $( "#tabs" ).tabs({collapsible: true});
-  });
+    $(function () {
+        $("#binder").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+        $("#binder li").removeClass("ui-corner-top").addClass("ui-corner-left");
+        $("#tabs").tabs({collapsible: true});
+    });
 </script>
 
 
 <!-- bread crumb of pages -->
-<div style="color:#fff; font-size: 12px; padding-left: 10px">
-	<!-- @@kk: put link to product_instance.index -->
-	<%= link_to t(:products), ProductInstance %> - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
-	<%= link_to raw(@component.get_title(current_language_id)), (component_path @component, :product_instance_id => @product_instance.id) %>
-	<hr>
-</div>
+<div class="container">
+  <div style="color:#fff; font-size: 12px; padding-left: 10px">
+    <!-- @@kk: put link to product_instance.index -->
+    <%= link_to t(:products), ProductInstance %>
+    - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
+    <%= link_to raw(@component.get_title(current_language_id)), (component_path @component, :product_instance_id => @product_instance.id) %>
+    <hr style="width: 98%; margin-left: 0px;">
+  </div>
 
 
+  <div style="margin: 0.75em">
+    <div class="forgot_email_div" style="width: 100%">
+      <div class="green_menu">
+        <table width="98%">
+          <Tr>
+            <td>
+              <%= raw(@component.get_title(current_language_id)) %>
+            </td>
+            <td align="right">
+              <%= raw(@product_instance.get_title(current_language_id)) %>
+            </td>
+          </Tr>
+        </table>
+      </div>
+      <div>
+      </div>
+      <div align="left" style="background-color: grey;">
+        <% mycomponents = @component.get_components() %>
 
-<div style="margin: 0.75em">
-	<div class="forgot_email_div" style="width: 100%">
-		<div class="green_menu">
-			<table width="98%">
-				<Tr><td>
-					<%= raw(@component.get_title(current_language_id)) %>
-				</td>
-				<td align="right">
-					<%= raw(@product_instance.get_title(current_language_id)) %>
-				</td>					
-				</Tr>				
-			</table>
-		</div>
-        <div>
-        </div>
-		<div align="left" style="background-color: grey;">
-			<% mycomponents = @component.get_components() %>
-			
-				
-			<%if mycomponents.size == 0 %>
-				<h2 style="background-color: white;"><Br><%= t(:empty)%></h2>
 
-			<%elsif @component.component_type.view_handler == "box" %>	
-						
-				<%= render  partial: "components/box_view_handler", locals: {box_items: mycomponents} %>
-				
-			<% elsif @component.component_type.view_handler == "binder" %>
-				<%= render partial: "components/binder_view_handler", locals: { box_items: mycomponents, current_component: @component, current_product_instance: @product_instance }	%>
-			
-			<% end %>	
-			
-		</div>
+        <% if mycomponents.size == 0 %>
+            <h2 style="background-color: white;"><Br><%= t(:empty) %></h2>
 
-	</div>
-	
-</div>
-		
-<br /><br />
-<%
-	@notes_container = []
-	@notes_container.push @component
-	
-	@product_instance_id = @product_instance.id
-%>
+        <% elsif @component.component_type.view_handler == "box" %>
 
-<%= render "notes/show_notes", :partial => true %>
+            <%= render partial: "components/box_view_handler", locals: {box_items: mycomponents} %>
 
-<!-- if user has the talott role then display the following -->
-<%= render partial: "layouts/upload_dialog"%>
+        <% elsif @component.component_type.view_handler == "binder" %>
+            <%= render partial: "components/binder_view_handler", locals: {box_items: mycomponents, current_component: @component, current_product_instance: @product_instance} %>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <br/><br/>
+  <%
+     @notes_container = []
+     @notes_container.push @component
+
+     @product_instance_id = @product_instance.id
+  %>
+
+  <%= render "notes/show_notes", :partial => true %>
+
+  <!-- if user has the talott role then display the following -->
+  <%= render partial: "layouts/upload_dialog" %>
 <%#= render "components/new_component", :partial => true %>
 
-<br />
+  <br/>
 </div>
+

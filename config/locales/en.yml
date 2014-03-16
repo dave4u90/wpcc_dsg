@@ -32,7 +32,7 @@ en:
   forget_password: "Forget Password"
   forgot_password: "Forgot password?"
   application_title: "Work Place Care Centre"
-  application_type: "Document Management System"
+  application_type: "Health and Safety Document Management System"
   change_language: "Change Language"
   pct_complete: "% Completed"
   password_could_not_be_reset: "Error. Password could not be reset. Please try again."

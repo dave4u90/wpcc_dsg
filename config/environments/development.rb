@@ -31,6 +31,15 @@ Wpcc::Application.configure do
       :enable_starttls_auto => true
   }
 
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'wpcc_talott_forms',
+          :access_key_id => 'AKIAIJYE5DCLWM432DDQ',
+          :secret_access_key => '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'
+      }
+  }
+
 
   #fjawaid@gmail.com
    #  ActionMailer::Base.smtp_settings = {

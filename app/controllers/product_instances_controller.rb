@@ -1,6 +1,6 @@
 class ProductInstancesController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
-  before_filter :login_required, only: [:index,:show, :edit, :update]
+  before_filter :login_required, only: [:index, :show, :edit, :update]
   #before_filter :only_admin_allowed, only: [:edit]
 
 
@@ -80,6 +80,7 @@ class ProductInstancesController < ApplicationController
       @product_instance.save
       UserMailer.signator_new_product_registration_email(@product_instance).deliver
       @client = @product_instance.client || @product_instance.build_client
+      @client.attachments.build
       @user = User.find_by_id(params[:user_id])
       if @user.present?
         @user_access = @product_instance.user_accesses.first || @product_instance.user_accesses.build
@@ -118,7 +119,7 @@ class ProductInstancesController < ApplicationController
               @address = @user.build_address
               @product_key = @product_instance.product_key
               binded_html = render_to_body(:file => "#{Rails.root}/app/views/users/_new.html.erb")
-              render :js => "show_user_register_form('#{escape_javascript binded_html}');" and return
+              render js: "show_user_register_form('#{escape_javascript binded_html}');" and return
             end
           else
             @object = @address

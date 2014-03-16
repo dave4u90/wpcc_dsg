@@ -1,7 +1,8 @@
+<div class="container">
 <div style="color:#fff;font-size: 12px;padding-left: 10px">
   <%= link_to t(:products), ProductInstance %>
   - <%= link_to t(:edit_products), edit_product_instance_path(@product.id) %>
-  <hr>
+  <hr style="width: 98%; margin-left: 0px;">
 </div>
 
 
@@ -61,7 +62,7 @@
                     <hr/>
 
                     <b><%= t(:registration_key) %></b><br/>
-                    <%= @product.product_key %>
+                    <%= @product.formatted_product_key %>
                     <br/><br/>
                     <b><%= t(:product_title) %></b>
                     <%= f.text_field :product_title %>
@@ -121,7 +122,6 @@
       </div>
     </div>
 
-    </div>
 
     <div class="pull-right" style="padding-right: 20px;margin-right: 100px;margin-top: 10px">
       <%= f.submit t(:save_changes), name: "save_product", class: "btn btn-success", :style => "padding-left:20px;padding-right:20px" %>
@@ -131,6 +131,7 @@
 
     <!-- this the users and their access list -->
     <a name="manage_access"></a>
+
     <div style="padding-left: 10px;padding-right: 20px">
       <div class="forgot_email_div" style="width: 100%">
         <div class="green_menu" style="padding-right: 10px">
@@ -206,3 +207,4 @@
     </div>
     <br/>
 <% end %>
+</div>

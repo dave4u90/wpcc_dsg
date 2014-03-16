@@ -32,7 +32,7 @@ fr:
   forget_password: "FR:-Forget Password"
   forgot_password: "FR:-Forgot password?"
   application_title: "FR:-Work Place Care Centre"
-  application_type: "FR:-Document Management System"
+  application_type: "FR:-Health and Safety Document Management System"
   change_language: "FR:-Change Language"
   pct_complete: "FR:-% Completed"
   password_could_not_be_reset: "FR:-Error. Password could not be reset. Please try again."

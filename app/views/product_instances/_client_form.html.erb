@@ -1,5 +1,7 @@
+<%= javascript_include_tag "jquery_ujs.js"%>
+<%= javascript_include_tag "jquery.remotipart.js" %>
 <b><u><%= t(:client_information) %></u></b><br/> <br/>
-<%= form_for(:product_instance, :url => {:controller => "product_instances", :action => 'create_client', :id => @product_instance.id }, html: {id: "client_form", class: "validate product_instance_form", novalidate: ""}, :remote => true) do |f| %>
+<%= form_for(:product_instance, :url => {:controller => "product_instances", :action => 'create_client', :id => @product_instance.id}, html: {id: "client_form", class: "validate product_instance_form", novalidate: ""}, :remote => true) do |f| %>
     <div id="client_errors">
 
     </div>
@@ -27,12 +29,18 @@
             <span style="margin-bottom: 5px;"><%= t(:sector) %></span><br/>
             <%= client.select :sector_id, options_from_collection_for_select(Sector.all, "id", "sector"), {}, {:class => "widest_width"} %><br />
 
+            <%= client.fields_for :attachments do |attachment| %>
+                <span style="margin-bottom: 5px;"><%= t(:client_logo) %></span><br/>
+                <%= attachment.file_field :upload, :class => "widest_width" %><br />
+            <% end %>
+
             <b><u><%= t(:client_head_office_address) %></u></b><br>
             <%= t(:address) %>
 
             <%= render partial: "address/address_form", locals: {my_form: client, address_object: @address, address_for: :address} %>
         <% end %>
     <% end %>
-    <%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "display: none;margin-right:74px;")%>
+    <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "display: none;margin-right:74px;") %>
+    <%#= f.submit 'Submit' %>
     <%= button_tag t(:next), {id: "client_register_button", class: "btn btn-success pull-right client_submit_register click_button", style: "margin-right: 74px;"} %>
 <% end %>

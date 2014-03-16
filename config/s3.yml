@@ -6,9 +6,9 @@ development:
 test:
   bucket: 'talott_wpcc_documents'
   access_key_id: 'AKIAIIF64HRN642MBDPA' 
-  secret_access_key: '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
+  secret_access_key: '6BIXZ9gJIQXPDd/ckwIC5vARB75y+ht56HYmnqph'
 
 production:
   bucket: 'talott_wpcc_documents'
   access_key_id: 'AKIAIIF64HRN642MBDPA' 
-  secret_access_key: '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
+  secret_access_key: '6BIXZ9gJIQXPDd/ckwIC5vARB75y+ht56HYmnqph'
