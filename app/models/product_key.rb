@@ -2,6 +2,10 @@ class ProductKey < ActiveRecord::Base
   belongs_to :product_type
   belongs_to :product_instance
 
+  validates :product_type_id, presence: true
+  validates :product_key, presence: true, uniqueness: true
+  validates :client_id, presence: true
+
   def self.new_key(product_type)
     #generate a new product_instance_registration_key
 

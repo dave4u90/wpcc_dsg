@@ -46,7 +46,7 @@ module SessionsHelper
   end
 
   def only_talott_allowed
-    unless current_user.is_tallot
+    unless current_user.is_talott
       flash[:notice] = "Only for talott user. You are not allowed to access that page."
       redirect_to "/"
     end

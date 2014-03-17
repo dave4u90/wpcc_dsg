@@ -78,6 +78,8 @@ class ProductInstancesController < ApplicationController
       @address.save
       @product_instance.address = @address
       @product_instance.save
+      product_key = ProductKey.find_by_product_key(@product_instance.product_key)
+      product_key.update_attributes(product_instance_id: @product_instance.id)
       UserMailer.signator_new_product_registration_email(@product_instance).deliver
       @client = @product_instance.client || @product_instance.build_client
       @client.attachments.build

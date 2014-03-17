@@ -9,6 +9,8 @@ class ProductType < ActiveRecord::Base
   
   has_many :meta_data 
   has_many :meta_fields, :as => :metafield_identifier
+
+  validates :product_type_name, :presence => true
   
   def get_title(language_id)
     if self.literals.size > 1 
