@@ -15,13 +15,13 @@ gem "jquery-fileupload-rails"
 gem 'mysql2'
 
 
-#gem "therubyracer"
+gem "therubyracer"
 
-#gem "execjs"
+gem "execjs"
 
 
-#gem "less-rails"
-#gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
+gem "less-rails"
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 
 
 group :development do
@@ -69,7 +69,7 @@ group :image do
 end
 
 group :production do
-	#gem 'pg'
+	gem 'pg'
 end
 
 
