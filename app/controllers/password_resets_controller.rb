@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
   before_filter :login_required, except: [:new, :create, :edit, :update]
 
   def new
+    @user = User.new
   end
 
   def edit
@@ -9,16 +10,23 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-#  	
-    if user
-      user.send_password_reset
-
-      flash[:success] = t(:password_reset_instructions_sent)
-      @redirect_path = root_path
-
+    @user = User.find_by_email(params[:email]) || User.new
+    if verify_recaptcha(:model => @user, :message => "Please enter correct captcha values.")
+      if @user.present? and !@user.new_record?
+        @user.send_password_reset
+        flash[:success] = t(:password_reset_instructions_sent)
+        redirect_to root_path
+      else
+        @user.new_record? ? (@user.errors.clear and @user.errors.add(:base, t(:email_address_not_found))) : @user.errors.add(:base, t(:email_address_not_found))
+        render :new
+      end
     else
-      render :js => "hide_error_messages(); $('#error_div').show()"
+      if @user.new_record?
+        @user.errors.clear
+        @user.errors.add(:base, t(:email_address_not_found))
+        @user.errors.add(:base, "Please enter correct captcha values.")
+      end
+      render :new
     end
   end
 
