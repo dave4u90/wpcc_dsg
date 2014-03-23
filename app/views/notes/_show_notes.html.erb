@@ -95,7 +95,6 @@
 
             <%= my_form.label :note, t(:note) %>
             <%= my_form.cktext_area :note, :class => "", :rows => 5, :cols => 40, style: "width: 100% !important;", :ckeditor => {:language => current_language.locale} %>
-            <%#= my_form.text_area :note, {:class => "", :rows => 5, :cols => 40, style: "width: 100% !important;"} %>
             <br>
             <%= my_form.submit :value => t(:create_note), :class => "btn btn-success" %>
 
