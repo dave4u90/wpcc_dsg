@@ -16,8 +16,8 @@ module Wpcc
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-     config.autoload_paths += %W(#{config.root}/lib)
-     
+    config.autoload_paths += %W(#{config.root}/lib)
+
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -64,9 +64,10 @@ module Wpcc
 
     #initialize jqueryupload middleware
     Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
-    
-    
-    
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
+
 
   end
 end
