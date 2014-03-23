@@ -85,53 +85,58 @@
               <h5 class="media-heading no-padding-margin-left" style="margin-top: 20px;"><%= t(:product_administrators) %></h5>
               <% product.get_administrators.each do |admin| %>
                   <span style="margin-left: 10px;"><%= admin.name %></span>&nbsp; &nbsp;
-                  <a data-expander-target=<%= ".content_#{admin.name}" %> class="expander" href="#" style="color: #2A6496;">[Expand]</a> <br />
+                  <a data-expander-target=<%= ".content_#{admin.name}" %> class="expander" href="#" style="color:
+                  #2A6496;">[Expand]</a> <br/>
 
-                  <div class=<%= "content_#{admin.name}" %> style="margin-left: 10px;margin-top: 20px;">
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <strong style="font-size: 18px;" class="glyphicon glyphicon-envelope"></strong>&nbsp; &nbsp;<strong style="font-size: 15px; color: #2A6496;"><%= admin.email %></strong>
-                        <br/>
-                      </div>
+                  <div class=<%= "content_#{admin.name}" %> style=
+                  "margin-left: 10px;margin-top: 20px;">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <strong style="font-size: 18px;" class="glyphicon glyphicon-envelope"></strong>&nbsp; &nbsp;<strong style="font-size: 15px; color: #2A6496;"><%= admin.email %></strong>
+                      <br/>
                     </div>
+                  </div>
 
                   </div>
               <% end %>
-            </div>
-          </div>
-          <div class="panel-default" style="width: 40%; float: right;">
-            <div class="panel-body">
-              <!-- if user has access crud access -->
-              <% if current_user.has_crud_access(product) %>
-                  <%= link_to t(:open_load), product_type_product_instance_path(product.product_type_id, product), :class => "btn btn-success pull-right", :style => "width:160px" %>
-                  <br/><br/>
-              <% else %>
-                  <%= link_to t(:request_access), current_user_request_access_path(:user_id => current_user.id, :product_instance_id => product.id), :class => "btn btn-success pull-right", :style => "width:160px" %>
-                  <br/><br/>
-              <% end %>
+              </div>
+        </div>
+        <div class="panel-default" style="width: 40%; float: right;">
+          <div class="panel-body">
+            <!-- if user has access crud access -->
+            <% if current_user.has_crud_access(product) %>
+                <%= link_to t(:open_load), product_type_product_instance_path(product.product_type_id, product), :class => "btn btn-success pull-right", :style => "width:160px" %>
+                <br/><br/>
+            <% else %>
+                <%= link_to t(:request_access), current_user_request_access_path(:user_id => current_user.id, :product_instance_id => product.id), :class => "btn btn-success pull-right", :style => "width:160px" %>
+                <br/><br/>
+            <% end %>
 
-              <!-- if user has admin access -->
-              <% if current_user.is_administrator(product) %>
-                  <%= link_to t(:manage_access) + pending_user_str, manage_access_path(id: product.id), :class => "btn btn-success pull-right", :style => "width:160px", :title => pending_user_tip %>
-                  <br/><br/>
-                  <%= link_to t(:edit_details), edit_product_instance_path(product), :class => "btn btn-success pull-right", :style => "width:160px" %>
-                  <br/><br/>
-              <% end %>
+            <!-- if user has admin access -->
+            <% if current_user.is_administrator(product) %>
+                <%= link_to t(:manage_access) + pending_user_str, manage_access_path(id: product.id), :class => "btn btn-success pull-right", :style => "width:160px", :title => pending_user_tip %>
+                <br/><br/>
+                <%= link_to t(:edit_details), edit_product_instance_path(product), :class => "btn btn-success pull-right", :style => "width:160px" %>
+                <br/><br/>
+            <% end %>
 
-              <!-- if user has crud access -->
-              <% if current_user.has_crud_access(product) %>
-                  <%= link_to notes_text, notes_path(:product_instance_id => product.id.to_s), :class => "btn btn-success pull-right", :style => "width:160px", :title => notes_tip %>
-                  <br/><br/>
-              <% end %>
-            </div>
+            <!-- if user has crud access -->
+            <% if current_user.has_crud_access(product) %>
+                <%= link_to notes_text, notes_path(:product_instance_id => product.id.to_s), :class => "btn btn-success pull-right", :style => "width:160px", :title => notes_tip %>
+                <br/><br/>
+            <% end %>
           </div>
         </div>
+      </div>
       </div>
 
   <% end %>
   <div class="paginator pull-right" style="margin-right:30px; margin-top: -10px;">
     <%= will_paginate @product_instances %>
   </div>
-</div>
+  <br/>
+  </div>
+  <%= render "users/user_options_toolbar", :partial => true %>
+
 
 

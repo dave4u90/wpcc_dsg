@@ -28,7 +28,7 @@ class NotesController < ApplicationController
     end
 
 
-    @notes_container = @product_instances
+    @notes_container = @product_instances.compact
     @current_language_id = ApplicationHelper.current_language_id
   end
 

@@ -3,18 +3,17 @@
     <%= javascript_include_tag :notes %>
 <% end %>
 
-<div style="color:#fff;font-size 12px; padding-left: 10px">
+<div class="container">
   <!-- @@kk: put link to product_instance.index -->
   <%= link_to t(:products), ProductInstance %> - <%= link_to t(:notes), Note %>
-  <hr>
-  <br/>
-</div>
+  <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
+    <li><span class="glyphicon glyphicon-home"> </span></li>
+    <li><%= link_to t(:notes), Note %></li>
+  </ol>
 
 
-<%
-   @product_instance_id = params[:product_instance_id]
-%>
-
-<div style="padding: 8px;">
+  <%
+     @product_instance_id = params[:product_instance_id]
+  %>
   <%= render "notes/show_notes", :partial => true %>
 </div>
