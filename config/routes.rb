@@ -1,5 +1,7 @@
 Wpcc::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :postal_codes
 
   # Allow downloading Web Service WSDL as a file with an extension
