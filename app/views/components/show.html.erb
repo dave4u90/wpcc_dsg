@@ -57,52 +57,51 @@
 
 
 <!-- bread crumb of pages -->
+<nav class="navbar navbar-inverse" style="background-color: #999999" role="navigation">
+  <div class="container">
+    <div class="well" style="width: 97.5%;margin-top: 20px;">
+      <div class="media">
+        <a class="pull-left" href=<%= current_user.client.attachments.first.upload.url %>>
+          <img class="media-object" src=<%= current_user.client.attachments.first.upload.url %>, style="height: 64px;width: 64px;">
+        </a>
+
+        <div class="media-body">
+          <h4 class="media-heading" style="padding-left: 0px;"><b><%= current_user.client.client_name %></b></h4> <br/>
+          <span style="margin-top: -15px !important;float: left;"><%= current_user.client.address.full_address %></span><br/>
+          <%= link_to t(:view_edit_company_profile), edit_client_path(current_user.client), :class => "btn btn-success pull-right", :style => "width:230px" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
-  <div style="color:#fff; font-size: 12px; padding-left: 10px">
-    <!-- @@kk: put link to product_instance.index -->
-    <%= link_to t(:products), ProductInstance %>
-    - <%= link_to @product_instance.get_title(current_language_id), @product_instance %> -
-    <%= link_to raw(@component.get_title(current_language_id)), (component_path @component, :product_instance_id => @product_instance.id) %>
-    <hr style="width: 98%; margin-left: 0px;">
+  <div>
+    <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
+      <li><span class="glyphicon glyphicon-home"> </span></li>
+      <li><%= link_to t(:products), ProductInstance %></li>
+      <li><%= link_to @product_instance.get_title(current_language_id), @product_instance %></li>
+      <li><%= link_to raw(@component.get_title(current_language_id)), (component_path @component, :product_instance_id => @product_instance.id) %></li>
+    </ol>
   </div>
 
-
-  <div style="margin: 0.75em">
-    <div class="forgot_email_div" style="width: 100%">
-      <div class="green_menu">
-        <table width="98%">
-          <Tr>
-            <td>
-              <%= raw(@component.get_title(current_language_id)) %>
-            </td>
-            <td align="right">
-              <%= raw(@product_instance.get_title(current_language_id)) %>
-            </td>
-          </Tr>
-        </table>
-      </div>
-      <div>
-      </div>
+  <div class="panel panel-default" style="width: 97.5%">
+    <div class="panel-heading">
+      <strong><%= raw(@component.get_title(current_language_id)) %></strong>
+      <strong class="pull-right"><%= raw(@product_instance.get_title(current_language_id)) %></strong>
+    </div>
+    <div class="panel-body">
       <div align="left" style="background-color: grey;">
         <% mycomponents = @component.get_components() %>
-
-
         <% if mycomponents.size == 0 %>
             <h2 style="background-color: white;"><Br><%= t(:empty) %></h2>
-
         <% elsif @component.component_type.view_handler == "box" %>
-
             <%= render partial: "components/box_view_handler", locals: {box_items: mycomponents} %>
-
         <% elsif @component.component_type.view_handler == "binder" %>
             <%= render partial: "components/binder_view_handler", locals: {box_items: mycomponents, current_component: @component, current_product_instance: @product_instance} %>
-
         <% end %>
-
       </div>
-
     </div>
-
   </div>
 
   <br/><br/>

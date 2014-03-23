@@ -1,0 +1,75 @@
+<div class="container">
+  <div>
+    <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
+      <li><span class="glyphicon glyphicon-home"> </span></li>
+      <li><%= link_to t(:products), ProductInstance %></li>
+      <li><%= link_to t(:manage_access), manage_access_path(id: @product.id) %></li>
+    </ol>
+  </div>
+
+  <div class="panel panel-default" style="width: 97.5%">
+    <div class="panel-heading">
+      <strong><%= raw(@product.get_title (current_language_id)) %></strong>
+      <strong class="pull-right"><%= raw(@product.product_type.get_title(current_language_id)) %></strong>
+    </div>
+    <div class="panel-body">
+      <%= form_for(@product) do |f| %>
+          <div style="padding-left: 10px; padding-top: 10px;" class="tab-content">
+            <h3 class="no-padding-margin-left"><%= t(:user_access_management) %></h3><br/>
+            <table class="table table-bordered" style="color: black;">
+              <tr>
+                <th><%= t(:name_and_email) %></th>
+                <th style="width: 20%"><%= t(:access_roles) %></th>
+                <th><%= t(:actions) %></th>
+              </tr>
+              <% users = @product.get_users
+              %>
+
+              <% users.each do |u| %>
+                  <tr>
+                    <td><%= raw(u.mail_to_s) %> </td>
+                    <td>
+                      <!-- add roles for this user here with a delete button -->
+                      <!-- @kk: when this button is clicked this particular user role is deleted from the user_access table
+                          matching the product_instance_id, user_id, and access_role_id. If this is the only role this user has for this product_instance_id
+                          then dont delete the record, just set the role_access_id to 0
+                          -->
+                      <%
+                         users_accesses = u.get_accesses(@product.id)
+                         users_accesses.each do |ua|
+                           if ua.access_role_id != 0
+                             #display a button with the name of the role and an X
+
+                      %><%= button_tag ua.access_role.get_title(current_language_id) + " X", {:name => "ua", :value => ua.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:remove_access_role) + "');"} %>
+                          <%
+
+                             end
+                             end
+                          %>
+                      <br/><br/>
+                    </td>
+                    <td>
+                      <% if u.is_administrator (@product) %>
+                          <%= button_tag t(:make_regular), {:name => "make_regular", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:confirm_make_regular) + "');"}
+                          %>
+                      <% else %>
+                          <%= button_tag t(:make_admin), {:name => "make_admin", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:confirm_make_administrator) + "');"} %>
+                      <% end %>
+                      <% if u.is_active %>
+                          <% unless (u.admin or current_user.id == u.id) %>
+                              <%= button_tag t(:suspend), {:name => "suspend_user", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:suspend_user_account) + "');"} %>
+                          <% end %>
+                      <% else %>
+                          <%= button_tag t(:authorize), {:name => "authorize_user", :value => u.id, :disable_with => t(:please_wait), :onclick => "return confirm('" + t(:authorize_user_account) + "');"} %>
+                      <% end %>
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+
+          </div>
+          </div>
+      <% end %>
+      </div>
+</div>
+</div>

@@ -1,5 +1,7 @@
 Update Product Instance - Programmer only view for Edit!
 
+<%#= raise @product_instance.to_yaml %>
+
 
 Listing all the param's that were submitted!<Br><Br>	
 <%
@@ -37,4 +39,4 @@ Testing FieldMap - update_object<br>
 
 <%= @product_instance.class.to_s %><br>
 
-<%= FieldMap.update_object @product_instance, params[:product_instance] %>
+<%= FieldMap.update_object @product_instance, @product_instance.attributes %>

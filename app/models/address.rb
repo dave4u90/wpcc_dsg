@@ -64,6 +64,10 @@ class Address < ActiveRecord::Base
 		
 		return s
 	
-	end
+  end
+
+  def full_address
+    "#{line1}, #{line2}, #{line3}, #{city}, #{state_province_county}, #{country}"
+  end
 end
 

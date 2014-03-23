@@ -45,8 +45,7 @@ Wpcc::Application.routes.draw do
   match 'users/grant_access', :to => "users#grant_access", :as => :grant_user_access
 
   match 'product_instances/notify_signator', :to => 'product_instances#notify_signator', :as => :notify_signator
-
-
+  match 'product_instances/manage_access/:id' => 'product_instances#manage_access', :as => :manage_access
 
   resources :users
   resources :product_instances

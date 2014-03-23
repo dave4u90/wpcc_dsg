@@ -9,9 +9,9 @@ class ProductInstancesController < ApplicationController
     if current_user.present?
       if params[:product_type_id]
         @product_type = ProductType.find(params[:product_type_id])
-        @product_instances = @product_type.product_instances.find_all_by_client_id(current_user.client_id)
+        @product_instances = @product_type.product_instances.paginate(page: params[page], per_page: 1, conditions: {client_id: current_user.client_id})
       else
-        @product_instances = ProductInstance.find_all_by_client_id(current_user.client_id)
+        @product_instances = ProductInstance.paginate(page: params[:page], per_page: 1, conditions: {client_id: current_user.client_id})
         @product_instances.each do |d|
           logger.info d.inspect
         end
@@ -67,6 +67,13 @@ class ProductInstancesController < ApplicationController
   def edit
     @product = ProductInstance.find(params[:id])
 
+  end
+
+  def manage_access
+    @product = ProductInstance.find(params[:id])
+    if request.post?
+      jhgjhg
+    end
   end
 
   def create

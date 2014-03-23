@@ -1,0 +1,69 @@
+<div class="fancybox-overlay fancybox-overlay-fixed" style="width: auto; height: auto; display: none;">
+  <div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened" tabindex="-1"
+       style="width: 514px; height: auto; position: absolute; top: 74px; left: 467px; opacity: 1">
+    <div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;">
+      <div class="fancybox-outer">
+        <div class="fancybox-inner" style=" width:484px; height: auto;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                 class="width: 484px; background: #FFF;">
+            <tbody>
+            <tr>
+              <td align="center"><h2><%= t('subscribe_to_mailing_list') %></h2></td>
+            </tr>
+            <tr>
+              <td class="indicates-required">
+                <div id="mc_mandatory" style="color:#FF0000;"><%= t('all_fields_mandatory') %></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= form_for :news_letter, url: {controller: :news_letters, action: :create}, html: {id: "mc-embedded-subscribe-form", class: "validate newsletter", novalidate: ""}, remote: true do |f| %>
+                    <div style="margin: 0; padding: 0; height: auto;">
+                      <div style="float: left; margin: 0; padding: 0; width: 45%; margin-right: 5%; height: auto;">
+                        <%= t('full_name') %>:
+                      </div>
+                      <div style="width: 50%; float: left; padding: 0; margin: 0; height: auto;">
+                        <%= t('phone_number') %>:
+                      </div>
+                      <div style="clear: both; padding: 0; height: 0; margin :0;"></div>
+                    </div>
+
+                    <div style="margin: 0; padding: 0; height: auto;">
+                      <div style="float: left; margin: 0; padding: 0; width: 45%; margin-right: 5%; ">
+                        <%= f.text_field :full_name, size: 20, id: "mce-FNAME", class: "required", placeholder: t('full_name'), style: "margin: 0;" %>
+                      </div>
+                      <div style="width: 50%; float: left; padding: 0; margin: 0; ">
+                        <%= f.text_field :phone, size: 20, id: "mce-MMERGE2", class: "required1", placeholder: t('phone_number'), style: "margin: 0;" %>
+                      </div>
+                      <div style="clear: both;"></div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                      <div style="width: 50%; float: left; padding: 0; margin: 0; height: auto;">
+                        <%= t('email') %>:
+                      </div>
+                      <div style="width: 1000%; float: left; padding: 0; margin: 0;">
+                        <%= f.text_field :email, size: 47, id: "mce-EMAIL", class: "required-email", placeholder: t('email'), style: "margin: 0;" %>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 15px;float: left;">
+                      <%= f.submit t('subscribe'), class: "btn btn-success Subscribe-button validet_chk", id: "mc-embedded-subscribe" %>
+                    </div>
+
+                <% end %>
+
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="middle" colspan="2">
+                <div id="suc_msg" style="color:#FF0000; "></div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a></div>
+  </div>
+</div>

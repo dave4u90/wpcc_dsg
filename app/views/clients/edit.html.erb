@@ -1,0 +1,75 @@
+<div class="container">
+  <h1 class="no-padding-margin-left" style="color: #FFFFFF;"><%= t('clients') %></h1>
+  <hr style="width: 97%; margin-left: 0px;">
+  <!-- Client From -->
+  <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
+    <li><span class="glyphicon glyphicon-home"> </span></li>
+    <li><%= link_to t('home'), product_instances_path %></li>
+    <li><%= link_to t('clients'), clients_path %></li>
+    <li><%= link_to t('edit'), edit_client_path(current_user.client) %></li>
+  </ol>
+  <div class="about_us_content_box" style="float: left;">
+    <div class="col-md-12 no-padding-margin-left">
+      <div class=" panel-default col-md-12">
+        <div class="panel-body col-md-12" style="margin-left: 25px; float: left;">
+          <%= form_for @client do |f| %>
+              <% if @client.errors.any? %>
+                  <div class="alert alert-error">
+                    <b style="font-size: 16px;"><%= pluralize(@client.errors.count, "error") %> prohibited this post
+                      from being saved:</b>
+
+                    <ul>
+                      <% @client.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <b style="margin-bottom: 5px;"><%= t('name') %></b><br/>
+
+              <div class="input-group">
+                <%= f.text_field :client_name, class: "form-control col-md-12", placeholder: t('name') %>
+              </div>
+              <b style="margin-bottom: 5px;"><%= t('sector') %></b> <br/>
+
+              <div class="input-group ">
+                <%= f.select :sector_id, Sector.all.map { |s| [s.sector, s.id] }, class: "form-control", placeholder: t('email'), class: "col-md-12" %>
+              </div>
+
+              <%= f.fields_for :address do |address| %>
+                  <b style="margin-bottom: 5px;"><%= t('address') %></b> <br/>
+
+                  <div class="input-group">
+                    <%= address.text_field :line1, class: "form-control col-md-12", style: "margin-bottom: 10px;" %>
+                    <br/>
+                    <%= address.text_field :line2, class: "form-control col-md-12", style: "margin-bottom: 10px;" %>
+                    <br/>
+                    <%= address.text_field :line3, class: "form-control col-md-12", style: "margin-bottom: 10px;" %>
+                    <br/>
+                  </div>
+
+                  <b style="margin-bottom: 5px;"><%= t('city') %></b><br/>
+
+                  <div class="input-group">
+                    <%= address.text_field :city, class: "form-control col-md-12", placeholder: t('city') %>
+                  </div>
+                  <b style="margin-bottom: 5px;"><%= t('state') %></b><br/>
+
+                  <div class="input-group">
+                    <%= address.text_field :state_province_county, class: "form-control col-md-12" %>
+                  </div>
+
+                  <b style="margin-bottom: 5px;"><%= t('country') %></b><br/>
+
+                  <div class="input-group">
+                    <%= address.text_field :country, class: "form-control col-md-12", placeholder: t('country') %>
+                  </div>
+
+              <% end %>
+              <%= f.submit t('submit'), class: "btn btn-success", style: "float: left; margin-left: 185px;" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
