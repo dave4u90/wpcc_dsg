@@ -4,10 +4,9 @@
 <% end %>
 
 <div class="container">
-  <!-- @@kk: put link to product_instance.index -->
-  <%= link_to t(:products), ProductInstance %> - <%= link_to t(:notes), Note %>
   <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
     <li><span class="glyphicon glyphicon-home"> </span></li>
+    <li><%= link_to t(:products), ProductInstance %></li>
     <li><%= link_to t(:notes), Note %></li>
   </ol>
 
