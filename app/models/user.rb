@@ -19,6 +19,7 @@
 
 class User < ActiveRecord::Base
 	attr_accessor :product_instance_id
+  attr_accessor_with_default :check_password, true
 	attr_accessible :name, :address, :email, :password, :password_confirmation, :locale, :product_instance_id, :is_admin, :client_id, :email_confirmation, :address_attributes, :client_attributes
 	
 	has_secure_password
@@ -42,8 +43,8 @@ class User < ActiveRecord::Base
 	VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	
 	validates :email, presence: true, format: { with: VALID_EMAIL }, uniqueness: { case_sensitive: false }
-	validates :password, presence: true, length: { minimum: 7 }
-	validates :password_confirmation, presence: true
+	validates :password, presence: true, length: { minimum: 7 }, if: :check_password
+	validates :password_confirmation, presence: true, if: :check_password
 	validates_confirmation_of :email
 	
 	def get_accesses(product_instance_id)

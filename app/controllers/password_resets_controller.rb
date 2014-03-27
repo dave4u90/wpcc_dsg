@@ -13,6 +13,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email]) || User.new
     if verify_recaptcha(:model => @user, :message => "Please enter correct captcha values.")
       if @user.present? and !@user.new_record?
+        @user.check_password = false
         @user.send_password_reset
         flash[:success] = t(:password_reset_instructions_sent)
         redirect_to root_path
