@@ -13,9 +13,7 @@
 
   config.force_ssl = false
 
-  config.action_mailer.default_url_options = {:host => 'ancient-spire-8093.herokuapp.com'}
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = {:host => 'fjdsg-wpcc-dev.herokuapp.com'}
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
       :address => "smtp.workplacecarecentre.com",
