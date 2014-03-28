@@ -284,9 +284,14 @@ en:
   last_name: "Last Name"
   telephone_number: "Telephone Number"
   connect_with_us: "Connect With Us:"
+  dashboard: "Dashboard"
   did_you_forgot_your_password: "Did you forget your password?"
   view_edit_company_profile: "View/Edit Company Profile"
   resend_reg_email: "Resend Reg. Email"
+  line1: "Address Line 1"
+  line2: "Address Line 2"
+  line3: "Address Line 3"
+  country_code: "Country Code"
   overview_text_para1: "The WPCC Document Management Center is the single solution to ensure your compliance with all current and future health and safety requirements. An integrated approach combining a physical information center coupled with a powerful web based tool to manage and update."
   overview_text_para2_html: "If you are searching for the perfect solution to your Health and Safety Information needs, please either click contact us below, or click on <strong><a href='healthandsafetyboards.com'>healthandsafetyboards.com</a></strong> for more information"
   overview_text_para3: "If you have recently purchased a WPCC Documents Management Center, please click here to register your new product, and start to take control of all your health and safety documentation.s"
@@ -310,4 +315,9 @@ en:
               too_short: "too short"
             password_confirmation:
               blank: "blank"
+
+
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: ''
 

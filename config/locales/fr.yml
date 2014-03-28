@@ -265,6 +265,11 @@ fr:
   connect_with_us: "FR:-Connect With Us:"
   did_you_forgot_your_password: "FR:-Did you forget your password?"
   resend_reg_email: "FR:-Resend Reg. Email"
+  dashboard: "FR:-Dashboard"
+  line1: "FR:-Address Line 1"
+  line2: "FR:-Address Line 2"
+  line3: "FR:-Address Line 3"
+  country_code: "FR:-Country Code"
   overview_text_para1: "FR:-The WPCC Document Management Center is the single solution to ensure your compliance with all current and future health and safety requirements. An integrated approach combining a physical information center coupled with a powerful web based tool to manage and update."
   overview_text_para2_html: "FR:-If you are searching for the perfect solution to your Health and Safety Information needs, please either click contact us below, or click on <strong><a href='healthandsafetyboards.com'>healthandsafetyboards.com</a></strong> for more information"
   overview_text_para3: "FR:-If you have recently purchased a WPCC Documents Management Center, please click here to register your new product, and start to take control of all your health and safety documentation.s"
@@ -272,7 +277,7 @@ fr:
   footer_text: "FR:-The information on this website is only provided as an informational service to our business partners, seed capital investors and affiliates. Talott First Aid & Safety Inc. is a Canadian Incorporation registered to operate in Ontario, with its contact us at 5119 LCD Merivale, Ottawa, Ontario.
                                        		WPCC, Workplace Care Center, and Talott are registered trademarks of Talott First Aid & Safety."
 
-activerecord:
+  activerecord:
     errors:
       models:
         user:
@@ -289,3 +294,8 @@ activerecord:
               too_short: "FR:-too short"
             password_confirmation:
               blank: "FR:-blank"
+
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: ''
+

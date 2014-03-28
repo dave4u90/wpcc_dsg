@@ -1,4 +1,4 @@
-<%= javascript_include_tag "jquery_ujs.js"%>
+<%= javascript_include_tag "jquery_ujs.js" %>
 <%= javascript_include_tag "jquery.remotipart.js" %>
 <b><u><%= t(:client_information) %></u></b><br/> <br/>
 <%= form_for(:product_instance, :url => {:controller => "product_instances", :action => 'create_client', :id => @product_instance.id}, html: {id: "client_form", class: "validate product_instance_form", novalidate: ""}, :remote => true) do |f| %>
@@ -14,24 +14,38 @@
         <% end %>
         <%= f.fields_for :client, @client do |client| %>
             <span style="margin-bottom: 5px;"><%= t(:company_name) %></span><br/>
-            <%= client.text_field :client_name, :value => @client.try(:client_name), :class => "widest_width", :disabled => true %><br />
+            <div class="input-group">
+              <%= client.text_field :client_name, :value => @client.try(:client_name), :class => "widest_width form-control", :disabled => true, placehoder: t('company_name') %>
+              <br/>
+            </div>
 
             <span style="margin-bottom: 5px;"><%= t(:sector) %></span><br/>
-            <%= client.select :sector_id, options_for_select(Sector.to_a, @client.try(:sector_id)), {}, {:class => "widest_width", :disabled => true} %>
+            <div class="input-group">
+              <%= client.select :sector_id, options_for_select(Sector.to_a, @client.try(:sector_id)), {}, {:class => "widest_width form-control", :disabled => true } %>
+            </div>
         <% end %>
 
     <% else %>
         <%= f.fields_for :client, @client do |client| %>
 
             <span style="margin-bottom: 5px;"><%= t(:company_name) %></span><br/>
-            <%= client.text_field :client_name, :class => "widest_width" %><br />
+            <div class="input-group">
+              <%= client.text_field :client_name, :class => "widest_width form-control", placehoder: t('company_name') %>
+              <br/>
+            </div>
 
             <span style="margin-bottom: 5px;"><%= t(:sector) %></span><br/>
-            <%= client.select :sector_id, options_from_collection_for_select(Sector.all, "id", "sector"), {}, {:class => "widest_width"} %><br />
+            <div class="input-group">
+              <%= client.select :sector_id, options_from_collection_for_select(Sector.all, "id", "sector"), {}, {:class => "widest_width form-control"} %>
+              <br/>
+            </div>
 
             <%= client.fields_for :attachments do |attachment| %>
                 <span style="margin-bottom: 5px;"><%= t(:client_logo) %></span><br/>
-                <%= attachment.file_field :upload, :class => "widest_width" %><br />
+                <div class="input-group">
+                  <%= attachment.file_field :upload, :class => "widest_width" %>
+                  <br/>
+                </div>
             <% end %>
 
             <b><u><%= t(:client_head_office_address) %></u></b><br>
@@ -40,7 +54,7 @@
             <%= render partial: "address/address_form", locals: {my_form: client, address_object: @address, address_for: :address} %>
         <% end %>
     <% end %>
-    <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "display: none;margin-right:74px;") %>
+    <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "display: none;margin-right: 158px;") %>
     <%#= f.submit 'Submit' %>
-    <%= button_tag t(:next), {id: "client_register_button", class: "btn btn-success pull-right client_submit_register click_button", style: "margin-right: 74px;"} %>
+    <%= button_tag t(:next), {id: "client_register_button", class: "btn btn-success pull-right client_submit_register click_button", style: "margin-right: 158px;"} %>
 <% end %>

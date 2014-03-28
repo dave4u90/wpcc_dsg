@@ -8,6 +8,16 @@
     }
 </style>
 
+<script type="text/javascript">
+    $('document').ready(function () {
+        $('.alert').hide();
+        if ($('.alert').html().indexOf('Instructions on how to reset your password has been emailed to you.') != -1) {
+            alert($('.alert').html());
+            window.location.replace('<%= root_url %>');
+        }
+    });
+</script>
+
 <div class="container">
   <div class="left_right_padded_div" style="min-height: 500px;">
     <label class="white_header_label"><%= (t(:forget_password)) %></label>

@@ -1,15 +1,12 @@
 <div class="container">
-  <div class="left_right_padded_div">
-    <label class="white_header_label"><%= (t("user_registration_header")) %></label>
-
-    <div class="row-fluid white_small_label">
-      Welcome- <%= (t("user_registration_header")) %>
+  <div class="panel panel-default" style="width: 97.5%;float: left; margin-top: 50px;">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="padding-left: 0px;"><%= t('user_registration_header') %>
+      </h3>
     </div>
-    <br/>
-
-    <div class="registration_div">
-      <div class="green_menu">
-        User Registration
+    <div class="panel-body">
+      <div class="row-fluid white_small_label">
+        Welcome- <%= @user.try(:name) %>
       </div>
       <br/>
 
@@ -23,7 +20,6 @@
         <%= link_to "Login", root_url, :id => "wider_green_button", class: "btn btn-success" %>
       </div>
     </div>
-
   </div>
 </div>
 <br/>

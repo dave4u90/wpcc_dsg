@@ -29,7 +29,7 @@
 
 </script>
 
-<header role="banner" class="navbar navbar-static-top" >
+<header role="banner" class="navbar navbar-static-top">
   <div class="container">
     <div class="col-md-12">
       <!-- Complany Logo and Name -->
@@ -45,14 +45,23 @@
         <nav role="navigation" class="navbar-collapse bs-navbar-collapse">
           <ul class="nav navbar-nav navbar-right nav-primary">
             <li>
-              <%= link_to t('home'), root_path %>
+              <%= link_to t('dashboard'), root_path %>
             </li>
-            <li>
-              <%= link_to t('about'), "/about" %>
-            </li>
-            <li>
-              <%= link_to t('contact_us'), "/contact" %>
-            </li>
+            <% if current_user %>
+                <li>
+                  <%= link_to t(:sign_out), signout_path %>
+                </li>
+            <% else %>
+                <li>
+                  <%= link_to t('about'), "/about" %>
+                </li>
+                <li>
+                  <%= link_to t('contact_us'), "/contact" %>
+                </li>
+            <% end %>
+            <% if current_user.nil? %>
+
+            <% end %>
             <% Language.supported_languages.each do |l| %>
                 <li>
                   <% if l.id != current_language_id %>
@@ -78,24 +87,27 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-secondary">
-              <li>
-                <%= link_to t(:how_it_works), "/works" %>
-              </li>
-              <li>
-                <% if current_user %>
-                    <%= link_to t(:sign_out), signout_path %>
-                <% else %>
-                    <%= link_to t(:login), new_session_path %>
-                <% end %>
-              </li>
               <% unless current_user %>
+                  <li>
+                    <%= link_to t(:how_it_works), "/works" %>
+                  </li>
+                  <li>
+                    <%= link_to t(:login), new_session_path %>
+                  </li>
                   <li>
                     <%= link_to t('register'), validate_key_path(:method => :user) %>
                   </li>
+                  <li>
+                    <%= link_to t('inquire'), "/contact" %>
+                  </li>
+                  <% else %>
+                  <li>
+                    <%= link_to t(:register), validate_key_path(:method => :product, :user_id => current_user.id.to_s) %>
+                  </li>
+                  <li>
+                    <%= link_to t(:notes), notes_path(:user_id => current_user.id.to_s) %>
+                  </li>
               <% end %>
-              <li>
-                <%= link_to t('inquire'), "/contact" %>
-              </li>
             </ul>
           </nav>
         </div>
@@ -104,3 +116,24 @@
     </div>
   </div>
 </header>
+<% if current_user.present? %>
+<nav class="navbar navbar-inverse" style="background-color: #999999" role="navigation">
+  <div class="container">
+    <div class="well" style="width: 97.5%;margin-top: 20px;">
+
+      <div class="media">
+        <% if current_user.client.present? and current_user.client.attachments.any? %>
+            <a class="pull-left" href=<%= current_user.client.attachments.first.upload.url %>>
+              <img class="media-object" src=<%= current_user.client.attachments.first.upload.url %>, style="height: 64px;width: 64px;">
+            </a>
+        <% end %>
+        <div class="media-body">
+          <h4 class="media-heading" style="padding-left: 0px;"><b><%= current_user.client.client_name %></b></h4> <br/>
+          <span style="margin-top: -15px !important;float: left;"><%= current_user.client.address.full_address %></span><br/>
+          <%= link_to t(:view_edit_company_profile), edit_client_path(current_user.client), :class => "btn btn-success pull-right", :style => "width:230px" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<% end %>

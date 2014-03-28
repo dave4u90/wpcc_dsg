@@ -16,8 +16,9 @@ class PasswordResetsController < ApplicationController
         @user.check_password = false
         @user.send_password_reset
         flash[:success] = t(:password_reset_instructions_sent)
-        redirect_to root_path
+        redirect_to new_password_reset_path
       else
+        flash.discard
         @user.new_record? ? (@user.errors.clear and @user.errors.add(:base, t(:email_address_not_found))) : @user.errors.add(:base, t(:email_address_not_found))
         render :new
       end

@@ -284,7 +284,7 @@ label.blank_label {
 }
 
 .medium_wide_width {
-  width: 250px !important;
+  width: 247px !important;
 }
 
 .wider_width {
@@ -410,8 +410,6 @@ header {
 .navbar h1 {
   font-size: 26px;
   font-weight: bold;
-  letter-spacing: -1px;
-  word-spacing: -2px;
   margin: 45px 0 0;
 }
 
@@ -430,6 +428,7 @@ header {
 
 .nav-bottom-custom {
   background: #99cc66;
+  margin-bottom: -1px;
 }
 
 .nav > li > a {

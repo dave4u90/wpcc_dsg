@@ -9,7 +9,7 @@
 <%= hidden_field_tag :client_id, @client_id %>
 <%= hidden_field_tag :method, @method %>
 <div style="margin-top: 20px;">
-    <%= image_tag "product_key_image_card.png"  %>
+  <%= image_tag "product_key_image_card.png" %>
 </div>
 <div class="clearfix"></div>
 <br/>
@@ -21,8 +21,11 @@
 <div class="alert alert-error" id="invalid_key_error">
   <%= t(:invalid_key_error) %>
 </div>
-<%= text_field_tag "reg_key", @key, :class => "widest_width" %><br/>
-<%= image_tag("loading-green.gif", :class=> "loader pull-right", :style => "margin-right: 72px;display: none;")%>
-<%= button_tag t(:next), {id: "register_button1", class: "btn btn-success pull-right product_key_button click_button", style: "margin-right: 72px;"} %><br/>
+<div class="input-group">
+  <%= text_field_tag "reg_key", @key, :class => "widest_width form-control", placeholder: t('product_registration_key') %>
+  <br/>
+</div>
+<%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "margin-right: 158px;display: none;") %>
+<%= button_tag t(:next), {id: "register_button1", class: "btn btn-success pull-right product_key_button click_button", style: "margin-right: 158px;"} %><br/>
 <br/>
 </p>

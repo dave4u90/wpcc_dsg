@@ -12,21 +12,29 @@
       <%= f.hidden_field :client_id, value: @client_id %>
       <%= hidden_field_tag :user_id, @user.present? ? @user.id : nil %>
       <b><u><%= t('product_information') %></u></b><br/>
-      <span style="margin-bottom: 5px;"><%= t(:product_type) %></span><br/>
-      <%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "widest_width", :disabled => true, :style => "background: #999999;"} %>
-      <br/>
+
+      <div class="input-group">
+        <span style="margin-bottom: 5px;"><%= t(:product_type) %></span><br/>
+        <%= select_tag :product_type, options_for_select(my_product_types, @product_type_id), {:class => "widest_width form-control", :disabled => true, :style => "background: #999999;"} %>
+        <br/>
+      </div>
       <%= f.hidden_field :product_type_id, value: @product_type_id %>
 
 
       <span style="margin-bottom: 5px;"><%= t(:product_key) %></span><br/>
       <%= f.hidden_field :product_key, value: @product_key %>
-      <%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key), :class => "widest_width", :style => "background: #999999;", :disabled => true %>
-      <br/>
+      <div class="input-group">
+        <%= text_field_tag :reg_key, ProductKey.formatted_product_key(@product_key), :class => "widest_width form-control", :style => "background: #999999;", :disabled => true %>
+        <br/>
+      </div>
 
 
       <span style="margin-bottom: 5px;"><%= t(:product_title_and_location) %></span><br/>
-      <%= f.text_area :product_title, :class => "widest_width", :rows => "3", :cols => "150" %>
-      <br/>
+
+      <div class="input-group">
+        <%= f.text_area :product_title, :class => "widest_width form-control", :rows => "3", :cols => "150" %>
+        <br/>
+      </div>
 
       <br/>
       <b><u><%= t(:product_address_location) %></u></b><br/>
@@ -48,29 +56,46 @@
         <tr>
           <td>
             <span style="margin-bottom: 5px;"><%= t(:first_name) %></span><br/>
-            <%= f.text_field :signator_first_name, :class => "medium_wide_width" %>
+
+            <div class="input-group">
+              <%= f.text_field :signator_first_name, :class => "medium_wide_width form-control", placeholder: t('first_name') %>
+            </div>
           </td>
           <td>&nbsp;</td>
           <td>
             <span style="margin-bottom: 5px;"><%= t(:last_name) %></span><br/>
-            <%= f.text_field :signator_last_name, :class => "medium_wide_width" %>
+
+            <div class="input-group">
+              <%= f.text_field :signator_last_name, :class => "medium_wide_width form-control", placeholder: t('last_name') %>
+            </div>
           </td>
         </tr>
       </table>
 
       <span style="margin-bottom: 5px;"><%= t(:email_address) %></span><br/>
-      <%= f.email_field :signator_email_address, :class => "widest_width" %>
+
+      <div class="input-group">
+        <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
+        <%= f.email_field :signator_email_address, :class => "widest_width form-control", style: "width: 460px !important;", placeholder: t('last_name') %>
+      </div>
 
       <table>
         <tr>
           <td>
             <span style="margin-bottom: 5px;"><%= t(:telephone_number) %></span><br/>
-            <%= f.select :phone_country_code, [["Canada & USA      +1", "+1"]], {}, {:class => "medium_wide_width"} %>
+
+            <div class="input-group">
+              <%= f.select :phone_country_code, [["Canada & USA      +1", "+1"]], {}, {:class => "medium_wide_width form-control", style: "width: 196px !important; margin-right: 16px;"} %>
+            </div>
           </td>
           <td>&nbsp;</td>
           <td>
             <span style="margin-bottom: 5px;"></span><br/>
-            <%= f.text_field :signator_telephone_number, :class => "medium_wide_width" %>
+
+            <div class="input-group">
+              <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-phone-alt"> </span></span>
+              <%= f.text_field :signator_telephone_number, :class => "medium_wide_width form-control", style: "width: 244px !important;", placeholder: t('telephone_number') %>
+            </div>
           </td>
         </tr>
       </table>

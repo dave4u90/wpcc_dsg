@@ -57,26 +57,6 @@
 
 
 <!-- bread crumb of pages -->
-<nav class="navbar navbar-inverse" style="background-color: #999999" role="navigation">
-  <div class="container">
-    <div class="well" style="width: 97.5%;margin-top: 20px;">
-      <div class="media">
-        <% if current_user.client.present? and current_user.client.attachments.any? %>
-            <a class="pull-left" href=<%= current_user.client.attachments.first.upload.url %>>
-              <img class="media-object" src=<%= current_user.client.attachments.first.upload.url %>, style="height: 64px;width: 64px;">
-            </a>
-        <% end %>
-
-        <div class="media-body">
-          <h4 class="media-heading" style="padding-left: 0px;"><b><%= current_user.client.client_name %></b></h4> <br/>
-          <span style="margin-top: -15px !important;float: left;"><%= current_user.client.address.full_address %></span><br/>
-          <%= link_to t(:view_edit_company_profile), edit_client_path(current_user.client), :class => "btn btn-success pull-right", :style => "width:230px" %>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
 <div class="container">
   <div>
     <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">

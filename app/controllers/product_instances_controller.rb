@@ -9,9 +9,9 @@ class ProductInstancesController < ApplicationController
     if current_user.present?
       if params[:product_type_id]
         @product_type = ProductType.find(params[:product_type_id])
-        @product_instances = @product_type.product_instances.paginate(page: params[page], per_page: 1, conditions: {client_id: current_user.client_id})
+        @product_instances = @product_type.product_instances.paginate(page: params[page], per_page: 3, conditions: {client_id: current_user.client_id})
       else
-        @product_instances = ProductInstance.paginate(page: params[:page], per_page: 1, conditions: {client_id: current_user.client_id})
+        @product_instances = ProductInstance.paginate(page: params[:page], per_page: 3, conditions: {client_id: current_user.client_id})
         @product_instances.each do |d|
           logger.info d.inspect
         end
@@ -71,9 +71,6 @@ class ProductInstancesController < ApplicationController
 
   def manage_access
     @product = ProductInstance.find(params[:id])
-    if request.post?
-      jhgjhg
-    end
   end
 
   def create
@@ -86,7 +83,6 @@ class ProductInstancesController < ApplicationController
       @product_instance.address = @address
       @product_instance.save
       product_key = ProductKey.find_by_product_key(@product_instance.product_key)
-      product_key.update_attributes(product_instance_id: @product_instance.id)
       UserMailer.signator_new_product_registration_email(@product_instance).deliver
       @client = @product_instance.client || @product_instance.build_client
       @client.attachments.build

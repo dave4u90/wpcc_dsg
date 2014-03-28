@@ -1,58 +1,58 @@
 <div class="container">
-  <div style="color:#fff;font-size: 12px; padding-left: 10px">
-    <!-- @@kk: put link to product_instance.index -->
-    <%= link_to t(:products), ProductInstance %>
-    - <%= link_to @product_instance.get_title(current_language_id), @product_instance %>
-    <hr style="width: 98%; margin-left: 0px;">
-  </div>
+  <ol class="breadcrumb" style="margin-top: 20px; width: 97.5%;">
+    <li><span class="glyphicon glyphicon-home"> </span></li>
+    <li><%= link_to t('home'), product_instances_path %></li>
+    <li><%= link_to @product_instance.get_title(current_language_id), @product_instance %></li>
+  </ol>
 
-  <div style="padding-left: 10px;padding-right: 20px">
-    <div class="forgot_email_div" style="width: 100%">
-      <div class="green_menu" style="padding-right: 10px">
-        <table width="100%">
-          <tr>
-            <td align="left">
-              <%= @product_instance.get_title (current_language_id) %>
-            </td>
-            <td align="right">
-
-              <%= raw(@product_instance.product_type.get_title(current_language_id)) %>
-            </tD>
-          </tr>
-        </table>
-      </div>
-      <div style="padding: 5px">
-        <!-- assemble the components here together -->
-
-        <%
-           #create a shortform to reference the product_type
-           mycomponents = @product_instance.product_type.get_components %>
-        <table cellpadding="0" border="0" height="10">
-          <tr>
-            <% mycomponents.each do |c|
-              if c
-                i = Image.get_image_url(c.image)
-
-            %>
-                    <%#= c.component.id.to_s + "," + c.component.component_description %>
-                    <td><%= link_to (image_tag i, :title => raw(c.get_title(current_language_id))), (component_path c, :product_instance_id => @product_instance.id) %></td>
-                <%
-                   end
-                   end
-                %></tr>
-        </table>
-
-      </div>
+  <div class="panel panel-default" style="width: 97.5%">
+    <div class="panel-heading">
+      <strong><%= raw(@product_instance.get_title (current_language_id)) %></strong>
+      <strong class="pull-right"><%= raw(@product_instance.product_type.get_title(current_language_id)) %></strong>
     </div>
-    <br/>
+    <div class="panel-body">
+      <table width="100%">
+        <tr>
+          <td align="left">
+            <%= @product_instance.get_title (current_language_id) %>
+          </td>
+          <td align="right">
+            <%= raw(@product_instance.product_type.get_title(current_language_id)) %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="padding: 5px">
+      <!-- assemble the components here together -->
 
+      <%
+         #create a shortform to reference the product_type
+         mycomponents = @product_instance.product_type.get_components %>
+      <table cellpadding="0" border="0" height="10">
+        <tr>
+          <% mycomponents.each do |c|
+            if c
+              i = Image.get_image_url(c.image)
 
-    <%
-       @notes_container = []
-       @notes_container.push @product_instance
-       @product_instance_id = @product_instance.id
-    %>
-    <%= render "notes/show_notes", :partial => true %>
+          %>
+                  <%#= c.component.id.to_s + "," + c.component.component_description %>
+                  <td><%= link_to (image_tag i, :title => raw(c.get_title(current_language_id))), (component_path c, :product_instance_id => @product_instance.id) %></td>
+              <%
+                 end
+                 end
+              %></tr>
+      </table>
+
+    </div>
   </div>
+
   <br/>
+
+
+  <%
+     @notes_container = []
+     @notes_container.push @product_instance
+     @product_instance_id = @product_instance.id
+  %>
+  <%= render "notes/show_notes", :partial => true %>
 </div>

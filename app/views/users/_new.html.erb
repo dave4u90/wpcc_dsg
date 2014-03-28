@@ -13,29 +13,49 @@
       <%= f.hidden_field :product_instance_id, value: @product_instance.id %>
 
       <span style="margin-bottom: 5px;"><%= t(:language) %></span><br/>
-      <%= f.select("locale", options_from_collection_for_select(Language.supported_languages, "locale", "language_description"), {}, :class => "widest_width") %>
-      <br/>
+
+      <div class="input-group">
+        <%= f.select("locale", options_from_collection_for_select(Language.supported_languages, "locale", "language_description"), {}, :class => "widest_width form-control") %>
+        <br/>
+      </div>
 
 
       <span style="margin-bottom: 5px;"><%= t(:name) %></span><br/>
-      <%= f.text_field :name, :class => "widest_width" %>
-      <br/>
+
+      <div class="input-group">
+        <%= f.text_field :name, :class => "widest_width form-control", placeholder: t('name') %>
+        <br/>
+      </div>
 
       <span style="margin-bottom: 5px;"><%= t(:email) %></span><br/>
-      <%= f.email_field :email, :class => "widest_width" %>
-      <br/>
+
+      <div class="input-group">
+        <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
+        <%= f.text_field :email, :class => "widest_width form-control", style: "width: 460px !important;", placehoder: t('email') %>
+        <br/>
+      </div>
 
       <span style="margin-bottom: 5px;"><%= t(:confirm_email) %></span><br/>
-      <%= f.email_field :email_confirmation, :class => "widest_width" %>
-      <br/>
+
+      <div class="input-group">
+        <span class="input-group-addon input-group-addon-black"><span class="glyphicon glyphicon-envelope"> </span></span>
+        <%= f.text_field :email_confirmation, :class => "widest_width form-control", style: "width: 460px !important;", placeholder: t('confirm_email') %>
+        <br/>
+      </div>
 
       <span style="margin-bottom: 5px;"><%= t(:password) %></span><br/>
-      <%= f.password_field :password, :class => "widest_width" %>
-      <br/>
+
+      <div class="input-group">
+        <%= f.password_field :password, :class => "widest_width form-control", placeholder: t('password') %>
+        <br/>
+      </div>
 
       <span style="margin-bottom: 5px;"><%= t(:confirm_password) %></span><br/>
-      <%= f.password_field :password_confirmation, :class => "widest_width" %>
-      <br/>
+
+      <div class="input-group">
+        <%= f.password_field :password_confirmation, :class => "widest_width form-control", placehoder: t('confirm_password') %>
+        <br/>
+      </div>
 
       <%= f.hidden_field :client_id, :value => @client.id %>
 
@@ -47,11 +67,14 @@
       <br/>
 
       <span style="margin-bottom: 5px;"><%= t(:product_registration_key) %></span><br/>
-      <%= text_field_tag :product_key, @product_key, :class => "widest_width", :disabled => 'true' %>
+
+      <div class="input-group">
+        <%= text_field_tag :product_key, @product_key, :class => "widest_width form-control", :disabled => 'true' %>
+        <br/>
+      </div>
       <br/>
-      <br/>
-      <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "margin-right: 53px;display: none;") %>
-      <%= button_tag t(:next), {id: "user_registration_button", class: "btn btn-success pull-right user_registration_button click_button", style: "margin-right: 53px;"} %>
+      <%= image_tag("loading-green.gif", :class => "loader pull-right", :style => "margin-right: 138px;display: none;") %>
+      <%= button_tag t(:next), {id: "user_registration_button", class: "btn btn-success pull-right user_registration_button click_button", style: "margin-right: 138px;"} %>
   <% end %>
 </div>
 <br/>

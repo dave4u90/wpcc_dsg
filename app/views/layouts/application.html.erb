@@ -18,7 +18,7 @@
   <script type="text/javascript">
       $(function () {
           var current_time = new Date();
-          document.cookie ="time_zone=" + current_time.getTimezoneOffset();
+          document.cookie = "time_zone=" + current_time.getTimezoneOffset();
       });
   </script>
 </head>
@@ -28,13 +28,15 @@
   <div class="container">
     <% #only output flash alerts that are not of json type. thru naming convention, flash elements that start with a key json_* is json
        flash.each do |key, value|
-         if key.to_s.match(/^json_*/) == nil %>
-            <div class="alert alert-<%= key %>">
-              <%= raw(value) %>
-            </div>
-        <%
-           end
-           end %>
+         if key.to_s.match(/^json_*/) == nil
+           if value.present? %>
+                <div class="alert alert-<%= key %>" style="width: 97.5%;">
+                  <%= raw(value) %>
+                </div>
+            <%
+               end
+               end
+               end %>
   </div>
   <div class="content">
     <%= yield %>
