@@ -12,6 +12,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-cookie-rails'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'ckeditor'
+gem 'redactor-rails'
 gem "jquery-fileupload-rails"
 gem 'mysql2'
 

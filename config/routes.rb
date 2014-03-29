@@ -1,5 +1,7 @@
 Wpcc::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :postal_codes

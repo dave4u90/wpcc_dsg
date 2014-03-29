@@ -4,7 +4,9 @@
  *= require note
  *= require product_instances
  *= require static_pages
- *= product_key
+ *= require product_key
+ *= require redactor-rails
+ *= require redactor-rails/plugins
  */
 /*Fronm bootstrap*/
 *:before, *:after {
