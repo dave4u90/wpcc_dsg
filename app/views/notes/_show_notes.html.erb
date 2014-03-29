@@ -1,7 +1,10 @@
 <style type="text/css">
-  .redactor_editor{
-      min-height: 200px !important;
-  }
+    .redactor_editor {
+        min-height: 200px !important;
+    }
+        .input-group{
+            width: 100% !important;
+        }
 </style>
 <%= javascript_include_tag('redactor-rails') %>
 <%= javascript_include_tag('redactor-rails/plugins') %>
@@ -75,7 +78,7 @@
     <div style="padding: 12px; border: box;">
       <h3 style="text-align: center;margin-left: -125px;"><%= t(:post_a_note) %></h3>
       <%
-         n = Note.new
+         n = session[:current_draft].present? ? Note.find(session[:current_draft]) : Note.new
          n.product_instance_id = @product_instance_id
 
          my_notes_objects = ProductInstance.object_title_array(@notes_container, current_language_id)
@@ -83,30 +86,36 @@
       %>
 
       <div><p>
-        <%= form_for (n) do |my_form| %>
-
+        <%= form_for (n), method: 'post' do |my_form| %>
+            <%= my_form.hidden_field :id, value: n.try(:id) %>
             <%= my_form.label :product_instance_id, t(:product), :style => "padding: 0px" %>
-            <%= my_form.hidden_field :note_object_type, :value => @notes_container.first.class.to_s %>
-            <% if @notes_container.first.class == ProductInstance %>
-                <%= my_form.hidden_field :product_instance_id, :value => @product_instance_id.to_s %>
-                <%= my_form.select :product_instance_id, options_for_select(my_notes_objects, selected: @product_instance_id), {}, {style: "width: 100% !important;"} %>
-            <% else %>
-                <%= my_form.select :component_id, options_for_select(my_notes_objects), {}, {style: "width: 100% !important;"} %>
-                <%= my_form.hidden_field :product_instance_id, :value => @product_instance_id.to_s %>
-            <% end %>
-            <%= my_form.hidden_field :user_id, :value => current_user.id.to_s %>
-            <%= my_form.label :subject, t(:subject) %>
-            <%= my_form.text_field :subject, :class => "", size: 40, style: "width: 100% !important;" %>
+            <div class="input-group">
+              <%= my_form.hidden_field :note_object_type, :value => @notes_container.first.class.to_s %>
+              <% if @notes_container.first.class == ProductInstance %>
+                  <%= my_form.select :product_instance_id, options_for_select(my_notes_objects, selected: @product_instance_id), {}, {class: "form-control", style: "width: 100% !important;"} %>
+              <% else %>
+                  <%= my_form.select :component_id, options_for_select(my_notes_objects), {}, {class: 'form-control', style: "width: 100% !important;"} %>
+                  <%= my_form.hidden_field :product_instance_id, :value => @product_instance_id.to_s %>
+              <% end %>
+            </div>
 
+            <%= my_form.hidden_field :user_id, :value => current_user.id.to_s %>
+
+            <%= my_form.label :subject, t(:subject) %>
+            <div class="input-group">
+              <%= my_form.text_field :subject, :class => "form-control", size: 40, style: "width: 100% !important;" %>
+            </div>
             <%= my_form.label :language, t(:language) + ": " + current_language.to_s %>
 
             <%= my_form.label :note, t(:note) %>
-            <%= my_form.text_area :note, class: "redactor", rows: 100, columns: 100 %>
-            <br>
+            <div class="input-group">
+              <%= my_form.text_area :note, class: "redactor form-control", rows: 100, columns: 100 %>
+              <br>
+            </div>
             <%= my_form.submit :value => t(:create_note), :class => "btn btn-success" %>
 
         <% end %>
-      </p></div>
+       </div>
     </div>
   </div>
 </div>

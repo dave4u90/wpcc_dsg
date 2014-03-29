@@ -5,6 +5,7 @@ class ProductInstancesController < ApplicationController
 
 
   def index
+
     #Filter product instances to only show those the client has access to
     if current_user.present?
       if params[:product_type_id]
