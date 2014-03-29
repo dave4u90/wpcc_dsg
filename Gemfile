@@ -68,6 +68,7 @@ group :image do
 	 gem 'rmagick', :require => 'RMagick'
         end
 	gem "carrierwave"
+  gem "mini_magick"
 end
 
 group :production do
